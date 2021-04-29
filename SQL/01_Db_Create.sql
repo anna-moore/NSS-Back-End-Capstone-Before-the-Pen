@@ -6,15 +6,15 @@ GO
 USE [BeforethePen]
 GO 
 
-DROP TABLE IF EXISTS [UserProfile]
-DROP TABLE IF EXISTS [Monthly]
 DROP TABLE IF EXISTS [MonthlyLayout]
 DROP TABLE IF EXISTS [Layout]
+DROP TABLE IF EXISTS [Monthly]
 DROP TABLE IF EXISTS [Resources]
 DROP TABLE IF EXISTS [TypeOfMedia]
+DROP TABLE IF EXISTS [UserProfile]
 
 CREATE TABLE [UserProfile] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [firebaseId] nvarchar(28) NOT NULL,
   [displayName] nvarchar(255) NOT NULL,
   [firstName] nvarchar(255) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE [UserProfile] (
 GO
 
 CREATE TABLE [Monthly] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [userProfileId] integer NOT NULL,
   [month] nvarchar(255) NOT NULL,
   [year] integer NOT NULL
@@ -34,7 +34,7 @@ CREATE TABLE [Monthly] (
 GO
 
 CREATE TABLE [MonthlyLayout] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [monthlyId] integer NOT NULL,
   [layoutId] integer NOT NULL,
   [inspiredBy] nvarchar(255),
@@ -45,7 +45,7 @@ CREATE TABLE [MonthlyLayout] (
 GO
 
 CREATE TABLE [Layout] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY  PRIMARY KEY NOT NULL,
   [UserProfileId] integer NOT NULL,
   [type] nvarchar(255) NOT NULL,
   [timeEstimate] integer,
@@ -54,16 +54,16 @@ CREATE TABLE [Layout] (
 GO
 
 CREATE TABLE [Resources] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY  PRIMARY KEY NOT NULL,
   [UserProfileId] integer NOT NULL,
-  [typeOfMedia] integer NOT NULL,
+  [typeOfMediaId] integer NOT NULL,
   [URL] nvarchar(255) NOT NULL,
   [imageURL] nvarchar(255)
 )
 GO
 
 CREATE TABLE [TypeOfMedia] (
-  [id] integer PRIMARY KEY NOT NULL,
+  [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [type] nvarchar(255) NOT NULL
 )
 GO
@@ -71,7 +71,7 @@ GO
 ALTER TABLE [Monthly] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([id])
 GO
 
-ALTER TABLE [Resources] ADD FOREIGN KEY ([TypeOfMedia]) REFERENCES [TypeOfMedia] ([id])
+ALTER TABLE [Resources] ADD FOREIGN KEY ([TypeOfMediaId]) REFERENCES [TypeOfMedia] ([id])
 GO
 
 ALTER TABLE [MonthlyLayout] ADD FOREIGN KEY ([MonthlyId]) REFERENCES [Monthly] ([id])
