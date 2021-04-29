@@ -16,11 +16,11 @@ DROP TABLE IF EXISTS [TypeOfMedia]
 CREATE TABLE [UserProfile] (
   [id] integer PRIMARY KEY NOT NULL,
   [firebaseId] nvarchar(28) NOT NULL,
-  [userName] nvarchar(255) NOT NULL,
+  [displayName] nvarchar(255) NOT NULL,
   [firstName] nvarchar(255) NOT NULL,
   [lastName] nvarchar(255) NOT NULL,
   [email] nvarchar(255) NOT NULL,
-  [createDateTime] datetime NOT NULL,
+  [DateCreated] datetime NOT NULL,
   [imageLocation] nvarchar(255)
 )
 GO
