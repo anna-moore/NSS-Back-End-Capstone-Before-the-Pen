@@ -5,7 +5,7 @@ using static BeforeThePen.Utils.DbUtlis;
 
 namespace BeforeThePen.Repositories
 {
-    public class UserProfileRepository : BaseRepository
+    public class UserProfileRepository : BaseRepository, IUserProfileRepository
     {
         public UserProfileRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -33,12 +33,12 @@ namespace BeforeThePen.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
                             FirebaseId = DbUtils.GetString(reader, "FirebaseUserId"),
-                            DisplayName =  DbUtils.GetString(reader, "DisplayName"),
+                            DisplayName = DbUtils.GetString(reader, "DisplayName"),
                             FirstName = DbUtils.GetString(reader, "FirstName"),
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
-                            ImageURL = DbUtils.GetString(reader, "ImageURL")                           
+                            ImageURL = DbUtils.GetString(reader, "ImageURL")
                         };
                     }
                     reader.Close();
