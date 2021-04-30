@@ -1,10 +1,14 @@
 ﻿using BeforeThePen.Models;
+using System.Collections.Generic;
 
 namespace BeforeThePen.Repositories
 {
     public interface IUserProfileRepository
     {
-        void Add(UserProfile userProfile);
         UserProfile GetByFirebaseUserId(string firebaseUserId);
+
+        List<UserProfile> GetAll();
+        UserProfile GetByUserProfileId(int id);
+        void Add(UserProfile userProfile);
     }
 }
