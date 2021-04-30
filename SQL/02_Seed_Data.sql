@@ -37,8 +37,8 @@ SET IDENTITY_INSERT [TypeOfMedia] ON
     (4, 'Reddit');
 SET IDENTITY_INSERT [TypeOfMedia] Off
 
-SET IDENTITY_INSERT [Resources] ON
-  INSERT INTO [Resources] 
+SET IDENTITY_INSERT [Resource] ON
+  INSERT INTO [Resource] 
     ([Id], [UserProfileId], [TypeOfMediaId], [URL], [imageURL])
   VALUES
     (1, 1, 1,'thisIsAURL', 'thisIsAImageURL')

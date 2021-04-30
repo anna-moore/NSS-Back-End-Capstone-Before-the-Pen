@@ -9,7 +9,7 @@ GO
 DROP TABLE IF EXISTS [MonthlyLayout]
 DROP TABLE IF EXISTS [Layout]
 DROP TABLE IF EXISTS [Monthly]
-DROP TABLE IF EXISTS [Resources]
+DROP TABLE IF EXISTS [Resource]
 DROP TABLE IF EXISTS [TypeOfMedia]
 DROP TABLE IF EXISTS [UserProfile]
 
@@ -21,7 +21,7 @@ CREATE TABLE [UserProfile] (
   [lastName] nvarchar(255) NOT NULL,
   [email] nvarchar(255) NOT NULL,
   [DateCreated] datetime NOT NULL,
-  [imageLocation] nvarchar(255)
+  [imageURL] nvarchar(255)
 )
 GO
 
@@ -53,7 +53,7 @@ CREATE TABLE [Layout] (
 )
 GO
 
-CREATE TABLE [Resources] (
+CREATE TABLE [Resource] (
   [id] integer IDENTITY  PRIMARY KEY NOT NULL,
   [UserProfileId] integer NOT NULL,
   [typeOfMediaId] integer NOT NULL,
@@ -71,7 +71,7 @@ GO
 ALTER TABLE [Monthly] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([id])
 GO
 
-ALTER TABLE [Resources] ADD FOREIGN KEY ([TypeOfMediaId]) REFERENCES [TypeOfMedia] ([id])
+ALTER TABLE [Resource] ADD FOREIGN KEY ([TypeOfMediaId]) REFERENCES [TypeOfMedia] ([id])
 GO
 
 ALTER TABLE [MonthlyLayout] ADD FOREIGN KEY ([MonthlyId]) REFERENCES [Monthly] ([id])
@@ -83,5 +83,5 @@ GO
 ALTER TABLE [MonthlyLayout] ADD FOREIGN KEY ([ResourceId]) REFERENCES [Resources] ([id])
 GO
 
-ALTER TABLE [Resources] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([id])
+ALTER TABLE [Resource] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([id])
 GO
