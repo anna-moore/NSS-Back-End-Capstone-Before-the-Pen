@@ -55,13 +55,16 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, Name, Email, UserTypeId)
+                    cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, DisplayName, FirstName, LastName, Email, ImageURL, DateCreated )
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @Name, @Email, @UserTypeId)";
-                    DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
-                    DbUtils.AddParameter(cmd, "@Name", userProfile.Name);
+                                        VALUES (@FirebaseUserId, @DisplayName, @FirstName, @LastName, @Email, @ImageURL, @DateCreated)";
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseId);
+                    DbUtils.AddParameter(cmd, "@DisplayName", userProfile.DisplayName);
+                    DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
+                    DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
-                    DbUtils.AddParameter(cmd, "@UserTypeId", userProfile.UserTypeId);
+                    DbUtils.AddParameter(cmd, "@ImageURL", userProfile.ImageURL);
+                    DbUtils.AddParameter(cmd, "@DateCreated", userProfile.DateCreated);
 
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
