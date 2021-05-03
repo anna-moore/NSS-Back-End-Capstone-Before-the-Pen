@@ -30,6 +30,7 @@ namespace BeforeThePen
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<IHomepageRepository, HomepageRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("beforethepen-5616b");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

@@ -46,7 +46,7 @@ SET IDENTITY_INSERT [Resources] OFF
 
 SET IDENTITY_INSERT [MonthlyLayout] ON
   INSERT INTO [MonthlyLayout]
-    ([Id], [MonthlyId], [LayoutId], [InspiredBy], [ImageURL], [ResourceId], [style])
+    ([Id], [MonthlyId], [LayoutId], [InspiredBy], [ImageURL], [ResourceId], [Style])
   VALUES
     (1, 1, 1, 'blah', null, 1, 'style');
 SET IDENTITY_INSERT [MonthlyLayout] OFF

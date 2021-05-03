@@ -21,7 +21,7 @@ export default function Login() {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-sm-6 col-lg-10">
-                    <h1 className="text-center">Welcome to Tabloid</h1>
+                    <h1 className="text-center">Welcome to Before the Pen</h1>
                     <Form onSubmit={loginSubmit}>
                         <fieldset>
                             <FormGroup>

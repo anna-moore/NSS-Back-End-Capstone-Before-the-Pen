@@ -6,7 +6,7 @@ import 'firebase/auth';
 export const UserProfileContext = createContext();
 
 export function UserProfileProvider(props) {
-    const apiUrl = '/api/userrofile';
+    const apiUrl = '/api/userProfile';
 
     const userProfile = sessionStorage.getItem('userProfile');
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
@@ -115,7 +115,7 @@ export function UserProfileProvider(props) {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userProfile),
+                body: JSON.stringify(userProfile)
             }).then((resp) => resp.json())
         );
     };

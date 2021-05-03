@@ -1,6 +1,6 @@
-﻿using BeforeThePen.Models;
+﻿using Microsoft.Data.SqlClient;
+using BeforeThePen.Models;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Data.SqlClient;
 using static BeforeThePen.Utils.DbUtlis;
 using System.Collections.Generic;
 

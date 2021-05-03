@@ -11,6 +11,8 @@ DROP TABLE IF EXISTS [Layout]
 DROP TABLE IF EXISTS [Monthly]
 DROP TABLE IF EXISTS [Resource]
 DROP TABLE IF EXISTS [TypeOfMedia]
+DROP TABLE IF EXISTS [SpotlightLayout]
+DROP TABLE IF EXISTS [HomepageResources]
 DROP TABLE IF EXISTS [UserProfile]
 
 CREATE TABLE [UserProfile] (
@@ -65,6 +67,22 @@ GO
 CREATE TABLE [TypeOfMedia] (
   [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [type] nvarchar(255) NOT NULL
+)
+GO
+
+CREATE TABLE [SpotlightLayout](
+  [id] integer IDENTITY PRIMARY KEY NOT NULL,
+  [artist] nvarchar (255) NOT NULL,
+  [videoURL] nvarchar (255),
+  [artistProfolioURL] nvarchar (255),
+  [imageURL] nvarchar (255)
+)
+GO
+
+CREATE TABLE [HomepageResources](
+	[id] integer IDENTITY PRIMARY KEY NOT NULL,
+	[topic] nvarchar (255) NOT NULL,
+	[URL] nvarchar (255) NOT NULL
 )
 GO
 
