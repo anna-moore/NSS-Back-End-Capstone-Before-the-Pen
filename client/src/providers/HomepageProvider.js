@@ -19,6 +19,7 @@ export function HomepageProvider(props) {
         }
     }, [userProfile]);
 
+    //gathers the single spotlight object 
     const GetSpotlight = () => {
         return getToken().then((token) =>
             fetch(`${apiURL}/currentSpotlight`, {
@@ -33,7 +34,7 @@ export function HomepageProvider(props) {
         );
     };
 
-    //how should this be updated to for a list??
+    //gathers the list of links for the homepage
     const getResourceLinks = () => {
         return getToken().then((token) => {
             fetch(`${apiURL}/helpfulLinks`, {
@@ -56,7 +57,6 @@ export function HomepageProvider(props) {
                 setHomepageResourceLinks,
                 spotlight,
                 homepageResourceLinks
-
             }}
         ></HomepageContext.Provider>
     );
