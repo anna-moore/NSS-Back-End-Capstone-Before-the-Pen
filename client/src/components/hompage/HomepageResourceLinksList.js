@@ -1,5 +1,5 @@
 //list out all of the links
-// import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { HomepageContext } from "../../providers/HomepageProvider"
 import HomepageResourceLinksCard from './HomepageResourceLinksCard'
 import { Col, Row, Container } from 'reactstrap';
@@ -20,10 +20,10 @@ const HelpfulResourceList = () => {
                     <div className="row justify-content-center">
                         <div className="cards-column">
 
-                            <h1 style={{ textAlign: 'center' }}>Categories</h1>
+                            <h1 style={{ textAlign: 'center' }}>Helpful Links/ Getting Started</h1>
 
                             {homepageResourceLinks.map((link) => {
-                                <HomepageResourceLinksCard key={link.id} links={link} />
+                                <HomepageResourceLinksCard key={link.id} link={link} />
 
                             })}
                         </div>

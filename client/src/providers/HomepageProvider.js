@@ -20,7 +20,7 @@ export function HomepageProvider(props) {
     }, [userProfile]);
 
     //gathers the single spotlight object 
-    const GetSpotlight = () => {
+    const getSpotlight = () => {
         return getToken().then((token) =>
             fetch(`${apiURL}/currentSpotlight`, {
                 method: 'GET',
@@ -53,7 +53,7 @@ export function HomepageProvider(props) {
         <HomepageContext.Provider
             value={{
                 getResourceLinks,
-                GetSpotlight,
+                getSpotlight,
                 setSpotlight,
                 setHomepageResourceLinks,
                 spotlight,
