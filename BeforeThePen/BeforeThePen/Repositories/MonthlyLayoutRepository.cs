@@ -10,7 +10,7 @@ using static BeforeThePen.Utils.DbUtlis;
 //update SQL and the parameters
 namespace BeforeThePen.Repositories
 {
-    public class MonthlyLayoutRepository : BaseRepository 
+    public class MonthlyLayoutRepository : BaseRepository, IMonthlyLayoutRepository
     {
         public MonthlyLayoutRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -46,6 +46,7 @@ namespace BeforeThePen.Repositories
                 }
             }
         }
+
         //add a new monthly layout
         public void AddMonthyLayout(MonthlyLayout monthlyLayout)
         {
@@ -149,7 +150,7 @@ namespace BeforeThePen.Repositories
         private MonthlyLayout NewMonthlyLayoutFromDb(SqlDataReader reader)
         {
             return new MonthlyLayout()
-            {                
+            {
                 Id = DbUtils.GetInt(reader, "Id"),
                 MonthlyId = DbUtils.GetInt(reader, "MonthlyId"),
                 LayoutId = DbUtils.GetInt(reader, "LayoutId"),
