@@ -18,10 +18,10 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id, up.FirebaseId, up.DisplayName, up.FirstName, up.LastName, up.Email, 
+                        SELECT up.Id, up.FirebaseUserId, up.DisplayName, up.FirstName, up.LastName, up.Email, 
                                up.DateCreated, up.ImageURL
                           FROM UserProfile up                             
-                         WHERE up.FirebaseId = @FirebaseuserId";
+                         WHERE up.FirebaseUserId = @FirebaseuserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 
@@ -81,7 +81,7 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                                        SELECT up.Id, Up.FirebaseId, up.FirstName, up.LastName, up.DisplayName, 
+                                        SELECT up.Id, Up.FirebaseUserId, up.FirstName, up.LastName, up.DisplayName, 
                                                up.Email, up.DateCreated, up.ImageURL                             
                                         FROM UserProfile up                         
                                         WHERE up.Id = @Id";
