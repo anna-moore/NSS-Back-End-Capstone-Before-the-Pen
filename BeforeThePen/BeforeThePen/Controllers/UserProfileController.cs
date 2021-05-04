@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase
@@ -48,7 +48,7 @@ namespace BeforeThePen.Controllers
             _userProfileRepository.Add(userProfile);
             return CreatedAtAction(
                 nameof(GetUserProfile),
-                new { firebaseUserId = userProfile.FirebaseId },
+                new { firebaseUserId = userProfile.FirebaseUserId },
                 userProfile);
         }
     }

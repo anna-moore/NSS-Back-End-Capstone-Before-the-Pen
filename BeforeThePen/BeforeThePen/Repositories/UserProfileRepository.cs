@@ -21,7 +21,7 @@ namespace BeforeThePen.Repositories
                         SELECT up.Id, up.FirebaseId, up.DisplayName, up.FirstName, up.LastName, up.Email, 
                                up.DateCreated, up.ImageURL
                           FROM UserProfile up                             
-                         WHERE FirebaseUserId = @FirebaseuserId";
+                         WHERE up.FirebaseId = @FirebaseuserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 
@@ -33,7 +33,7 @@ namespace BeforeThePen.Repositories
                         userProfile = new UserProfile()
                         {
                             Id = DbUtils.GetInt(reader, "Id"),
-                            FirebaseId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
                             DisplayName = DbUtils.GetString(reader, "DisplayName"),
                             FirstName = DbUtils.GetString(reader, "FirstName"),
                             LastName = DbUtils.GetString(reader, "LastName"),
@@ -113,7 +113,7 @@ namespace BeforeThePen.Repositories
                     cmd.CommandText = @"INSERT INTO UserProfile (FirebaseUserId, DisplayName, FirstName, LastName, Email, ImageURL, DateCreated )
                                         OUTPUT INSERTED.ID
                                         VALUES (@FirebaseUserId, @DisplayName, @FirstName, @LastName, @Email, @ImageURL, @DateCreated)";
-                    DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseId);
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", userProfile.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@DisplayName", userProfile.DisplayName);
                     DbUtils.AddParameter(cmd, "@FirstName", userProfile.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
@@ -131,13 +131,13 @@ namespace BeforeThePen.Repositories
             return new UserProfile()
             {
                 Id = DbUtils.GetInt(reader, "Id"),
-                FirebaseId = DbUtils.GetString(reader, "FirebaseUserId"),
+                FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
                 FirstName = DbUtils.GetString(reader, "FirstName"),
                 LastName = DbUtils.GetString(reader, "LastName"),
                 DisplayName = DbUtils.GetString(reader, "DisplayName"),
                 Email = DbUtils.GetString(reader, "Email"),
-                DateCreated = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                ImageURL = DbUtils.GetString(reader, "ImageLocation"),
+                DateCreated = DbUtils.GetDateTime(reader, "DateCreated"),
+                ImageURL = DbUtils.GetString(reader, "ImageURL"),
 
             };
         }

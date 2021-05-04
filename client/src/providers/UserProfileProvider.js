@@ -55,16 +55,10 @@ export function UserProfileProvider(props) {
             .auth()
             .createUserWithEmailAndPassword(userProfile.email, password)
             .then((createResponse) =>
-                saveUser({
-                    ...userProfile,
-                    firebaseUserId: createResponse.user.uid,
-                })
+                saveUser({ ...userProfile, firebaseUserId: createResponse.user.uid })
             )
             .then((savedUserProfile) => {
-                sessionStorage.setItem(
-                    'userProfile',
-                    JSON.stringify(savedUserProfile)
-                );
+                sessionStorage.setItem('userProfile', JSON.stringify(savedUserProfile));
                 setIsLoggedIn(true);
             });
     };
@@ -115,7 +109,7 @@ export function UserProfileProvider(props) {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userProfile)
+                body: JSON.stringify(userProfile),
             }).then((resp) => resp.json())
         );
     };

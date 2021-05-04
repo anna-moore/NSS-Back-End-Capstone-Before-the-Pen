@@ -12,7 +12,7 @@ namespace BeforeThePen.Models
 
         [Required]
         [StringLength(28, MinimumLength = 28)]
-        public string FirebaseId { get; set; }
+        public string FirebaseUserId { get; set; }
 
         [Required]
         [MaxLength(50)]

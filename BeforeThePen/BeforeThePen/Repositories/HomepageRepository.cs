@@ -22,7 +22,7 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @" 
-                                        SELECT id, artist, videoURL, artistProfolioURL, ImageURL, About
+                                        SELECT id, artist, videoURL, artistPortfolioURL, ImageURL, About
                                         FROM SpotlightLayout
                                         WHERE CurrentMonth = 1";
 
@@ -36,7 +36,7 @@ namespace BeforeThePen.Repositories
                             Id = DbUtils.GetInt(reader, "id"),
                             Artist = DbUtils.GetString(reader, "artist"),
                             VideoURL = DbUtils.GetString(reader, "videoURL"),
-                            ArtistProfolioURL = DbUtils.GetString(reader, "artistProfolioURL"),
+                            ArtistPortfolioURL = DbUtils.GetString(reader, "artistPortfolioURL"),
                             ImageURL = DbUtils.GetString(reader, "ImageURL"),
                             About = DbUtils.GetString(reader, "About")
                         };

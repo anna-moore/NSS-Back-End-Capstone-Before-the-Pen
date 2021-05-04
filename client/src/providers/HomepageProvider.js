@@ -48,6 +48,7 @@ export function HomepageProvider(props) {
         });
     };
 
+    const getToken = () => firebase.auth().currentUser.getIdToken();
     return (
         <HomepageContext.Provider
             value={{

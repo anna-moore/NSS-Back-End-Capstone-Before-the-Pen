@@ -6,13 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BeforeThePen.Models;
-using BeforeThePen.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
 
 namespace BeforeThePen.Controllers
 {
-
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HomepageController : ControllerBase
