@@ -13,6 +13,7 @@ export default function ApplicationViews() {
         <main>
             <Switch>
                 <Route path="/" exact>
+                    {/* change to homepage */}
                     {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>
 
