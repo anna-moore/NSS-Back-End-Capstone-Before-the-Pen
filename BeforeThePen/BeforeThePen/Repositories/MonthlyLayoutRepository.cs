@@ -153,9 +153,9 @@ namespace BeforeThePen.Repositories
                 Id = DbUtils.GetInt(reader, "Id"),
                 MonthlyId = DbUtils.GetInt(reader, "MonthlyId"),
                 LayoutId = DbUtils.GetInt(reader, "LayoutId"),
-                InspiredBy = DbUtils.GetString(reader, "InspiredBy"),
-                ImageURL = DbUtils.GetString(reader, "ImageURL"),
-                ResourceId = DbUtils.GetInt(reader, "ResourceId"),
+                InspiredBy = DbUtils.GetNullableString(reader, "InspiredBy"),
+                ImageURL = DbUtils.GetNullableString(reader, "ImageURL"),
+                ResourceId = DbUtils.GetNullableInt(reader, "ResourceId"),
                 Style = DbUtils.GetString(reader, "Style"),
                 Monthly = new Monthly()
                 {
