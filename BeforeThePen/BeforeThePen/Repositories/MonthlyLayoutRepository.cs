@@ -16,22 +16,23 @@ namespace BeforeThePen.Repositories
 
         //gathers all monthly layouts for a specfic user
 
-        public List<MonthlyLayout> GetMonthlyLayoutsByUser(int id, int MonthlyId)
+        public List<MonthlyLayout> GetMonthlyLayoutsByUser(int id, int monthlyId)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, m.id [MonthlyId],
-                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, 
+                                                m.Month, m.Year, m.UserProfileId,
+                                                up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email                                              
                                          From MonthlyLayout ml
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
                                          WHERE up.Id = @id AND ml.MonthlyId = @monthlyId";
 
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.Parameters.AddWithValue("@monthlyId", MonthlyId);
+                    DbUtils.AddParameter(cmd, "@id", id);
+                    DbUtils.AddParameter(cmd, "@monthlyId", monthlyId);
 
                     var reader = cmd.ExecuteReader();
                     var layouts = new List<MonthlyLayout>();
@@ -47,6 +48,38 @@ namespace BeforeThePen.Repositories
             }
         }
 
+        //get one monthly layout by its Id
+        public MonthlyLayout GetMonthlyLayoutById(int monthlyId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, m.id [MonthlyId],
+                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email,
+                                                m.Month, m.Year, m.UserProfileId
+                                         From MonthlyLayout ml
+                                         LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
+                                         LEFT JOIN UserProfile up ON up.id = m.UserProfileId
+                                         WHERE ml.MonthlyId = @monthlyId";
+
+                    DbUtils.AddParameter(cmd, "@MonthlyId", monthlyId);
+
+                    var reader = cmd.ExecuteReader();
+                    MonthlyLayout monthlyLayout = null;
+
+                    if (reader.Read())
+                    {
+                        monthlyLayout = NewMonthlyLayoutFromDb(reader);
+                    }
+
+                    reader.Close();
+                    return monthlyLayout;
+                }
+            }
+        }
+
         //add a new monthly layout
         public void AddMonthyLayout(MonthlyLayout monthlyLayout)
         {
@@ -57,14 +90,14 @@ namespace BeforeThePen.Repositories
                 {
                     cmd.CommandText = @"INSERT INTO MonthlyLayout ( MonthlyId, LayoutId, InspiredBy, ImageURL, ResourceId, Style)
                                         OUTPUT INSERTED.Id
-                                        VALUES (@MonthlyId, @LayoutId, @InspiredBy, @ImageURL, @ResourceId, @Style)";
+                                        VALUES (@monthlyId, @layoutId, @inspiredBy, @imageURL, @resourceId, @style)";
 
-                    DbUtils.AddParameter(cmd, "@MonthlyId", monthlyLayout.MonthlyId);
-                    DbUtils.AddParameter(cmd, "@LayoutId", monthlyLayout.LayoutId);
-                    DbUtils.AddParameter(cmd, "@InspiredBy", monthlyLayout.InspiredBy);
-                    DbUtils.AddParameter(cmd, "@ImageURL", monthlyLayout.ImageURL);
-                    DbUtils.AddParameter(cmd, "@ResourceId", monthlyLayout.ResourceId);
-                    DbUtils.AddParameter(cmd, "@Style", monthlyLayout.Style);
+                    DbUtils.AddParameter(cmd, "@monthlyId", monthlyLayout.MonthlyId);
+                    DbUtils.AddParameter(cmd, "@layoutId", monthlyLayout.LayoutId);
+                    DbUtils.AddParameter(cmd, "@inspiredBy", monthlyLayout.InspiredBy);
+                    DbUtils.AddParameter(cmd, "@imageURL", monthlyLayout.ImageURL);
+                    DbUtils.AddParameter(cmd, "@resourceId", monthlyLayout.ResourceId);
+                    DbUtils.AddParameter(cmd, "@style", monthlyLayout.Style);
 
 
                     monthlyLayout.Id = (int)cmd.ExecuteScalar();
@@ -102,6 +135,8 @@ namespace BeforeThePen.Repositories
 
         //delete a monthly layout
         //what type of delete should this be??
+        //need to delete monthly first
+        //how do I delete the foriegn key on just 
         public void DeleteMonthlyLayout(int id)
         {
             using (var conn = Connection)
@@ -116,36 +151,7 @@ namespace BeforeThePen.Repositories
                 }
             }
         }
-        //get one monthly layout by its Id
-        public MonthlyLayout GetMonthlyLayoutById(int monthlyId)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, m.id [MonthlyId],
-                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email
-                                         From MonthlyLayout ml
-                                         LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
-                                         LEFT JOIN UserProfile up ON up.id = m.UserProfileId
-                                         WHERE ml.MonthlyId = @monthlyId";
-
-                    DbUtils.AddParameter(cmd, "@Id", monthlyId);
-
-                    var reader = cmd.ExecuteReader();
-                    MonthlyLayout monthlyLayout = null;
-
-                    if (reader.Read())
-                    {
-                        monthlyLayout = NewMonthlyLayoutFromDb(reader);
-                    }
-
-                    reader.Close();
-                    return monthlyLayout;
-                }
-            }
-        }
+        
         //helper function that 
         private MonthlyLayout NewMonthlyLayoutFromDb(SqlDataReader reader)
         {
@@ -159,8 +165,7 @@ namespace BeforeThePen.Repositories
                 ResourceId = DbUtils.GetNullableInt(reader, "ResourceId"),
                 Style = DbUtils.GetString(reader, "Style"),
                 Monthly = new Monthly()
-                {
-                    Id = DbUtils.GetInt(reader, "Id"),
+                {                   
                     UserProfileId = DbUtils.GetInt(reader, "UserPRofileId"),
                     Month = DbUtils.GetString(reader, "Month"),
                     Year = DbUtils.GetInt(reader, "Year")
