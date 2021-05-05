@@ -69,10 +69,6 @@ export const SpotLightListCard = () => {
 
                         {' '}
                     </div>
-
-
-
-
                 </CardBody>
             </Card>
         </Container>

@@ -4,6 +4,7 @@ import { UserProfileContext } from '../providers/UserProfileProvider';
 import Login from './Login';
 import Register from './Register';
 import Hello from './Hello';
+import Homepage from '../components/homepage/Homepage';
 
 
 export default function ApplicationViews() {
@@ -14,7 +15,7 @@ export default function ApplicationViews() {
             <Switch>
                 <Route path="/" exact>
                     {/* change to homepage */}
-                    {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/login">

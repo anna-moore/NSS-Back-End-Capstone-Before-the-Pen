@@ -1,1 +1,0 @@
-//this module will bring together both the spotlight and the resource links
