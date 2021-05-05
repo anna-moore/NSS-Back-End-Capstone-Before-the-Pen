@@ -34,11 +34,22 @@ export default function Header() {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {/* When isLoggedIn === true, we will render the Home link */}
+                        {/* Update the links for all navbar items  */}
                         {isLoggedIn && (
                             <>
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to="/posts/create">
-                                        New Post
+                                        Home
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem style={{ margin: '0 2em' }}>
+                                    <NavLink tag={RRNavLink} to="/posts/create">
+                                        New Monthly Layout
+                                    </NavLink>
+                                </NavItem>
+                                <NavItem style={{ margin: '0 2em' }}>
+                                    <NavLink tag={RRNavLink} to="/posts/create">
+                                        My Monthlys
                                     </NavLink>
                                 </NavItem>
                             </>
