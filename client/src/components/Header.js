@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { NavLink as RRNavLink, Route, useHistory } from 'react-router-dom';
+import { NavLink as RRNavLink, useHistory } from 'react-router-dom';
 
 import {
     Collapse,
@@ -9,10 +9,10 @@ import {
     Nav,
     NavItem,
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
+    // UncontrolledDropdown,
+    // DropdownToggle,
+    // DropdownMenu,
+    // DropdownItem,
 } from 'reactstrap';
 import { UserProfileContext } from '../providers/UserProfileProvider';
 
@@ -38,17 +38,17 @@ export default function Header() {
                         {isLoggedIn && (
                             <>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/posts/create">
+                                    <NavLink tag={RRNavLink} to="/homepage">
                                         Home
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/posts/create">
+                                    <NavLink tag={RRNavLink} to="/homepage">
                                         New Monthly Layout
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/posts/create">
+                                    <NavLink tag={RRNavLink} to="/homepage">
                                         My Monthlys
                                     </NavLink>
                                 </NavItem>

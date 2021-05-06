@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { Spinner } from 'reactstrap';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -8,16 +7,17 @@ export const HomepageContext = createContext();
 export function HomepageProvider(props) {
     const apiURL = '/api/homepage';
 
-    const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
-    const userProfile = sessionStorage.getItem('userProfile');
+    // const userProfile = sessionStorage.getItem('userProfile');
+    // const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
+    const [currentUserId, setCurrentUserId] = useState(0);
     const [homepageResourceLinks, setHomepageResourceLinks] = useState("");
     const [spotlight, setSpotlight] = useState("")
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            setCurrentUserId(JSON.parse(userProfile).id);
-        }
-    }, [userProfile]);
+    // useEffect(() => {
+    //     if (isLoggedIn) {
+    //         setCurrentUserId(JSON.parse(userProfile).id);
+    //     }
+    // }, [userProfile]);
 
     //gathers the single spotlight object 
     const getSpotlight = () => {
@@ -49,6 +49,7 @@ export function HomepageProvider(props) {
     };
 
     const getToken = () => firebase.auth().currentUser.getIdToken();
+
     return (
         <HomepageContext.Provider
             value={{
@@ -57,8 +58,11 @@ export function HomepageProvider(props) {
                 setSpotlight,
                 setHomepageResourceLinks,
                 spotlight,
-                homepageResourceLinks
+                homepageResourceLinks,
+                currentUserId
             }}
-        ></HomepageContext.Provider>
+        >
+            {props.children}
+        </HomepageContext.Provider>
     );
 };

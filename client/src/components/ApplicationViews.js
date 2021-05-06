@@ -13,13 +13,17 @@ export default function ApplicationViews() {
     return (
         <main>
             <Switch>
+                {/* change to homepage */}
                 <Route path="/" exact>
-                    {/* change to homepage */}
-                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/login">
                     <Login />
+                </Route>
+
+                <Route path="/homepage" exact>
+                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/register">

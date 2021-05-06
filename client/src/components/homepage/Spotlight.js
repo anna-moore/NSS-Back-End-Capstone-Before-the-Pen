@@ -2,15 +2,14 @@
 //must have nested if clause for the items that are nullable
 
 //list out all of the links
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { HomepageContext } from "../../providers/HomepageProvider";
-import HomepageResourceLinksCard from './HomepageResourceLinksCard';
-import { Col, Row, Container, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardBody, Container, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import "../../App.css";
 import YoutubeEmbed from "./SpotlightVideo";
 
 export const SpotLightListCard = () => {
-    const { getSpotlight, setSpotlight, spotlight } = useContext(HomepageContext);
+    const { getSpotlight, spotlight } = useContext(HomepageContext);
 
     useEffect(() => {
         getSpotlight();
@@ -26,22 +25,14 @@ export const SpotLightListCard = () => {
     //style to flex the video or the image to the left and the other content to the right 
     //adjust the margin 
 
-    {
-        comments.length > 0 ?
-            (comments.map((comment) => {
-                return <CommentCard key={comment.id} comment={comment} commentState={commentState} />
-            })
-            ) : (
-                <span style={{ marginTop: "30px" }}>No comments on this post.</span>
-            )
-    }
     return (
 
         <Container>
             <Card className="m-4">
                 <CardBody>
-                    <CardTitle>May's Spotlight</CardTitle>
+                    <CardTitle> <h1>May's Spotlight</h1></CardTitle>
                     <CardSubtitle><a href={spotlight.artistPortfolioURL}>{spotlight.name}</a></CardSubtitle>
+                    {/* <a href={spotlight.artistPortfolioURL}>LinkedIn handle</a> */}
                     <CardText>{spotlight.about}</CardText>
                     {/* this is where I have a ternary with the image or the video 
                         if spotlight.youtubeEmbedId does not equal null then display the video
@@ -49,7 +40,6 @@ export const SpotLightListCard = () => {
                     {
                         spotlight.youtubeEmbedId != null ?
                             (<div className="App">
-                                <h1>Youtube Embed</h1>
                                 <YoutubeEmbed embedId={spotlight.youtubeEmbedId} />
                             </div>)
                             :
@@ -57,7 +47,7 @@ export const SpotLightListCard = () => {
                                 src={spotlight.imageURL}
                                 style={{ maxWidth: '800px', maxHeight: '600px' }}
                                 className="rounded mx-auto d-block img-fluid"
-                                alt="random picture probably not relating to the post"
+                                alt="spotlight layout of the month"
                             />
                             )
                     }

@@ -73,9 +73,10 @@ GO
 CREATE TABLE [SpotlightLayout](
   [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [artist] nvarchar (255) NOT NULL,
-  [videoURL] nvarchar (255),
+  [YoutubeEmbedId]     NVARCHAR (255) NULL,
   [artistProfolioURL] nvarchar (255),
-  [imageURL] nvarchar (255)
+  [imageURL] nvarchar (255),
+  [About]   NVARCHAR (MAX) NULL,
 )
 GO
 

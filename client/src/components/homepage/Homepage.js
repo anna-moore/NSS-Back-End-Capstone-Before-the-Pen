@@ -5,6 +5,7 @@
 import React, { useEffect, useContext } from "react";
 import SpotLightListCard from "./Spotlight";
 import HomepageResourceLinksList from "./HomepageResourceLinksList";
+import { HomepageContext } from "../../providers/HomepageProvider";
 
 export const Homepage = () => {
     const { getResourceLinks, getSpotlight } = useContext(HomepageContext);
@@ -23,3 +24,5 @@ export const Homepage = () => {
         </div>
     )
 }
+
+export default Homepage;

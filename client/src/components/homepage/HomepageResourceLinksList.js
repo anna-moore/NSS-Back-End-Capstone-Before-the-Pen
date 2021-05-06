@@ -1,5 +1,5 @@
 //list out all of the links
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect } from "react"
 import { HomepageContext } from "../../providers/HomepageProvider"
 import HomepageResourceLinksCard from './HomepageResourceLinksCard'
 import { Col, Row, Container } from 'reactstrap';
