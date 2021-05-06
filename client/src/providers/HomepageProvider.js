@@ -62,7 +62,7 @@ export function HomepageProvider(props) {
                 setHomepageResourceLinks,
                 spotlight,
                 homepageResourceLinks,
-                currentUserId
+                // currentUserId
             }}
         >
             {props.children}

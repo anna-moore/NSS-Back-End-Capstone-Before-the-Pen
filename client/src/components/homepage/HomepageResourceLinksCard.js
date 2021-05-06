@@ -7,7 +7,6 @@ const Category = ({ link }) => {
     return (
         <Card className="m-4">
             <CardBody>
-                {/* <strong>{Links.name}</strong> */}
                 <div >
                     <a href={link.url}>{link.topic}</a>
                     {' '}

@@ -8,7 +8,6 @@ const HelpfulResourceList = () => {
     const { homepageResourceLinks, getResourceLinks } = useContext(HomepageContext);
 
     useEffect(() => {
-        //debugger;
         getResourceLinks().then(() => console.log(homepageResourceLinks))
 
     }, []);
