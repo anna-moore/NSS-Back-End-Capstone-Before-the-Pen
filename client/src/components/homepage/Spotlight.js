@@ -12,7 +12,8 @@ export const SpotLightListCard = () => {
     const { getSpotlight, spotlight } = useContext(HomepageContext);
 
     useEffect(() => {
-        getSpotlight();
+        getSpotlight().then(() =>
+            console.log(spotlight))
     }, []);
 
 
@@ -31,7 +32,8 @@ export const SpotLightListCard = () => {
             <Card className="m-4">
                 <CardBody>
                     <CardTitle> <h1>May's Spotlight</h1></CardTitle>
-                    <CardSubtitle><a href={spotlight.artistPortfolioURL}>{spotlight.name}</a></CardSubtitle>
+
+                    <CardSubtitle><a href={spotlight.artistPortfolioURL}>{spotlight.artist}</a></CardSubtitle>
                     {/* <a href={spotlight.artistPortfolioURL}>LinkedIn handle</a> */}
                     <CardText>{spotlight.about}</CardText>
                     {/* this is where I have a ternary with the image or the video 
