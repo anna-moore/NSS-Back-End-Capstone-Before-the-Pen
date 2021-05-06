@@ -1,6 +1,7 @@
-import React, { useState, useEffect, createContext } from 'react';
-import * as firebase from 'firebase/app';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+// import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import { UserProfileContext } from './UserProfileProvider';
 
 export const HomepageContext = createContext();
 
@@ -8,10 +9,11 @@ export function HomepageProvider(props) {
     const apiURL = '/api/homepage';
 
     // const userProfile = sessionStorage.getItem('userProfile');
+    const { getToken } = useContext(UserProfileContext)
     // const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
-    const [homepageResourceLinks, setHomepageResourceLinks] = useState("");
-    const [spotlight, setSpotlight] = useState("")
+    const [homepageResourceLinks, setHomepageResourceLinks] = useState([]);
+    const [spotlight, setSpotlight] = useState("");
 
     // useEffect(() => {
     //     if (isLoggedIn) {
@@ -41,6 +43,7 @@ export function HomepageProvider(props) {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
             })
                 .then((resp) => resp.json())
@@ -48,7 +51,7 @@ export function HomepageProvider(props) {
         });
     };
 
-    const getToken = () => firebase.auth().currentUser.getIdToken();
+    // const getToken = () => firebase.auth().currentUserId.getIdToken();
 
     return (
         <HomepageContext.Provider

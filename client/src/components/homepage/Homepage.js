@@ -20,7 +20,7 @@ export const Homepage = () => {
     return (
         <div className="container">
             <SpotLightListCard />
-            {/* <HomepageResourceLinksList /> */}
+            <HomepageResourceLinksList />
         </div>
     )
 }

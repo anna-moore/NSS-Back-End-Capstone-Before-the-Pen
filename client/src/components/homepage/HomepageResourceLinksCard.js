@@ -8,8 +8,8 @@ const Category = ({ link }) => {
         <Card className="m-4">
             <CardBody>
                 {/* <strong>{Links.name}</strong> */}
-                <div className="float-right">
-                    <a href={link.URL}>{link.name}</a>
+                <div >
+                    <a href={link.url}>{link.topic}</a>
                     {' '}
                 </div>
             </CardBody>

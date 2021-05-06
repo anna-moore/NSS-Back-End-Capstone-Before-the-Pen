@@ -5,10 +5,12 @@ import HomepageResourceLinksCard from './HomepageResourceLinksCard'
 import { Col, Row, Container } from 'reactstrap';
 
 const HelpfulResourceList = () => {
-    const { getResourceLinks, homepageResourceLinks } = useContext(HomepageContext);
+    const { homepageResourceLinks, getResourceLinks } = useContext(HomepageContext);
 
     useEffect(() => {
-        getResourceLinks();
+        //debugger;
+        getResourceLinks().then(() => console.log(homepageResourceLinks))
+
     }, []);
 
 
@@ -20,11 +22,10 @@ const HelpfulResourceList = () => {
                     <div className="row justify-content-center">
                         <div className="cards-column">
 
-                            <h1 style={{ textAlign: 'center' }}>Helpful Links/ Getting Started</h1>
+                            <h1 >Helpful Links/ Getting Started</h1>
 
                             {homepageResourceLinks.map((link) => {
-                                <HomepageResourceLinksCard key={link.id} link={link} />
-
+                                return <HomepageResourceLinksCard key={link.id} link={link} />
                             })}
                         </div>
                     </div>
