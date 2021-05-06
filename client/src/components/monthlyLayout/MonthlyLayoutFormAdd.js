@@ -16,6 +16,10 @@ export const MonthlyLayoutFormAdd = () => {
     const [] = useState('');
 
 
-    //a us
+    //an use Effect 
+
+    //handle click save function 
+
+    //a return statement with the Form 
 }
 export default MonthlyLayoutFormAdd;
