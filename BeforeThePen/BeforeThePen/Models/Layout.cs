@@ -9,9 +9,9 @@ namespace BeforeThePen.Models
     {
         public int Id { get; set; }
         public int UserProfileId { get; set; }
-        public int TypeOfMedia { get; set; }
-        public string URL { get; set; }
-        public string ImageURL { get; set; }
+        public string Type { get; set; }
+        public int TimeEstimate { get; set; }
+        public string Description { get; set; }
 
     }
 }

@@ -43,12 +43,12 @@ export default function Header() {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/homepage">
+                                    <NavLink tag={RRNavLink} to="/monthlyLayoutCreate">
                                         New Monthly Layout
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/homepage">
+                                    <NavLink tag={RRNavLink} to="/monthlyLayout">
                                         My Monthlys
                                     </NavLink>
                                 </NavItem>

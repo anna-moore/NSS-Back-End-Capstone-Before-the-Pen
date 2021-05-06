@@ -15,6 +15,7 @@ namespace BeforeThePen.Models
         public string? ImageURL { get; set; }
         public int? ResourceId { get; set; }
         public string Style { get; set; }
+        public Layout Layout { get; set; }
         public Monthly Monthly { get; set; }
         public UserProfile UserProfile { get; set; }
     }

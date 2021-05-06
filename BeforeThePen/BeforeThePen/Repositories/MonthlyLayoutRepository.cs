@@ -25,10 +25,12 @@ namespace BeforeThePen.Repositories
                 {
                     cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, 
                                                 m.Month, m.Year, m.UserProfileId,
-                                                up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email                                              
+                                                l.type, l.TimeEstimate, l.Description, 
+                                                up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          From MonthlyLayout ml
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
+                                         LEFT JOIN Layout l ON l.id = ml.LayoutId
                                          WHERE up.Id = @id AND ml.MonthlyId = @monthlyId";
 
                     DbUtils.AddParameter(cmd, "@id", id);
@@ -57,10 +59,12 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, m.id [MonthlyId],
+                                                m.Month, m.Year, m.UserProfileId,
+                                                l.type, l.TimeEstimate, l.Description, 
                                                 up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email,
-                                                m.Month, m.Year, m.UserProfileId
                                          From MonthlyLayout ml
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
+                                         LEFT JOIN Layout l ON l.id = ml.LayoutId
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
                                          WHERE ml.MonthlyId = @monthlyId";
 
@@ -165,10 +169,16 @@ namespace BeforeThePen.Repositories
                 ResourceId = DbUtils.GetNullableInt(reader, "ResourceId"),
                 Style = DbUtils.GetString(reader, "Style"),
                 Monthly = new Monthly()
-                {                   
+                {
                     UserProfileId = DbUtils.GetInt(reader, "UserPRofileId"),
                     Month = DbUtils.GetString(reader, "Month"),
                     Year = DbUtils.GetInt(reader, "Year")
+                },
+                Layout = new Layout()
+                {
+                    Type = DbUtils.GetString(reader, "Type"),
+                    TimeEstimate = DbUtils.GetInt(reader, "TimeEstimate"),
+                    Description = DbUtils.GetString(reader, "Description"),
                 },
                 UserProfile = new UserProfile()
                 {
