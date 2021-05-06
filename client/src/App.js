@@ -5,6 +5,7 @@ import { UserProfileProvider } from "./providers/UserProfileProvider";
 import { HomepageProvider } from './providers/HomepageProvider';
 import ApplicationViews from "./components/ApplicationViews";
 import Header from "./components/Header";
+import { MonthlyLayoutProvider } from './providers/MonthlyLayoutProvider';
 
 
 function App() {
@@ -12,8 +13,10 @@ function App() {
     <Router>
       <UserProfileProvider>
         <HomepageProvider>
-          <Header />
-          <ApplicationViews />
+          <MonthlyLayoutProvider>
+            <Header />
+            <ApplicationViews />
+          </MonthlyLayoutProvider>
         </HomepageProvider>
       </UserProfileProvider>
     </Router>
