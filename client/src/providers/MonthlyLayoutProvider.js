@@ -18,7 +18,7 @@ export function MonthlyLayoutProvider(props) {
         }
     }, [userProfile]);
 
-    //update all function names
+
 
     //gathers the monthly layouts
     const getMonthlyLayoutsByUser = (id) => {

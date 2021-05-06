@@ -32,7 +32,7 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <MonthlyLayoutFormAdd /> : <Redirect to="/login" />}
                 </Route> */}
 
-                <Route path="/monthlyLayout" exact>
+                <Route path="/monthlyLayout/:id(\d+)" exact>
                     {isLoggedIn ? <MonthlyLayoutList /> : <Redirect to="/login" />}
                 </Route>
 

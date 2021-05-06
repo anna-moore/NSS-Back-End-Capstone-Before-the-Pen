@@ -8,7 +8,6 @@ namespace BeforeThePen.Models
     public class MonthlyLayout
     {
         public int Id { get; set; }
-
         public int MonthlyId { get; set; }
         public int LayoutId { get; set; }
         public string? InspiredBy { get; set; }

@@ -16,7 +16,7 @@ namespace BeforeThePen.Repositories
 
         //gathers all monthly layouts for a specfic user
 
-        public List<MonthlyLayout> GetMonthlyLayoutsByUser(int id, int monthlyId)
+        public List<MonthlyLayout> GetMonthlyLayoutsByUser(int userProfileId)
         {
             using (var conn = Connection)
             {
@@ -31,11 +31,10 @@ namespace BeforeThePen.Repositories
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
                                          LEFT JOIN Layout l ON l.id = ml.LayoutId
-                                         WHERE up.Id = @id AND ml.MonthlyId = @monthlyId";
+                                         WHERE up.Id = @userProfileId";
 
-                    DbUtils.AddParameter(cmd, "@id", id);
-                    DbUtils.AddParameter(cmd, "@monthlyId", monthlyId);
-
+                    DbUtils.AddParameter(cmd, "@userProfileId", userProfileId);
+                  
                     var reader = cmd.ExecuteReader();
                     var layouts = new List<MonthlyLayout>();
                     while (reader.Read())

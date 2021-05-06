@@ -7,7 +7,6 @@ import ApplicationViews from "./components/ApplicationViews";
 import Header from "./components/Header";
 import { MonthlyLayoutProvider } from './providers/MonthlyLayoutProvider';
 
-
 function App() {
   return (
     <Router>

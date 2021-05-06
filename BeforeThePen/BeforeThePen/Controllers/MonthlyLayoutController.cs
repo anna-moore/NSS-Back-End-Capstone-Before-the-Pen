@@ -24,10 +24,11 @@ namespace BeforeThePen.Controllers
             _userProfileRepository = userProfileRepository;
         }
 
-        [HttpGet("GetMonthlyLayoutsByUser/{monthlyId}")]
-        public IActionResult GetMonthlyLayoutsByUser(int id, int monthlyId)
+        [HttpGet("GetMonthlyLayoutsByUser/{userProfileId}")]
+        public IActionResult GetMonthlyLayoutsByUser(int userProfileId)
         {
-            var monthlyLayouts = _monthlyLayoutRepository.GetMonthlyLayoutsByUser(id, monthlyId);
+            //UserProfile user = GetCurrentUserProfile();
+            var monthlyLayouts = _monthlyLayoutRepository.GetMonthlyLayoutsByUser(userProfileId);
             if (monthlyLayouts == null)
             {
                 return NotFound();
