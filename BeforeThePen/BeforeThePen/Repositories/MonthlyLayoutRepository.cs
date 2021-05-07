@@ -55,7 +55,7 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, m.id [MonthlyId],
-                                                m.Month, m.Year, m.UserProfileId, m.Style
+                                                m.Month, m.Year, m.UserProfileId, m.Style,
                                                 l.type, l.TimeEstimate, l.Description, 
                                                 up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email,
                                          From MonthlyLayout ml
