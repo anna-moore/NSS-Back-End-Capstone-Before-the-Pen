@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserProfileController : ControllerBase

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BeforeThePen.Models;
 using BeforeThePen.Repositories;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MonthlyController : ControllerBase
@@ -48,14 +49,13 @@ namespace BeforeThePen.Controllers
             return Ok(monthly);
         }
 
-        //what needs to go in this Httppost?
-        //firebase is not included here
+        //what needs to go in this Httppost?      
         [HttpPost]
-        public IActionResult AddMonthy(Monthly monthly)
+        public IActionResult AddMonthly(Monthly monthly)
         {
-            ///var currentUser = GetCurrentUserProfile();
-            //monthly.UserProfileId = currentUser.Id;
-            _monthlyRepository.AddMonthy(monthly);
+            var User = GetCurrentUserProfile();
+            monthly.UserProfileId = User.Id;
+            _monthlyRepository.AddMonthly(monthly);
             return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
         }
 

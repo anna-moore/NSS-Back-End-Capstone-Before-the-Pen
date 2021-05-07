@@ -5,7 +5,7 @@ namespace BeforeThePen.Repositories
 {
     public interface IMonthlyRepository
     {
-        void AddMonthy(Monthly monthly);
+        void AddMonthly(Monthly monthly);
         void DeleteMonthly(int id);
         Monthly GetMonthlyById(int monthlyId);
         List<Monthly> GetMonthlyByUser(int userProfileId);

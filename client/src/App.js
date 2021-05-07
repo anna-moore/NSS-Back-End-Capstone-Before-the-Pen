@@ -6,6 +6,7 @@ import { HomepageProvider } from './providers/HomepageProvider';
 import ApplicationViews from "./components/ApplicationViews";
 import Header from "./components/Header";
 import { MonthlyLayoutProvider } from './providers/MonthlyLayoutProvider';
+import { MonthlyProvider } from './providers/MonthlyProvider';
 import { TypeOfMediaProvider } from './providers/TypeOfMediaProvider';
 
 function App() {

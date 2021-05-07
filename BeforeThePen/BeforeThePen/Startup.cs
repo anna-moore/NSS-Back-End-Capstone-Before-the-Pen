@@ -36,7 +36,7 @@ namespace BeforeThePen
             services.AddTransient<ITypeOfMediaRepository, TypeOfMediaRepository>();
             services.AddTransient<IMonthlyRepository, MonthlyRepository>();
 
-            var firebaseProjectId = Configuration.GetValue<string>("beforethepen-5616b");
+            var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -93,6 +93,7 @@ namespace BeforeThePen
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

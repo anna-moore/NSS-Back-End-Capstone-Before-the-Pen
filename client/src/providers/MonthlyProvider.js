@@ -50,8 +50,9 @@ export function MonthlyProvider(props) {
 
     //add a monthly 
     const addMonthly = (monthly) => {
+        debugger;
         return getToken().then((token) =>
-            fetch(`${apiURL}`, {
+            fetch(apiURL, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -7,6 +7,7 @@ export function TypeOfMediaProvider(props) {
     const apiURL = 'api/typeOfMedia';
 
     const userProfile = sessionStorage.getItem('userProfile');
+    const [currentUserId, setCurrentUserId] = useState(0);
     const { getToken } = useContext(UserProfileContext);
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [typeOfMedia, setTypeOfMedia] = useState([]);

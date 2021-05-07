@@ -70,7 +70,7 @@ namespace BeforeThePen.Repositories
             }
         }
         //add a new monthly 
-        public void AddMonthy(Monthly monthly)
+        public void AddMonthly(Monthly monthly)
         {
             using (var conn = Connection)
             {
