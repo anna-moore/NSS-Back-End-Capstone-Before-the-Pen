@@ -149,7 +149,7 @@ namespace BeforeThePen.Repositories
             }
         }
         
-        //helper function that 
+        //helper function  
         private MonthlyLayout NewMonthlyLayoutFromDb(SqlDataReader reader)
         {
             return new MonthlyLayout()
