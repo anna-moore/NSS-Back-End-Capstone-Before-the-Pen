@@ -22,7 +22,7 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description,
+                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL,
                                                 tm.id, tm.type,
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          FROM Resource r
@@ -56,7 +56,7 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description,
+                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL,
                                                 tm.id, tm.type,
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          FROM Resource r
@@ -79,9 +79,9 @@ namespace BeforeThePen.Repositories
                 }
             }
 
-        };
+        }
         //add a new resource
-        public void AddMonthyLayout(Resource resource)
+        public void AddResource(Resource resource)
         {
             using (var conn = Connection)
             {
@@ -153,7 +153,7 @@ namespace BeforeThePen.Repositories
             {
                 Id = DbUtils.GetInt(reader, "Id"),
                 UserProfileId = DbUtils.GetInt(reader, "UserProfileId"),
-                TypeOfMediaId = DbUtils.GetInt(reader, "TypeOfMedia"),
+                TypeOfMediaId = DbUtils.GetInt(reader, "TypeOfMediaId"),
                 URL = DbUtils.GetString(reader, "URL"),
                 Description = DbUtils.GetNullableString(reader, "Description"),
                 ImageURL = DbUtils.GetNullableString(reader, "ImageURL"),

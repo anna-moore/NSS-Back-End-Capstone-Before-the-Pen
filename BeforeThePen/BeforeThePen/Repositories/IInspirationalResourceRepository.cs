@@ -5,7 +5,7 @@ namespace BeforeThePen.Repositories
 {
     public interface IInspirationalResourceRepository
     {
-        void AddMonthyLayout(Resource resource);
+        void AddResource(Resource resource);
         void DeleteResource(int id);
         List<Resource> GetResourcesById(int resourceId);
         List<Resource> GetResourcesByUserId(int userProfileId);

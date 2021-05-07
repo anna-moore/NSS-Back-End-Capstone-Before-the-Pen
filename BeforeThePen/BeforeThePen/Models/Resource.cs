@@ -14,7 +14,6 @@ namespace BeforeThePen.Models
         public string? ImageURL { get; set; }
         public string? Description { get; set; }
         public UserProfile UserProfile { get; set; }
-
         public TypeOfMedia TypeOfMedia { get; set; }
     }
 }

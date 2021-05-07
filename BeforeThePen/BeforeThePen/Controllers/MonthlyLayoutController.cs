@@ -52,7 +52,8 @@ namespace BeforeThePen.Controllers
         [HttpPost]
         public IActionResult AddMonthyLayout(MonthlyLayout monthlyLayout)
         {
-
+            ///var currentUser = GetCurrentUserProfile();
+            //monthlyLayout.UserProfileId = currentUser.Id;
             _monthlyLayoutRepository.AddMonthyLayout(monthlyLayout);
             return CreatedAtAction(nameof(GetMonthlyLayoutById), new { id = monthlyLayout.Id }, monthlyLayout);
         }

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BeforeThePen.Models;
+﻿using BeforeThePen.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 using static BeforeThePen.Utils.DbUtlis;
 
 //update SQL and the parameters
