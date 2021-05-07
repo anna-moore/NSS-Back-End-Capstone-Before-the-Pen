@@ -15,5 +15,6 @@ namespace BeforeThePen.Models
 
         public int Year { get; set; }
         public string Style { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }

@@ -1,16 +1,15 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { UserProfileContext } from './UserProfileProvider';
 
-export const MonthlyLayoutContext = createContext();
-
-export function MonthlyLayoutProvider(props) {
-    const apiURL = '/api/monthlyLayout';
+export const MonthlyContext = createContext();
+export function MonthlyProvider(props) {
+    const apiURL = '/api/monthly';
 
     const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext);
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
-    const [monthlyLayout, setMonthlyLayout] = useState([]);
+    const [monthly, setMonthly] = useState([]);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -18,26 +17,8 @@ export function MonthlyLayoutProvider(props) {
         }
     }, [userProfile]);
 
-
-
-    //gathers the monthly layouts
-    const getMonthlyLayoutsByUser = (id) => {
-        return getToken()
-            .then((token) =>
-                fetch(`${apiURL}/GetMonthlyLayoutsByUser/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                })
-            )
-            .then((res) => res.json())
-            .then(setMonthlyLayout);
-    };
-
-    //get monthly layout by id only 
-    //
-    const getMonthlyLayoutsById = (monthlyId) => {
+    //get monthly  by id only 
+    const getMonthlyById = (monthlyId) => {
         return getToken()
             .then((token) =>
                 fetch(`${apiURL}/${monthlyId}`, {
@@ -47,12 +28,12 @@ export function MonthlyLayoutProvider(props) {
                     },
                 })
                     .then((res) => res.json())
-                    .then(setMonthlyLayout)
+                    .then(setMonthly)
             );
     };
 
-    //add a monthly layout
-    const addMonthlyLayout = (monthlyLayout) => {
+    //add a monthly 
+    const addMonthly = (monthly) => {
         return getToken().then((token) =>
             fetch(`${apiURL}`, {
                 method: 'POST',
@@ -60,30 +41,30 @@ export function MonthlyLayoutProvider(props) {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(monthlyLayout),
+                body: JSON.stringify(monthly),
             })
         );
     };
 
     //how do I make sure that security on editing the post works??
-    //edit the monthly layout
-    const updateMonthlyLayout = (monthlyLayout) => {
+    //edit the monthly 
+    const updateMonthly = (monthly) => {
         return getToken().then((token) =>
-            fetch(`${apiURL}/${monthlyLayout.id}`, {
+            fetch(`${apiURL}/${monthly.id}`, {
                 method: 'PUT',
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(monthlyLayout),
+                body: JSON.stringify(monthly),
             })
         );
     };
 
-    //delete the monthly layout
-    const deleteMonthlyLayout = (monthlyLayoutId) => {
+    //delete the monthly 
+    const deleteMonthly = (monthlyId) => {
         return getToken().then((token) =>
-            fetch(`${apiURL}/${monthlyLayoutId}`, {
+            fetch(`${apiURL}/${monthlyId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -93,19 +74,16 @@ export function MonthlyLayoutProvider(props) {
     };
 
     return (
-        <MonthlyLayoutContext.Provider
+        <MonthlyContext.Provider
             value={{
-                getMonthlyLayoutsByUser,
-                getMonthlyLayoutsById,
-                addMonthlyLayout,
-                updateMonthlyLayout,
-                deleteMonthlyLayout,
-                setMonthlyLayout,
-                monthlyLayout,
-
+                addMonthly,
+                updateMonthly,
+                deleteMonthly,
+                setMonthly,
+                monthly,
             }}
         >
             {props.children}
-        </MonthlyLayoutContext.Provider>
+        </MonthlyContext.Provider>
     );
 };
