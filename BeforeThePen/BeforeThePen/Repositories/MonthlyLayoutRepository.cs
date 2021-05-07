@@ -20,8 +20,8 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, 
-                                                m.Month, m.Year, m.UserProfileId,
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, 
+                                                m.Month, m.Year, m.UserProfileId, m.Style
                                                 l.type, l.TimeEstimate, l.Description, 
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          From MonthlyLayout ml
@@ -54,8 +54,8 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, ml.Style, m.id [MonthlyId],
-                                                m.Month, m.Year, m.UserProfileId,
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, m.id [MonthlyId],
+                                                m.Month, m.Year, m.UserProfileId, m.Style
                                                 l.type, l.TimeEstimate, l.Description, 
                                                 up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email,
                                          From MonthlyLayout ml
@@ -88,16 +88,15 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO MonthlyLayout ( MonthlyId, LayoutId, InspiredBy, ImageURL, ResourceId, Style)
+                    cmd.CommandText = @"INSERT INTO MonthlyLayout ( MonthlyId, LayoutId, InspiredBy, ImageURL, ResourceId)
                                         OUTPUT INSERTED.Id
-                                        VALUES (@monthlyId, @layoutId, @inspiredBy, @imageURL, @resourceId, @style)";
+                                        VALUES (@monthlyId, @layoutId, @inspiredBy, @imageURL, @resourceId)";
 
                     DbUtils.AddParameter(cmd, "@monthlyId", monthlyLayout.MonthlyId);
                     DbUtils.AddParameter(cmd, "@layoutId", monthlyLayout.LayoutId);
                     DbUtils.AddParameter(cmd, "@inspiredBy", monthlyLayout.InspiredBy);
                     DbUtils.AddParameter(cmd, "@imageURL", monthlyLayout.ImageURL);
-                    DbUtils.AddParameter(cmd, "@resourceId", monthlyLayout.ResourceId);
-                    DbUtils.AddParameter(cmd, "@style", monthlyLayout.Style);
+                    DbUtils.AddParameter(cmd, "@resourceId", monthlyLayout.ResourceId);                   
 
 
                     monthlyLayout.Id = (int)cmd.ExecuteScalar();
@@ -116,8 +115,7 @@ namespace BeforeThePen.Repositories
                                         SET MonthlyId = @monthlyId,
                                             LayoutId = @layoutId,
                                             InspiredBy = @inspiredBy,
-                                            ResourceId = @resourceId,
-                                            Style = @style
+                                            ResourceId = @resourceId,                                            
                                         WHERE Id = @id";
 
                     DbUtils.AddParameter(cmd, "@id", monthlyLayout.Id);
@@ -126,7 +124,6 @@ namespace BeforeThePen.Repositories
                     DbUtils.AddParameter(cmd, "@inspiredBy", monthlyLayout.InspiredBy);
                     DbUtils.AddParameter(cmd, "@imageURL", monthlyLayout.ImageURL);
                     DbUtils.AddParameter(cmd, "@resourceId", monthlyLayout.ResourceId);
-                    DbUtils.AddParameter(cmd, "@style", monthlyLayout.Style);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -162,13 +159,13 @@ namespace BeforeThePen.Repositories
                 LayoutId = DbUtils.GetInt(reader, "LayoutId"),
                 InspiredBy = DbUtils.GetNullableString(reader, "InspiredBy"),
                 ImageURL = DbUtils.GetNullableString(reader, "ImageURL"),
-                ResourceId = DbUtils.GetNullableInt(reader, "ResourceId"),
-                Style = DbUtils.GetString(reader, "Style"),
+                ResourceId = DbUtils.GetNullableInt(reader, "ResourceId"),              
                 Monthly = new Monthly()
                 {
                     UserProfileId = DbUtils.GetInt(reader, "UserPRofileId"),
                     Month = DbUtils.GetString(reader, "Month"),
-                    Year = DbUtils.GetInt(reader, "Year")
+                    Year = DbUtils.GetInt(reader, "Year"),
+                    Style = DbUtils.GetString(reader, "Style"),
                 },
                 Layout = new Layout()
                 {
