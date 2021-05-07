@@ -17,6 +17,22 @@ export function MonthlyProvider(props) {
         }
     }, [userProfile]);
 
+
+    //gathers the monthly 
+    const getMonthlyByUser = (id) => {
+        return getToken()
+            .then((token) =>
+                fetch(`${apiURL}/GetMonthlyByUser/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+            )
+            .then((res) => res.json())
+            .then(setMonthly);
+    };
+
     //get monthly  by id only 
     const getMonthlyById = (monthlyId) => {
         return getToken()
@@ -76,6 +92,8 @@ export function MonthlyProvider(props) {
     return (
         <MonthlyContext.Provider
             value={{
+                getMonthlyByUser,
+                getMonthlyById,
                 addMonthly,
                 updateMonthly,
                 deleteMonthly,
