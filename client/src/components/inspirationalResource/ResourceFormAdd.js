@@ -2,36 +2,44 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 
 //how to make the require fields required? 
 export const ResourceFormAdd = () => {
     const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
-    const [resource, setResource] = useState({});
+    const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
+    //const [resource, setResource] = useState({});
     const history = useHistory();
     const { id } = useParams();
 
     //states for all of the properties of a resource
     // set userProfileId in the Controller
-    const [typeOfMedia, setTypeOfMedia] = useState(0);
+    const [typeOfMediaId, setTypeOfMediaId] = useState(1);
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [description, setDescription] = useState('');
 
 
+    useEffect(() => {
+        getAllTypeOfMedia();
+    }, [])
 
     //handle click save function 
     const handleClickSave = (evt) => {
         const resource = {
-            typeOfMedia,
+            typeOfMediaId,
             url,
             imageURL,
             description
         }
-        addInspoResource(resource)
+        addInspoResource(resource).then(() => {
+            history.push('inspirationalResources');
+        })
         //push to the list page 
 
 
     }
+
 
     //a return statement with the Form 
     return (
@@ -51,6 +59,27 @@ export const ResourceFormAdd = () => {
                 />
             </FormGroup>
             <FormGroup>
+                <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <Input
+                    type="select"
+                    name="typeOfMediaId"
+                    id="typeOfMediaId"
+                    value={typeOfMediaId}
+                    onChange={(e) => {
+                        setTypeOfMediaId(e.target.value);
+                    }}
+                >
+                    <option value="1">Type of Media</option>
+                    {typeOfMedia.map(t => {
+                        return (
+                            <option key={t.id} value={t.id}>
+                                {t.type}
+                            </option>
+                        );
+                    })}
+                </Input>
+            </FormGroup>
+            <FormGroup>
                 <Label for="imageURL">Image URL</Label>
                 <Input
                     type="text"
@@ -67,9 +96,11 @@ export const ResourceFormAdd = () => {
             <FormGroup>
                 <Label for="description">Description</Label>
                 <Input
-                    type="text"
+                    type="textarea"
                     name="description"
                     id="description"
+                    rows="10"
+                    wrap="hard"
                     placeholder="what is the resource all about?"
                     autoComplete="off"
                     onChange={(e) => {

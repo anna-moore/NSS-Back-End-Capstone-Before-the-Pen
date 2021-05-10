@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
+import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
 export const ResourceFormAdd = () => {
     const { inspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
+    const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
     const [resource, setResource] = useState({});
 
     const history = useHistory();
@@ -13,7 +15,7 @@ export const ResourceFormAdd = () => {
 
     //states for all of the properties of a resource
     // set userProfileId in the Controller
-    const [typeOfMedia, setTypeOfMedia] = useState(0);
+    const [typeOfMediaId, setTypeOfMediaId] = useState(0);
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [description, setDescription] = useState('');
@@ -24,9 +26,10 @@ export const ResourceFormAdd = () => {
             .then((resource) => {
                 setURL(resource.url);
                 setImageURL(resource.imageURL);
-                setTypeOfMedia(resource.typeOfMedia);
+                setTypeOfMediaId(resource.typeOfMedia);
                 setDescription(resource.description);
             })
+            .then(getAllTypeOfMedia);
     }, [id])
 
     //handle click save function 
@@ -67,6 +70,27 @@ export const ResourceFormAdd = () => {
                     }}
                     value={url}
                 />
+            </FormGroup>
+            <FormGroup>
+                <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <Input
+                    type="select"
+                    name="typeOfMediaId"
+                    id="typeOfMediaId"
+                    value={typeOfMediaId}
+                    onChange={(e) => {
+                        setTypeOfMediaId(e.target.value);
+                    }}
+                >
+                    <option value="1">Type of Media</option>
+                    {typeOfMedia.map(t => {
+                        return (
+                            <option key={t.id} value={t.id}>
+                                {t.type}
+                            </option>
+                        );
+                    })}
+                </Input>
             </FormGroup>
             <FormGroup>
                 <Label for="imageURL">Image URL</Label>

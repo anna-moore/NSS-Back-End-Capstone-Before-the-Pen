@@ -6,6 +6,7 @@ import ResourceCard from './ResourceCard';
 
 const ResourceList = ({ }) => {
     const { inspoResource, getInspoResourceByUser } = useContext(InspoResourceContext);
+
     const { id } = useParams();
 
     useEffect(() => {

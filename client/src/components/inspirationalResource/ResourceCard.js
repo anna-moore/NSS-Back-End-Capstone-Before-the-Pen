@@ -39,13 +39,13 @@ export const ResourceCard = ({ resource }) => {
                         style={{ cursor: 'pointer' }}
                     ></i>
                 </CardTitle>
-                {resource.imgageURL != "" ?
+                {resource.imgageURL !== "" ?
                     (<img scr={resource.imageURL} alt="info about the pictures" />)
                     :
                     ("no image to provided.")
                 }
                 {/* this needs to be updated for exact the embed code from the URL */}
-                {resource.typeOfMediaId == 1 ?
+                {resource.typeOfMediaId === 1 ?
                     (<div className="App">
                         <YoutubeEmbed embedId={resource.url} />
                     </div>)
