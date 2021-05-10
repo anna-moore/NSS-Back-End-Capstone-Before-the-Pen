@@ -24,7 +24,7 @@ namespace BeforeThePen.Controllers
             _userProfileRepository = userProfileRepository;
         }
 
-        [HttpGet("GetMonthlyLayoutsByUser/{userProfileId}")]
+        [HttpGet("GetByUser/{userProfileId}")]
         public IActionResult GetResourcesByUserId(int userProfileId)
         {
             //UserProfile user = GetCurrentUserProfile();
