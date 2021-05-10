@@ -4,7 +4,7 @@ import { UserProfileContext } from './UserProfileProvider';
 export const TypeOfMediaContext = createContext();
 
 export function TypeOfMediaProvider(props) {
-    const apiURL = 'api/typeOfMedia';
+    const apiURL = '/api/typeOfMedia';
 
     const userProfile = sessionStorage.getItem('userProfile');
     const [currentUserId, setCurrentUserId] = useState(0);
@@ -19,10 +19,10 @@ export function TypeOfMediaProvider(props) {
     }, [userProfile]);
 
     //gather all of the types of media 
-    const getAllTypeofMedia = () => {
+    const getAllTypeOfMedia = () => {
         return getToken()
             .then((token) =>
-                fetch(`${apiURL}`, {
+                fetch(apiURL, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ export function TypeOfMediaProvider(props) {
     return (
         <TypeOfMediaContext.Provider
             value={{
-                getAllTypeofMedia,
+                getAllTypeOfMedia,
                 setTypeOfMedia,
                 typeOfMedia
             }}

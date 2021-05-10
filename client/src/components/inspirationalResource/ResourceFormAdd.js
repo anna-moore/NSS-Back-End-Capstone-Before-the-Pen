@@ -33,11 +33,9 @@ export const ResourceFormAdd = () => {
             description
         }
         addInspoResource(resource).then(() => {
-            history.push('inspirationalResources');
+            history.push('/inspirationalResources');
         })
         //push to the list page 
-
-
     }
 
 

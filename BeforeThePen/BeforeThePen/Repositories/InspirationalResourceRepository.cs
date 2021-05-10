@@ -88,14 +88,15 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Resource ( TypeOfMediaId, URL, ImageURL, Description)
+                    cmd.CommandText = @"INSERT INTO Resource ( TypeOfMediaId, URL, ImageURL, Description, UserProfileId)
                                         OUTPUT INSERTED.Id
-                                        VALUES (@typeOfMediaId, @url, @inspiredBy, @imageURL, @description)";
+                                        VALUES (@typeOfMediaId, @url, @imageURL, @description, @userProfileId)";
 
-                    DbUtils.AddParameter(cmd, "@typeOfMediaId", resource.TypeOfMedia);
+                    DbUtils.AddParameter(cmd, "@typeOfMediaId", resource.TypeOfMediaId);
                     DbUtils.AddParameter(cmd, "@url", resource.URL);
                     DbUtils.AddParameter(cmd, "@imageURL", resource.ImageURL);
                     DbUtils.AddParameter(cmd, "@description", resource.Description);
+                    DbUtils.AddParameter(cmd, "@userProfileId", resource.UserProfileId);
 
 
 

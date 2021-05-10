@@ -21,7 +21,7 @@ export default function ApplicationViews() {
             <Switch>
                 {/* change to homepage */}
                 <Route path="/" exact>
-                    {isLoggedIn ? <Hello /> : <Redirect to="/login" />}
+                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/login">
@@ -40,7 +40,7 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <MonthlyLayoutList /> : <Redirect to="/login" />}
                 </Route>
 
-                <Route path="/inspirationalResources" exact>
+                <Route path="/inspirationalResources/:id(\d+)" exact>
                     {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
                 </Route>
 
@@ -48,7 +48,7 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <ResourceFormAdd /> : <Redirect to="/login" />}
                 </Route>
 
-                <Route path="/inspirationalResources/:id(\d+)" exact>
+                <Route path="/inspirationalResources/edit/:id(\d+)" exact>
                     {isLoggedIn ? <ResourceFormEdit /> : <Redirect to="/login" />}
                 </Route>
 

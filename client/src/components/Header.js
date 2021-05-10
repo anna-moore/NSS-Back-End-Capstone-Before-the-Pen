@@ -53,7 +53,7 @@ export default function Header() {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to='/inspirationalResources'>
+                                    <NavLink tag={RRNavLink} to={`/inspirationalResources/${currentUserId}`}>
                                         Bujo Ideas
                                     </NavLink>
                                 </NavItem>

@@ -5,7 +5,7 @@ import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
-export const ResourceFormAdd = () => {
+export const ResourceFormEdit = () => {
     const { inspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
     const [resource, setResource] = useState({});
@@ -23,12 +23,13 @@ export const ResourceFormAdd = () => {
     //for editing inspo resources
     useEffect(() => {
         getInspoResourceById(id)
-            .then((resource) => {
-                setURL(resource.url);
-                setImageURL(resource.imageURL);
-                setTypeOfMediaId(resource.typeOfMedia);
-                setDescription(resource.description);
-            })
+            .then((resource) => console.log(resource))
+            // .then((resource) => {
+            //     setURL(resource.url);
+            //     setImageURL(resource.imageURL);
+            //     setTypeOfMediaId(resource.typeOfMedia);
+            //     setDescription(resource.description);
+            // })
             .then(getAllTypeOfMedia);
     }, [id])
 
@@ -109,7 +110,9 @@ export const ResourceFormAdd = () => {
             <FormGroup>
                 <Label for="description">Description</Label>
                 <Input
-                    type="text"
+                    type="textarea"
+                    rows="10"
+                    wrap="hard"
                     name="description"
                     id="description"
                     placeholder="what is the resource all about?"
@@ -120,7 +123,7 @@ export const ResourceFormAdd = () => {
                     value={description}
                 />
             </FormGroup>
-            {resource.replace(/ /g, '').length === 0 ?
+            {resource.length === 0 ?
                 <Button disabled
                     style={{ cursor: 'pointer' }}
                 >
@@ -142,4 +145,4 @@ export const ResourceFormAdd = () => {
         </Form>
     )
 }
-export default ResourceFormAdd;
+export default ResourceFormEdit;

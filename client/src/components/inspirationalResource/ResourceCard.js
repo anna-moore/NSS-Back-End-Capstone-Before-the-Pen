@@ -9,7 +9,7 @@ export const ResourceCard = ({ resource }) => {
     const { getInspoResourceByUser, deleteInspoResource } = useContext(InspoResourceContext);
     const history = useHistory();
     const { id } = useParams();
-
+    console.log(resource);
     //handle delete of resource
     //update the push statement
     const handleDelete = () => {
@@ -21,13 +21,13 @@ export const ResourceCard = ({ resource }) => {
 
     //brings up the edit form :) 
     const handleEdit = () => {
-        history.push(`/inspirationalResources/${id}`)
+        history.push(`/inspirationalResources/edit/${id}`)
     }
 
     return (
         <Card className="m-4">
             <CardBody style={{ width: "35em" }}>
-                <CardTitle tag="h5"><strong>{resource.imageURL}</strong>
+                <CardTitle tag="h5"><strong>{resource.url}</strong>
                     <i
                         className="fas fa-trash-alt float-right"
                         onClick={handleDelete}
@@ -39,11 +39,20 @@ export const ResourceCard = ({ resource }) => {
                         style={{ cursor: 'pointer' }}
                     ></i>
                 </CardTitle>
-                {resource.imgageURL !== "" ?
+                {/* {resource.imgageURL !== "" ?
                     (<img scr={resource.imageURL} alt="info about the pictures" />)
                     :
                     ("no image to provided.")
-                }
+                } */}
+
+                <div className="text-center">
+                    <img
+                        src={resource.imageURL}
+                        style={{ maxWidth: '800px', maxHeight: '350px' }}
+                        className="rounded mx-auto d-block img-fluid"
+                    // alt="random picture probably not relating to the post"
+                    />
+                </div>
                 {/* this needs to be updated for exact the embed code from the URL */}
                 {resource.typeOfMediaId === 1 ?
                     (<div className="App">
@@ -56,7 +65,7 @@ export const ResourceCard = ({ resource }) => {
                     {resource.description}
                 </CardText>
                 <CardText>
-                    {resource.url}
+                    {resource.typeOfMedia.type}
                 </CardText>
             </CardBody>
         </Card>

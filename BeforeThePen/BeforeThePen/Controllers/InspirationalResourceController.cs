@@ -48,7 +48,7 @@ namespace BeforeThePen.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddMonthyLayout(Resource resource)
+        public IActionResult AddResource(Resource resource)
         {
             var currentUser = GetCurrentUserProfile();
             resource.UserProfileId = currentUser.Id;

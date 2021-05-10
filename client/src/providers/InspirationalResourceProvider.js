@@ -50,7 +50,6 @@ export function InspoResourceProvider(props) {
 
     //add a resource 
     const addInspoResource = (resource) => {
-        debugger;
         return getToken().then((token) =>
             fetch(apiURL, {
                 method: 'POST',
