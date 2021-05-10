@@ -147,8 +147,8 @@ namespace BeforeThePen.Repositories
                 Id = DbUtils.GetInt(reader, "Id"),
                 UserProfileId = DbUtils.GetInt(reader, "UserPRofileId"),
                 Type = DbUtils.GetString(reader, "Type"),
-                TimeEstimate = DbUtils.GetInt(reader, "TimeEstimate"),
-                Description = DbUtils.GetString(reader, "Description"),
+                TimeEstimate = DbUtils.GetNullableInt(reader, "TimeEstimate"),
+                Description = DbUtils.GetNullableString(reader, "Description"),
                 UserProfile = new UserProfile()
                 {
                     DisplayName = DbUtils.GetString(reader, "DisplayName"),
