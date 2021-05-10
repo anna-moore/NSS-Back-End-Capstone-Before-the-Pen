@@ -54,7 +54,7 @@ namespace BeforeThePen.Repositories
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
                                          WHERE m.Id = @monthlyId";
 
-                    DbUtils.AddParameter(cmd, "@MonthlyId", monthlyId);
+                    DbUtils.AddParameter(cmd, "@monthlyId", monthlyId);
 
                     var reader = cmd.ExecuteReader();
                     Monthly monthly = null;

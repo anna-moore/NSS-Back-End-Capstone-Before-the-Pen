@@ -13,5 +13,7 @@ namespace BeforeThePen.Models
         public int TimeEstimate { get; set; }
         public string Description { get; set; }
 
+        public UserProfile UserProfile { get; set; }
+
     }
 }
