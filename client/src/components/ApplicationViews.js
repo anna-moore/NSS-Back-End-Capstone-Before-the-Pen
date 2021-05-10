@@ -8,6 +8,8 @@ import Homepage from '../components/homepage/Homepage';
 import MonthlyForm from '../components/monthlyLayout/MonthlyForm';
 import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
 import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
+import ResourceFormEdit from '../components/inspirationalResource/ResourceFormEdit'
+import ResourceList from './inspirationalResource/ResourceList';
 //import { InspoResourceProvider } from './providers/InspirationalResourceProvider';
 
 
@@ -38,12 +40,16 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <MonthlyLayoutList /> : <Redirect to="/login" />}
                 </Route>
 
-                {/* <Route path="/inspriationalResources" exact>
-                    {isLoggedIn ? </> : <Redirect to="/login" />}
-                </Route> */}
+                <Route path="/inspirationalResources" exact>
+                    {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
+                </Route>
 
-                <Route path="/inspriationalResources/create" exact>
+                <Route path="/inspirationalResources/create" exact>
                     {isLoggedIn ? <ResourceFormAdd /> : <Redirect to="/login" />}
+                </Route>
+
+                <Route path="/inspirationalResources/:id(\d+)" exact>
+                    {isLoggedIn ? <ResourceFormEdit /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/register">

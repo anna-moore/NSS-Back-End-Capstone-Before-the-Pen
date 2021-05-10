@@ -5,7 +5,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
 export const ResourceFormAdd = () => {
-    const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
+    const { inspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
     const [resource, setResource] = useState({});
 
     const history = useHistory();
