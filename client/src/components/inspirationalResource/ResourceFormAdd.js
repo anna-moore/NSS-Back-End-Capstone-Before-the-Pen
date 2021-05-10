@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { } from '../../providers/InspirationalResourceProvider';
+import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
 export const ResourceFormAdd = () => {
-    const { resource, addResource } = useContext(MoContext);
-    const [resource, setCurrentMonthly] = useState({});
+    const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
+    const [resource, setResource] = useState({});
     const history = useHistory();
     const { id } = useParams();
 
@@ -27,13 +27,14 @@ export const ResourceFormAdd = () => {
 
     //handle click save function 
     const handleClickSave = (evt) => {
-        const monthly = {
-            month,
-            year,
-            style
+        const resource = {
+            typeOfMedia,
+            url,
+            imageURL,
+            description
         }
-        addMonthly(monthly)
-        //I think that I need to push to the next part of the form here
+        addInspoResource(resource)
+        //push to the list page 
 
 
     }
@@ -42,48 +43,48 @@ export const ResourceFormAdd = () => {
     return (
         <Form className="container">
             <FormGroup>
-                <Label for="month">Month</Label>
+                <Label for="url">Website URL</Label>
                 <Input
                     type="text"
-                    name="month"
-                    id="month"
-                    placeholder="January "
+                    name="url"
+                    id="url"
+                    placeholder="www... "
                     autoComplete="off"
                     onChange={(e) => {
-                        setMonth(e.target.value);
+                        setURL(e.target.value);
                     }}
-                    value={month}
+                    value={url}
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="year">Year</Label>
+                <Label for="imageURL">Image URL</Label>
                 <Input
                     type="text"
-                    name="year"
-                    id="year"
-                    placeholder={parseInt('2021')}
+                    name="imageURL"
+                    id="imageURL"
+                    placeholder='add image url here'
                     autoComplete="off"
                     onChange={(e) => {
-                        setYear(e.target.value);
+                        setImageURL(e.target.value);
                     }}
-                    value={year}
+                    value={imageURL}
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="style">Style</Label>
+                <Label for="description">Description</Label>
                 <Input
                     type="text"
-                    name="style"
-                    id="style"
-                    placeholder="i.e. mininalist, scrapbook, maximalist"
+                    name="description"
+                    id="description"
+                    placeholder="what is the resource all about?"
                     autoComplete="off"
                     onChange={(e) => {
-                        setStyle(e.target.value);
+                        setDescription(e.target.value);
                     }}
-                    value={style}
+                    value={description}
                 />
             </FormGroup>
-            {month.replace(/ /g, '').length === 0 ?
+            {url.replace(/ /g, '').length === 0 ?
                 <Button disabled
                     style={{ cursor: 'pointer' }}
                 >

@@ -8,20 +8,23 @@ import Header from "./components/Header";
 import { MonthlyLayoutProvider } from './providers/MonthlyLayoutProvider';
 import { MonthlyProvider } from './providers/MonthlyProvider';
 import { TypeOfMediaProvider } from './providers/TypeOfMediaProvider';
+import { InspoResourceProvider } from './providers/InspirationalResourceProvider';
 
 function App() {
   return (
     <Router>
       <UserProfileProvider>
         <HomepageProvider>
-          <MonthlyProvider>
-            <MonthlyLayoutProvider>
-              <TypeOfMediaProvider>
-                <Header />
-                <ApplicationViews />
-              </TypeOfMediaProvider>
-            </MonthlyLayoutProvider>
-          </MonthlyProvider>
+          <InspoResourceProvider>
+            <MonthlyProvider>
+              <MonthlyLayoutProvider>
+                <TypeOfMediaProvider>
+                  <Header />
+                  <ApplicationViews />
+                </TypeOfMediaProvider>
+              </MonthlyLayoutProvider>
+            </MonthlyProvider>
+          </InspoResourceProvider>
         </HomepageProvider>
       </UserProfileProvider>
     </Router>

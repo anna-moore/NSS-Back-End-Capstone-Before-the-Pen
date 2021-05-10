@@ -52,6 +52,11 @@ export default function Header() {
                                         My Monthlys
                                     </NavLink>
                                 </NavItem>
+                                <NavItem style={{ margin: '0 2em' }}>
+                                    <NavLink tag={RRNavLink} to='/inspriationalResources/create'>
+                                        Bujo Ideas
+                                    </NavLink>
+                                </NavItem>
                             </>
                         )}
                     </Nav>

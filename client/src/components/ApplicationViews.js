@@ -6,7 +6,9 @@ import Register from './Register';
 import Hello from './Hello';
 import Homepage from '../components/homepage/Homepage';
 import MonthlyForm from '../components/monthlyLayout/MonthlyForm';
-import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList'
+import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
+import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
+//import { InspoResourceProvider } from './providers/InspirationalResourceProvider';
 
 
 export default function ApplicationViews() {
@@ -34,6 +36,14 @@ export default function ApplicationViews() {
 
                 <Route path="/monthlyLayout/:id(\d+)" exact>
                     {isLoggedIn ? <MonthlyLayoutList /> : <Redirect to="/login" />}
+                </Route>
+
+                {/* <Route path="/inspriationalResources" exact>
+                    {isLoggedIn ? </> : <Redirect to="/login" />}
+                </Route> */}
+
+                <Route path="/inspriationalResources/create" exact>
+                    {isLoggedIn ? <ResourceFormAdd /> : <Redirect to="/login" />}
                 </Route>
 
                 <Route path="/register">

@@ -10,7 +10,7 @@ export function InspoResourceProvider(props) {
     const { getToken } = useContext(UserProfileContext);
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
-    const [InspoResource, setInspoResource] = useState([]);
+    const [inspoResource, setInspoResource] = useState([]);
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -98,7 +98,7 @@ export function InspoResourceProvider(props) {
                 updateInspoResource,
                 deleteInspoResource,
                 setInspoResource,
-                InspoResource,
+                inspoResource,
             }}
         >
             {props.children}
