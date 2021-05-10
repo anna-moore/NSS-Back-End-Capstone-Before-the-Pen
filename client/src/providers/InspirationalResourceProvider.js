@@ -6,11 +6,13 @@ export const InspoResourceContext = createContext();
 export function InspoResourceProvider(props) {
     const apiURL = '/api/inspirationalResource';
 
+
     const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext);
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
     const [inspoResource, setInspoResource] = useState([]);
+    const [currentInspoResource, setCurrentInspoResource] = useState({});
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -43,8 +45,14 @@ export function InspoResourceProvider(props) {
                         Authorization: `Bearer ${token}`,
                     },
                 })
-                    .then((res) => res.json())
-                    .then(setInspoResource)
+                    .then((res) => {
+                        console.log(res)
+                        return res.json()
+                    })
+                    .then((resource) => {
+                        console.log(resource)
+                        return setCurrentInspoResource(resource)
+                    })
             );
     };
 
@@ -96,6 +104,8 @@ export function InspoResourceProvider(props) {
                 addInspoResource,
                 updateInspoResource,
                 deleteInspoResource,
+                setCurrentInspoResource,
+                currentInspoResource,
                 setInspoResource,
                 inspoResource,
             }}

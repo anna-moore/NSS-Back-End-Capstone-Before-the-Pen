@@ -49,7 +49,7 @@ namespace BeforeThePen.Repositories
 
         //get one of the resources by the id
         //left join for typeOfMedia and userProfile
-        public List<Resource> GetResourcesById(int resourceId)
+        public Resource GetResourcesById(int resourceId)
         {
             using (var conn = Connection)
             {
@@ -67,15 +67,16 @@ namespace BeforeThePen.Repositories
                     DbUtils.AddParameter(cmd, "@resourceId", resourceId);
 
                     var reader = cmd.ExecuteReader();
-                    var resources = new List<Resource>();
-                    while (reader.Read())
+                    Resource resource = null;
+                  if(reader.Read())
                     {
-                        resources.Add(NewResourceFromDb(reader));
+                     resource = NewResourceFromDb(reader);
+
                     }
 
                     reader.Close();
 
-                    return resources;
+                    return resource;
                 }
             }
 

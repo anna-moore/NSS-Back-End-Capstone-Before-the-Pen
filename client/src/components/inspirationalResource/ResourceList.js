@@ -1,23 +1,39 @@
 import React, { useContext, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import { Col, Row, Container, Button } from 'reactstrap';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 import ResourceCard from './ResourceCard';
+import ResourceFormAdd from './ResourceFormAdd';
 
 const ResourceList = ({ }) => {
     const { inspoResource, getInspoResourceByUser } = useContext(InspoResourceContext);
 
     const { id } = useParams();
+    const history = useHistory();
 
     useEffect(() => {
+
         if (id) {
             getInspoResourceByUser(id);
         }
     }, [id])
 
+    const handleClickNewResource = () => {
+        history.push(`/inspirationalResources/create`)
+    }
+
+
     //add a create new resource button at the top
     return (
         <div className="container mt-5">
+            <Button
+                style={{ cursor: 'pointer' }}
+                className="mr-3"
+                onClick={handleClickNewResource}
+            >
+                Create New
+            </Button>
             <div className="row justify-content-center">
                 <div className="cards-column" >
                     {

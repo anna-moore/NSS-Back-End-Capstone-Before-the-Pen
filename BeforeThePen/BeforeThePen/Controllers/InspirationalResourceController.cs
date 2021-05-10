@@ -36,7 +36,7 @@ namespace BeforeThePen.Controllers
             return Ok(resources);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{resourceId}")]
         public IActionResult GetResourcesById(int resourceId)
         {
             var resource = _inspirationalResourceRepository.GetResourcesById(resourceId);

@@ -9,7 +9,8 @@ export const ResourceCard = ({ resource }) => {
     const { getInspoResourceByUser, deleteInspoResource } = useContext(InspoResourceContext);
     const history = useHistory();
     const { id } = useParams();
-    console.log(resource);
+    // console.log(resource);
+
     //handle delete of resource
     //update the push statement
     const handleDelete = () => {
@@ -21,7 +22,7 @@ export const ResourceCard = ({ resource }) => {
 
     //brings up the edit form :) 
     const handleEdit = () => {
-        history.push(`/inspirationalResources/edit/${id}`)
+        history.push(`/inspirationalResources/edit/${resource.id}`)
     }
 
     return (

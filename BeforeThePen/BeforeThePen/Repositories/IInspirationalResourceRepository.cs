@@ -7,7 +7,7 @@ namespace BeforeThePen.Repositories
     {
         void AddResource(Resource resource);
         void DeleteResource(int id);
-        List<Resource> GetResourcesById(int resourceId);
+        Resource GetResourcesById(int resourceId);
         List<Resource> GetResourcesByUserId(int userProfileId);
         void UpdateResource(Resource resource);
     }

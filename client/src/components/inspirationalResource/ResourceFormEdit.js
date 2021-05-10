@@ -2,13 +2,15 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
+import { UserProfileContext } from '../../providers/UserProfileProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
 export const ResourceFormEdit = () => {
-    const { inspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
+    const { currentInspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
+    const { isLoggedIn, logout, currentUserId } = useContext(UserProfileContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
-    const [resource, setResource] = useState({});
+    //const [resource, setResource] = useState({});
 
     const history = useHistory();
     const { id } = useParams();
@@ -22,28 +24,29 @@ export const ResourceFormEdit = () => {
 
     //for editing inspo resources
     useEffect(() => {
+        // debugger;
         getInspoResourceById(id)
-            .then((resource) => console.log(resource))
-            // .then((resource) => {
-            //     setURL(resource.url);
-            //     setImageURL(resource.imageURL);
-            //     setTypeOfMediaId(resource.typeOfMedia);
-            //     setDescription(resource.description);
-            // })
-            .then(getAllTypeOfMedia);
+            .then(getAllTypeOfMedia)
+            .then(() => {
+                setURL(currentInspoResource.url);
+                setImageURL(currentInspoResource.imageURL);
+                setTypeOfMediaId(currentInspoResource.typeOfMedia);
+                setDescription(currentInspoResource.description);
+            })
     }, [id])
+
 
     //handle click save function 
     const handleClickEdit = (evt) => {
         const resource = {
-            id: resource.id,
-            typeOfMedia,
+            id: currentInspoResource.id,
+            typeOfMediaId,
             url,
             imageURL,
             description
         }
         updateInspoResource(resource)
-        // .then(()=> history.push())
+            .then(() => history.push(`/inspirationalResources/${currentUserId}`))
         //push to the list page 
 
 
@@ -52,7 +55,7 @@ export const ResourceFormEdit = () => {
     //exit the edit form without making changes
     //update to the correct push page
     const handleCancel = () => {
-        history.push(`/homepage`)
+        history.push(`/inspirationalResources/${currentUserId}`)
     };
 
     //a return statement with the Form 
@@ -123,7 +126,7 @@ export const ResourceFormEdit = () => {
                     value={description}
                 />
             </FormGroup>
-            {resource.length === 0 ?
+            {currentInspoResource.length === 0 ?
                 <Button disabled
                     style={{ cursor: 'pointer' }}
                 >
