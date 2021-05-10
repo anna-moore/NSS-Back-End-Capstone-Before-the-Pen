@@ -19,12 +19,6 @@ export const ResourceFormAdd = () => {
 
 
 
-    //an use Effect ???
-    useEffect(() => {
-
-
-    }, []);
-
     //handle click save function 
     const handleClickSave = (evt) => {
         const resource = {
