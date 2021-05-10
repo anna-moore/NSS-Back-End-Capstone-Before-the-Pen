@@ -2,24 +2,110 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-
+//import the layouts and the resource context
+//select the functions
+//how is this working with use state??
+//drop downs for both resource and layouts
 export const MonthlyLayoutFormAdd = () => {
-    const { monthlyLayout, getMonthlyLayoutsByUser } = useContext(MonthlyLayoutContext);
+    const { monthlyLayout, getMonthlyLayoutsByUser, addMonthlyLayout } = useContext(MonthlyLayoutContext);
+
     const history = useHistory();
     const { id } = useParams();
 
     //states for all of the properties of a monthly layout
-    const [] = useState('');
-    const [] = useState('');
-    const [] = useState('');
-    const [] = useState('');
-    const [] = useState('');
+    const [monthlyId, setMonthlyId] = useState(0);
+    const [layoutId, setLayoutId] = useState(0);
+    const [inspiredBy, setInspiredBy] = useState('');
+    const [imageURL, setImageURL] = useState('');
+    const [resourceId, setResourceId] = useState(0);
 
-
+    // how to i set the monthly layout and connect both of the pages??
     //an use Effect 
 
     //handle click save function 
+    const handleClickSave = (evt) => {
+        const monthlyLayout = {
+            monthlyId,
+            layoutId,
+            inspiredBy,
+            imageURL,
+            resourceId
+        }
+        addMonthlyLayout(monthlyLayout);
+        //push to a detail page
+    }
 
     //a return statement with the Form 
+    //need a drop down for the layouts 
+    //and the resource
+
+    return (
+        <Form className="container">
+            <FormGroup>
+                <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <Input
+                    type="select"
+                    name="typeOfMediaId"
+                    id="typeOfMediaId"
+                    value={typeOfMediaId}
+                    onChange={(e) => {
+                        setTypeOfMediaId(e.target.value);
+                    }}
+                >
+                    <option value="1">Type of Media</option>
+                    {typeOfMedia.map(t => {
+                        return (
+                            <option key={t.id} value={t.id}>
+                                {t.type}
+                            </option>
+                        );
+                    })}
+                </Input>
+            </FormGroup>
+            <FormGroup>
+                <Label for="inspiredBy">Inspired by </Label>
+                <Input
+                    type="text"
+                    name="inspiredBy"
+                    id="inspiredBy"
+                    placeholder="name of artist"
+                    autoComplete="off"
+                    onChange={(e) => {
+                        setInspiredBy(e.target.value);
+                    }}
+                    value={inspiredBy}
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="imageURL">Image URL</Label>
+                <Input
+                    type="text"
+                    name="imageURL"
+                    id="imageURL"
+                    placeholder={parseInt('2021')}
+                    autoComplete="off"
+                    onChange={(e) => {
+                        setImageURL(e.target.value);
+                    }}
+                    value={imageURL}
+                />
+            </FormGroup>
+            {monthlyId.replace(/ /g, '').length === 0 ?
+                <Button disabled
+                    style={{ cursor: 'pointer' }}
+                >
+                    Save
+                    </Button>
+                :
+                <Button active
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleClickSave}>
+                    Save
+                </Button>
+            }
+
+        </Form>
+    )
+
 }
 export default MonthlyLayoutFormAdd;
