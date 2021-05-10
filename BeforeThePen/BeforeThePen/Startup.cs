@@ -35,6 +35,7 @@ namespace BeforeThePen
             services.AddTransient<IInspirationalResourceRepository, InspirationalResourceRepository>();
             services.AddTransient<ITypeOfMediaRepository, TypeOfMediaRepository>();
             services.AddTransient<IMonthlyRepository, MonthlyRepository>();
+            services.AddTransient<ILayoutRepository, LayoutRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

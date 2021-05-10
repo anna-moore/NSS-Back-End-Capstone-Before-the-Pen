@@ -9,7 +9,7 @@ using static BeforeThePen.Utils.DbUtlis;
 
 namespace BeforeThePen.Repositories
 {
-    public class LayoutRepository : BaseRepository
+    public class LayoutRepository : BaseRepository, ILayoutRepository
     {
         public LayoutRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -45,7 +45,7 @@ namespace BeforeThePen.Repositories
         }
 
         //get layout by id this is used for edit in client side
-        public Layout GetLayoutById( int layoutId)
+        public Layout GetLayoutById(int layoutId)
         {
             using (var conn = Connection)
             {
