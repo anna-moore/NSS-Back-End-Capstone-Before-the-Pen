@@ -10,7 +10,7 @@ import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
 import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
 import ResourceFormEdit from '../components/inspirationalResource/ResourceFormEdit'
 import ResourceList from './inspirationalResource/ResourceList';
-//import { InspoResourceProvider } from './providers/InspirationalResourceProvider';
+
 
 
 export default function ApplicationViews() {

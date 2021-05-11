@@ -18,13 +18,16 @@ namespace BeforeThePen.Controllers
     {
         private readonly IMonthlyRepository _monthlyRepository;
         private readonly IUserProfileRepository _userProfileRepository;
-
-        public MonthlyController(IMonthlyRepository monthlyRepository, IUserProfileRepository userProfileRepository)
+        private readonly IMonthlyLayoutRepository _monthlyLayoutRepository;
+        public MonthlyController(IMonthlyRepository monthlyRepository,
+            IUserProfileRepository userProfileRepository, IMonthlyLayoutRepository monthlyLayoutRepository)
         {
             _monthlyRepository = monthlyRepository;
             _userProfileRepository = userProfileRepository;
+            _monthlyLayoutRepository = monthlyLayoutRepository;
         }
 
+        //Question should I put the other get in this controller method??
         [HttpGet("GetMonthlyByUser/{userProfileId}")]
         public IActionResult GetMonthlyByUser(int userProfileId)
         {
@@ -38,7 +41,7 @@ namespace BeforeThePen.Controllers
         }
 
         //get monthly by id
-        [HttpGet("{id}")]
+        [HttpGet("{monthlyId}")]
         public IActionResult GetMonthlyById(int monthlyId)
         {
             var monthly = _monthlyRepository.GetMonthlyById(monthlyId);
@@ -58,6 +61,29 @@ namespace BeforeThePen.Controllers
             _monthlyRepository.AddMonthly(monthly);
             return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
         }
+
+        //combines both monthly and monthly layouts so they can 
+        //exist on the same form 
+        [HttpPost]
+        public IActionResult AddMonthlyAndLayouts([FromBody] TotalMonthlyAndLayout totalMonthly)
+        {
+            var monthly = totalMonthly.Monthly;
+            var layouts = totalMonthly.MonthlyLayout;
+
+            var User = GetCurrentUserProfile();
+            monthly.UserProfileId = User.Id;
+
+            _monthlyRepository.AddMonthly(monthly);
+
+            foreach (var layoutItem in layouts)
+            {
+                layoutItem.MonthlyId = monthly.Id;
+                _monthlyLayoutRepository.AddMonthyLayout(layoutItem);
+            }
+            return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
+        }
+
+        //combine monthly and monthlyLayout update form??
 
         //edit monthly
         [HttpPut("{id}")]

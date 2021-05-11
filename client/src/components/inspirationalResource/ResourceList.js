@@ -1,10 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Col, Row, Container, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
-import { UserProfileContext } from '../../providers/UserProfileProvider';
 import ResourceCard from './ResourceCard';
-import ResourceFormAdd from './ResourceFormAdd';
+
 
 const ResourceList = ({ }) => {
     const { inspoResource, getInspoResourceByUser } = useContext(InspoResourceContext);
@@ -29,7 +28,7 @@ const ResourceList = ({ }) => {
         <div className="container mt-5">
             <Button
                 style={{ cursor: 'pointer' }}
-                className="mr-3"
+                className="mr-3 btn-primary"
                 onClick={handleClickNewResource}
             >
                 Create New
