@@ -64,7 +64,7 @@ namespace BeforeThePen.Controllers
 
         //combines both monthly and monthly layouts so they can 
         //exist on the same form 
-        [HttpPost]
+        [HttpPost("AddMonthlyAndLayouts")]
         public IActionResult AddMonthlyAndLayouts([FromBody] TotalMonthlyAndLayout totalMonthly)
         {
             var monthly = totalMonthly.Monthly;

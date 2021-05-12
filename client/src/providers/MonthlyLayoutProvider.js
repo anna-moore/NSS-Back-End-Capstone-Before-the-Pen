@@ -113,6 +113,7 @@ export function MonthlyLayoutProvider(props) {
                 getMonthlyLayoutsByUser,
                 getMonthlyLayoutsById,
                 addMonthlyLayout,
+                addMonthlyAndLayout,
                 updateMonthlyLayout,
                 deleteMonthlyLayout,
                 setMonthlyLayout,

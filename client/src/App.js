@@ -9,6 +9,7 @@ import { MonthlyLayoutProvider } from './providers/MonthlyLayoutProvider';
 import { MonthlyProvider } from './providers/MonthlyProvider';
 import { TypeOfMediaProvider } from './providers/TypeOfMediaProvider';
 import { InspoResourceProvider } from './providers/InspirationalResourceProvider';
+import { LayoutProvider } from './providers/LayoutProvider';
 
 function App() {
   return (
@@ -17,12 +18,14 @@ function App() {
         <HomepageProvider>
           <InspoResourceProvider>
             <MonthlyProvider>
-              <MonthlyLayoutProvider>
-                <TypeOfMediaProvider>
-                  <Header />
-                  <ApplicationViews />
-                </TypeOfMediaProvider>
-              </MonthlyLayoutProvider>
+              <LayoutProvider>
+                <MonthlyLayoutProvider>
+                  <TypeOfMediaProvider>
+                    <Header />
+                    <ApplicationViews />
+                  </TypeOfMediaProvider>
+                </MonthlyLayoutProvider>
+              </LayoutProvider>
             </MonthlyProvider>
           </InspoResourceProvider>
         </HomepageProvider>

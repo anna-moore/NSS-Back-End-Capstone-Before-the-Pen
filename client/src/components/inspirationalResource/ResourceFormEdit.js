@@ -86,7 +86,7 @@ export const ResourceFormEdit = () => {
                         setTypeOfMediaId(e.target.value);
                     }}
                 >
-                    <option value="1">Type of Media</option>
+                    <option value={typeOfMediaId}>Type of Media</option>
                     {typeOfMedia.map(t => {
                         return (
                             <option key={t.id} value={t.id}>

@@ -4,7 +4,7 @@ import { UserProfileContext } from './UserProfileProvider';
 
 export const LayoutContext = createContext();
 
-export function LayoutProvider(props) {
+export const LayoutProvider = (props) => {
     const apiURL = '/api/layout';
     const { getToken } = useContext(UserProfileContext);
     const [layouts, setLayout] = useState([]);
@@ -14,14 +14,17 @@ export function LayoutProvider(props) {
     const getLayoutsByUser = (id) => {
         return getToken()
             .then((token) =>
-                fetch(`${apiURL}/GetLayoutsByUser/${id}`, {
+                fetch(`${apiURL}/getLayoutByUser/${id}`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 })
             )
-            .then((res) => res.json())
+            .then((res) => {
+                console.log(res)
+                return res.json()
+            })
             .then(setLayout);
     };
 
@@ -35,7 +38,10 @@ export function LayoutProvider(props) {
                         Authorization: `Bearer ${token}`,
                     },
                 })
-                    .then((res) => res.json())
+                    .then((res) => {
+                        console.log(res)
+                        return res.json()
+                    })
                     .then(setLayout)
             );
     };
@@ -82,14 +88,14 @@ export function LayoutProvider(props) {
 
     return (
         <LayoutContext.Provider
-            values={{
+            value={{
                 getLayoutsByUser,
                 getLayoutsById,
                 addLayout,
                 updateLayout,
                 deleteLayout,
                 setLayout,
-                layouts
+                layouts,
             }}
         >
             {props.children}
