@@ -3,6 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import { MonthlyContext } from '../../providers/MonthlyProvider';
 import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { LayoutContext } from '../../providers/LayoutProvider';
+import { UserProfileContext } from '../../providers/UserProfileProvider'
 //import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
@@ -82,6 +83,33 @@ export const MonthlyFormAdd = () => {
         }
         console.log(newUnfilteredLayoutItems)
     }
+
+    //this is the filter and add to state for the image URL property of monthly layout/form
+    const imageURLForLayouts = (layoutId, imageURL) => {
+
+        let itemToEdit = newUnfilteredLayoutItems.find(o => parseInt(o.layoutId) === (parseInt(layoutId)))
+
+        if (itemToEdit) {
+            let itemIndex = newUnfilteredLayoutItems.findIndex((i => i.layoutId === layoutId));
+
+            newUnfilteredLayoutItems[itemIndex].imageURL = imageURL
+
+            setMonthlyLayouts(newUnfilteredLayoutItems);
+
+        } else {
+            let newMonthlyLayout = { ...monthlyLayout }
+
+            newMonthlyLayout.layoutId = layoutId;
+            newMonthlyLayout.imageURL = imageURL;
+
+            newUnfilteredLayoutItems.push(newMonthlyLayout);
+
+            setMonthlyLayouts(newUnfilteredLayoutItems);
+
+        }
+        console.log(newUnfilteredLayoutItems)
+    }
+
     //handle checkbox change
     const handleCheckboxChange = (event) => {
         const layoutId = parseInt(event.target.value)
@@ -94,9 +122,7 @@ export const MonthlyFormAdd = () => {
         } else if (idPosition < 0) {
             setCheckedLayouts([layoutId, ...checkedLayouts])
         }
-
     }
-
 
 
     //handle click save function 
@@ -118,7 +144,7 @@ export const MonthlyFormAdd = () => {
     //a return statement with the Form 
     return (
         <Form className="container">
-            <Label for="MonthlyAndLayoutForm">Add a new Monthly Layout</Label>
+            <Label for="MonthlyAndLayoutForm"><strong>Add a new Monthly Layout</strong></Label>
             <FormGroup>
                 <Label for="month">Month</Label>
                 <Input
@@ -162,27 +188,7 @@ export const MonthlyFormAdd = () => {
                 />
             </FormGroup>
             <Label for="addNewLayouts">Add Layouts</Label>
-            {/* <FormGroup>
-                <Label htmlFor="layoutId">Layout </Label>
-                <Input
-                    type="select"
-                    name="layoutId"
-                    id="layoutId"
-                    value={layoutId}
-                    onChange={(e) => {
-                        setLayoutId(e.target.value);
-                    }}
-                >
-                    <option value="1">Layouts</option>
-                    {layouts.map(l => {
-                        return (
-                            <option key={l.id} value={l.id}>
-                                {l.type}
-                            </option>
-                        );
-                    })}
-                </Input>
-            </FormGroup> */}
+
 
             <FormGroup>
                 {/* <Label for="checkboxLayout">Check box Layouts</Label> */}
@@ -232,14 +238,14 @@ export const MonthlyFormAdd = () => {
                                         placeholder="add a picture url here"
                                         autoComplete="off"
                                         onChange={(e) => {
-                                            setImageURL(e.target.value);
+                                            imageURLForLayouts(layout.id, e.target.value);
                                         }}
-                                    // value={imageURL}
+                                        value={layout.imageURL}
                                     />
                                 </FormGroup>
                             </>)
                         }
-                        // another return statement that displays the check box
+                        // another return statement that displays the check box that aren't in the checkedlayout list
                         return (
                             <FormGroup key={layout.id} check>
                                 <Label check >
@@ -257,42 +263,8 @@ export const MonthlyFormAdd = () => {
                             </FormGroup>
                         )
                     })
-
                 }
             </FormGroup>
-
-
-
-
-            {/* <FormGroup>
-                <Label for="inspiredBy">Inspired by </Label>
-                <Input
-                    type="text"
-                    name="inspiredBy"
-                    id="inspiredBy"
-                    placeholder="name of artist"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setInspiredBy(e.target.value);
-                    }}
-                    value={inspiredBy}
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="imageURL">Image URL</Label>
-                <Input
-                    type="text"
-                    name="imageURL"
-                    id="imageURL"
-                    placeholder="add a picture url here"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setImageURL(e.target.value);
-                    }}
-                    value={imageURL}
-                />
-            </FormGroup> */}
-
             {month.replace(/ /g, '').length === 0 ?
                 <Button disabled
                     style={{ cursor: 'pointer' }}
@@ -335,3 +307,29 @@ export default MonthlyFormAdd;
 //     })}
 // </Input>
 // </FormGroup>
+
+
+
+
+//this is when the layout was a drop down feature
+{/* <FormGroup>
+                <Label htmlFor="layoutId">Layout </Label>
+                <Input
+                    type="select"
+                    name="layoutId"
+                    id="layoutId"
+                    value={layoutId}
+                    onChange={(e) => {
+                        setLayoutId(e.target.value);
+                    }}
+                >
+                    <option value="1">Layouts</option>
+                    {layouts.map(l => {
+                        return (
+                            <option key={l.id} value={l.id}>
+                                {l.type}
+                            </option>
+                        );
+                    })}
+                </Input>
+            </FormGroup> */}

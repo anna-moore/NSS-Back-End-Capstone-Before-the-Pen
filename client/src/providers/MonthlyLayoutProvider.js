@@ -52,18 +52,18 @@ export function MonthlyLayoutProvider(props) {
     };
 
     //add a monthly layout
-    const addMonthlyLayout = (monthlyLayout) => {
-        return getToken().then((token) =>
-            fetch(`${apiURL}`, {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(monthlyLayout),
-            })
-        );
-    };
+    // const addMonthlyLayout = (monthlyLayout) => {
+    //     return getToken().then((token) =>
+    //         fetch(`${apiURL}`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(monthlyLayout),
+    //         })
+    //     );
+    // };
 
     //***This is the provider function to combine both monthly and monthlyLayout forms **//
     const addMonthlyAndLayout = (monthly, monthlyLayouts) => {
@@ -115,7 +115,7 @@ export function MonthlyLayoutProvider(props) {
             value={{
                 getMonthlyLayoutsByUser,
                 getMonthlyLayoutsById,
-                addMonthlyLayout,
+                // addMonthlyLayout,
                 addMonthlyAndLayout,
                 updateMonthlyLayout,
                 deleteMonthlyLayout,
