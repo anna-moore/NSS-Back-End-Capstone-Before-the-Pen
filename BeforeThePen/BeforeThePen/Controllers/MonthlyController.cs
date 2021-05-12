@@ -53,14 +53,14 @@ namespace BeforeThePen.Controllers
         }
 
         //what needs to go in this Httppost?      
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult AddMonthly(Monthly monthly)
         {
             var User = GetCurrentUserProfile();
             monthly.UserProfileId = User.Id;
             _monthlyRepository.AddMonthly(monthly);
             return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
-        }
+        }*/
 
         //combines both monthly and monthly layouts so they can 
         //exist on the same form 
