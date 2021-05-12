@@ -21,13 +21,13 @@ namespace BeforeThePen.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, 
-                                                m.Month, m.Year, m.UserProfileId, m.Style
+                                                m.Month, m.Year, m.UserProfileId, m.Style,
                                                 l.type, l.TimeEstimate, l.Description, 
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          From MonthlyLayout ml
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
-                                         LEFT JOIN Layout l ON l.id = ml.LayoutId
+                                         LEFT JOIN Layout l ON l.Id = ml.LayoutId
                                          WHERE up.Id = @userProfileId";
 
                     DbUtils.AddParameter(cmd, "@userProfileId", userProfileId);

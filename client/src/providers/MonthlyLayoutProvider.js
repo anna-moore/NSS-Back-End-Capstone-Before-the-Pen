@@ -66,18 +66,21 @@ export function MonthlyLayoutProvider(props) {
     };
 
     //***This is the provider function to combine both monthly and monthlyLayout forms **//
-    const addMonthlyAndLayout = (monthly, monthlyLayout) => {
-        return getToken.then((token) =>
-            fetch(`${apiURL}/AddMonthlyAndLayouts`, {
+    const addMonthlyAndLayout = (monthly, monthlyLayouts) => {
+        return getToken().then((token) =>
+            fetch('/api/monthly/AddMonthlyAndLayouts', {
                 method: 'POST',
                 header: {
                     Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data; boundary=something",
+                    //"Content-Type": "application/json; charset=UTF-8"
+                    // "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ monthly, monthlyLayout }),
+                body: JSON.stringify({ monthly, monthlyLayouts }),
             })
         );
     };
+
 
 
     //how do I make sure that security on editing the post works??

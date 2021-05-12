@@ -3,11 +3,14 @@ import { useHistory, useParams } from 'react-router-dom';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
+import { UserProfileContext } from '../../providers/UserProfileProvider';
 
 //how to make the require fields required? 
 export const ResourceFormAdd = () => {
     const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
+    const { currentUserId } = useContext(UserProfileContext);
+
     //const [resource, setResource] = useState({});
     const history = useHistory();
     const { id } = useParams();
@@ -33,7 +36,7 @@ export const ResourceFormAdd = () => {
             description
         }
         addInspoResource(resource).then(() => {
-            history.push('/inspirationalResources');
+            history.push(`/inspirationalResources/${currentUserId}`);
         })
         //push to the list page 
     }

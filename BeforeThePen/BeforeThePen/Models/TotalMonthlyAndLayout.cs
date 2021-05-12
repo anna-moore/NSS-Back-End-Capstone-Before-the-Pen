@@ -8,6 +8,6 @@ namespace BeforeThePen.Models
     public class TotalMonthlyAndLayout
     {
         public Monthly Monthly { get; set; }
-        public List<MonthlyLayout> MonthlyLayout { get; set; }
+        public List<MonthlyLayout> MonthlyLayouts { get; set; }
     }
 }

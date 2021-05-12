@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MonthlyController : ControllerBase
@@ -65,10 +65,10 @@ namespace BeforeThePen.Controllers
         //combines both monthly and monthly layouts so they can 
         //exist on the same form 
         [HttpPost("AddMonthlyAndLayouts")]
-        public IActionResult AddMonthlyAndLayouts([FromBody] TotalMonthlyAndLayout totalMonthly)
+        public IActionResult AddMonthlyAndLayouts([FromBody]TotalMonthlyAndLayout totalMonthly)
         {
             var monthly = totalMonthly.Monthly;
-            var layouts = totalMonthly.MonthlyLayout;
+            var layouts = totalMonthly.MonthlyLayouts;
 
             var User = GetCurrentUserProfile();
             monthly.UserProfileId = User.Id;

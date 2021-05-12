@@ -1,5 +1,6 @@
 ﻿using BeforeThePen.Models;
 using BeforeThePen.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MonthlyLayoutController : ControllerBase

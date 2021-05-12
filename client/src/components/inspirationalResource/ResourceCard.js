@@ -4,9 +4,11 @@ import { Card, CardTitle, CardBody } from 'reactstrap';
 import CardText from 'reactstrap/lib/CardText';
 import YoutubeEmbed from '../homepage/SpotlightVideo';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
+import { UserProfileContext } from '../../providers/UserProfileProvider';
 
 export const ResourceCard = ({ resource }) => {
     const { getInspoResourceByUser, deleteInspoResource } = useContext(InspoResourceContext);
+    const { currentUserId } = useContext(UserProfileContext);
     const history = useHistory();
     const { id } = useParams();
     // console.log(resource);
@@ -16,7 +18,7 @@ export const ResourceCard = ({ resource }) => {
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this layout?')) {
             deleteInspoResource(resource.id).then(() => getInspoResourceByUser(id));
-            history.push(`/homepage`);
+            history.push(`/inspirationalResources/${currentUserId}`);
         }
     };
 

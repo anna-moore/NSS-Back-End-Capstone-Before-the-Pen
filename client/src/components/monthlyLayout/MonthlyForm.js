@@ -7,7 +7,7 @@ import { LayoutContext } from '../../providers/LayoutProvider';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 //import Checkbox from './Checkbox';
-import { UserProfileContext } from '../../providers/UserProfileProvider';
+
 
 //how to make the require fields required? 
 export const MonthlyFormAdd = () => {
@@ -19,6 +19,7 @@ export const MonthlyFormAdd = () => {
 
     // const [CurentMonthly, setCurrentMonthly] = useState({});
     const history = useHistory();
+    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
 
     //states for all of the properties of a monthly layout
@@ -39,6 +40,11 @@ export const MonthlyFormAdd = () => {
     //this is for the items that are checked
     const [checkedLayouts, setCheckedLayouts] = useState([])
 
+    //holds the object that I can making copies of
+    const [monthlyLayout] = useState();
+
+    const [monthlyLayouts, setMonthlyLayouts] = useState([]);
+
     //an use Effect needs currentUserId
     useEffect(() => {
         getLayoutsByUser(currentUserId)
@@ -48,6 +54,34 @@ export const MonthlyFormAdd = () => {
 
     }, []);
 
+    let newUnfilteredLayoutItems = [...monthlyLayouts]
+    //will need to two items for the url of a image and inspired by
+    // newUnfilteredLayoutItems[itemIndex].imageURL = imageURL
+
+    const inspiredByForLayouts = (layoutId, inspiredBy) => {
+
+        let itemToEdit = newUnfilteredLayoutItems.find(o => parseInt(o.layoutId) === (parseInt(layoutId)))
+
+        if (itemToEdit) {
+            let itemIndex = newUnfilteredLayoutItems.findIndex((i => i.layoutId === layoutId));
+
+            newUnfilteredLayoutItems[itemIndex].inspiredBy = inspiredBy
+
+            setMonthlyLayouts(newUnfilteredLayoutItems);
+
+        } else {
+            let newMonthlyLayout = { ...monthlyLayout }
+
+            newMonthlyLayout.layoutId = layoutId;
+            newMonthlyLayout.inspiredBy = inspiredBy;
+
+            newUnfilteredLayoutItems.push(newMonthlyLayout);
+
+            setMonthlyLayouts(newUnfilteredLayoutItems);
+
+        }
+        console.log(newUnfilteredLayoutItems)
+    }
     //handle checkbox change
     const handleCheckboxChange = (event) => {
         const layoutId = parseInt(event.target.value)
@@ -63,26 +97,20 @@ export const MonthlyFormAdd = () => {
 
     }
 
+
+
     //handle click save function 
     const handleClickSave = (evt) => {
         evt.preventDefault();
 
-        if (id) {
-
-        }
         //add window alerts for must haves/ non nullable items 
         const monthly = {
             month,
             year,
             style
         }
-        const monthlyLayout = {
-            layoutId,
-            inspiredBy,
-            imageURL,
-            resourceId
-        }
-        addMonthlyAndLayout(monthly, monthlyLayout)
+
+        addMonthlyAndLayout(monthly, monthlyLayouts)
             .then(() => history.push(`/monthlyLayout/${currentUserId}`))
         //I think that I need to push to the next part of the form here
     }
@@ -186,13 +214,13 @@ export const MonthlyFormAdd = () => {
                                     <Input
                                         type="text"
                                         name="inspiredBy"
-                                        id="inspiredBy"
+                                        id={layout.id}
                                         placeholder="name of artist"
                                         autoComplete="off"
                                         onChange={(e) => {
-                                            setInspiredBy(e.target.value);
+                                            inspiredByForLayouts(layout.id, e.target.value);
                                         }}
-                                    // value={inspiredBy}
+                                        value={layout.inspiredBy}
                                     />
                                 </FormGroup>
                                 <FormGroup>
