@@ -7,8 +7,9 @@ namespace BeforeThePen.Repositories
     {
         void AddMonthyLayout(MonthlyLayout monthlyLayout);
         void DeleteMonthlyLayout(int id);
-        MonthlyLayout GetMonthlyLayoutById(int monthlyId);
+        List<MonthlyLayout> GetMonthlyLayoutByMonthlyId(int monthlyId);
         List<MonthlyLayout> GetMonthlyLayoutsByUser(int userProfileId);
+        MonthlyLayout GetMonthlyLayoutById(int Id);
         void UpdateMonthlyLayout(MonthlyLayout monthlyLayout);
     }
 }

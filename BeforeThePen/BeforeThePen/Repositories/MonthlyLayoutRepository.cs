@@ -46,32 +46,67 @@ namespace BeforeThePen.Repositories
             }
         }
 
-        //get one monthly layout by its Id
-        public MonthlyLayout GetMonthlyLayoutById(int monthlyId)
+        //get one monthly layout by its monthlyId
+        public List<MonthlyLayout> GetMonthlyLayoutByMonthlyId(int monthlyId)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, m.id [MonthlyId],
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, m.id AS [MonthlyId],
                                                 m.Month, m.Year, m.UserProfileId, m.Style,
                                                 l.type, l.TimeEstimate, l.Description, 
-                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email,
+                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email
                                          From MonthlyLayout ml
                                          LEFT JOIN Monthly m ON m.Id = ml.MonthlyId 
                                          LEFT JOIN Layout l ON l.id = ml.LayoutId
                                          LEFT JOIN UserProfile up ON up.id = m.UserProfileId
                                          WHERE ml.MonthlyId = @monthlyId";
 
-                    DbUtils.AddParameter(cmd, "@MonthlyId", monthlyId);
+                    DbUtils.AddParameter(cmd, "@monthlyId", monthlyId);
+
+                    var reader = cmd.ExecuteReader();
+                    var monthlyLayouts = new List<MonthlyLayout>();
+                    
+
+                    while (reader.Read())
+                    {
+                        monthlyLayouts.Add(NewMonthlyLayoutFromDb(reader));
+                    }
+
+                    reader.Close();
+                    return monthlyLayouts;
+                }
+            }
+        }
+
+
+        public MonthlyLayout GetMonthlyLayoutById(int Id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @" SELECT ml.Id, ml.MonthlyId, ml.LayoutId, ml.InspiredBy, ml.ImageURL, ml.ResourceId, m.id AS [MonthlyId],
+                                                m.Month, m.Year, m.UserProfileId, m.Style,
+                                                l.type, l.TimeEstimate, l.Description, 
+                                                up.Id [UserProfileId], up.DisplayName, up.FirstName, up.LastName, up.Email
+                                         From MonthlyLayout ml
+                                         LEFT JOIN Monthly m ON m.id = ml.MonthlyId 
+                                         LEFT JOIN Layout l ON l.id = ml.LayoutId
+                                         LEFT JOIN UserProfile up ON up.id = m.UserProfileId
+                                         WHERE ml.id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@Id", Id);
 
                     var reader = cmd.ExecuteReader();
                     MonthlyLayout monthlyLayout = null;
 
-                    if (reader.Read())
+                    while (reader.Read())
                     {
-                        monthlyLayout = NewMonthlyLayoutFromDb(reader);
+                        monthlyLayout = (NewMonthlyLayoutFromDb(reader));
                     }
 
                     reader.Close();

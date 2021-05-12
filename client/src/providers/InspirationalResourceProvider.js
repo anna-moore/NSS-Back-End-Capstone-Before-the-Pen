@@ -12,6 +12,7 @@ export function InspoResourceProvider(props) {
     const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
     const [inspoResource, setInspoResource] = useState([]);
+    const [currentInspoResource, setCurrentInspoResource] = useState({});
 
 
     useEffect(() => {
@@ -49,6 +50,10 @@ export function InspoResourceProvider(props) {
                         console.log(res)
                         return res.json()
                     })
+                // .then((resource) => {
+                //     console.log(resource)
+                //     setCurrentInspoResource(resource)
+                // })
 
             );
     };
@@ -102,6 +107,8 @@ export function InspoResourceProvider(props) {
                 updateInspoResource,
                 deleteInspoResource,
                 setInspoResource,
+                setCurrentInspoResource,
+                currentInspoResource,
                 inspoResource,
             }}
         >

@@ -35,9 +35,10 @@ export function MonthlyLayoutProvider(props) {
             .then(setMonthlyLayout);
     };
 
-    //get monthly layout by id only 
-    //
+    //get monthly layout by monthly id  
+    //sets a state variable to be an array
     const getMonthlyLayoutsById = (monthlyId) => {
+
         return getToken()
             .then((token) =>
                 fetch(`${apiURL}/${monthlyId}`, {
@@ -47,23 +48,18 @@ export function MonthlyLayoutProvider(props) {
                     },
                 })
                     .then((res) => res.json())
-                    .then(setMonthlyLayout)
+
+                // .then((monthlyLayout) => {
+                //     if (!monthlyLayout.status) {
+                //         setMonthlyLayout((monthlyLayoutArray) => [...monthlyLayoutArray, monthlyLayout])
+
+                //     }
+                // })
             );
+
     };
 
-    //add a monthly layout
-    // const addMonthlyLayout = (monthlyLayout) => {
-    //     return getToken().then((token) =>
-    //         fetch(`${apiURL}`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(monthlyLayout),
-    //         })
-    //     );
-    // };
+
 
     //***This is the provider function to combine both monthly and monthlyLayout forms **//
     const addMonthlyAndLayout = (monthly, monthlyLayouts) => {
@@ -131,3 +127,20 @@ export function MonthlyLayoutProvider(props) {
         </MonthlyLayoutContext.Provider>
     );
 };
+
+
+
+
+    //add a monthly layout
+    // const addMonthlyLayout = (monthlyLayout) => {
+    //     return getToken().then((token) =>
+    //         fetch(`${apiURL}`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(monthlyLayout),
+    //         })
+    //     );
+    // };

@@ -18,8 +18,9 @@ export function MonthlyProvider(props) {
     }, [userProfile]);
 
 
-    //gathers the monthly 
+    //gathers the monthly by user this is a list
     const getMonthlyByUser = (id) => {
+        //debugger;
         return getToken()
             .then((token) =>
                 fetch(`${apiURL}/GetMonthlyByUser/${id}`, {
@@ -29,8 +30,15 @@ export function MonthlyProvider(props) {
                     },
                 })
             )
-            .then((res) => res.json())
-            .then(setMonthly);
+            .then((res) => {
+                console.log(res)
+                return res.json()
+            })
+            .then((monthly) => {
+                console.log(monthly)
+                setMonthly(monthly)
+                return monthly
+            });
     };
 
     //get monthly  by id only 

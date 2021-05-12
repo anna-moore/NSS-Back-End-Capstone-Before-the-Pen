@@ -12,7 +12,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 //how to make the require fields required? 
 export const MonthlyFormAdd = () => {
-    const { monthly, getMonthlyById, addMonthly } = useContext(MonthlyContext);
+    const { monthly, getMonthlyById, addMonthly, getMonthlyByUser } = useContext(MonthlyContext);
     const { addMonthlyAndLayout } = useContext(MonthlyLayoutContext);
     const { layouts, getLayoutsByUser } = useContext(LayoutContext);
     const { inspoResource, getInspoResourceByUser } = useContext(InspoResourceContext)
@@ -20,7 +20,6 @@ export const MonthlyFormAdd = () => {
 
     // const [CurentMonthly, setCurrentMonthly] = useState({});
     const history = useHistory();
-    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams();
 
     //states for all of the properties of a monthly layout
@@ -32,10 +31,10 @@ export const MonthlyFormAdd = () => {
 
     //this is the properties on the monthlyLayout 
     //const [monthlyId, setMonthlyId] = useState(0); this is done in the controller yes??
-    const [layoutId, setLayoutId] = useState(0);
-    const [inspiredBy, setInspiredBy] = useState('');
-    const [imageURL, setImageURL] = useState('');
-    const [resourceId, setResourceId] = useState(0);
+    // const [layoutId, setLayoutId] = useState(0);
+    // const [inspiredBy, setInspiredBy] = useState('');
+    // const [imageURL, setImageURL] = useState('');
+    // const [resourceId, setResourceId] = useState(0);
 
 
     //this is for the items that are checked
@@ -44,7 +43,11 @@ export const MonthlyFormAdd = () => {
     //holds the object that I can making copies of
     const [monthlyLayout] = useState();
 
+    //this one is a list see the s
     const [monthlyLayouts, setMonthlyLayouts] = useState([]);
+
+    //this is for unique month and year in the database
+    const [uniqueMonthCheck, setUniqueMonthCheck] = useState([]);
 
     //an use Effect needs currentUserId
     useEffect(() => {
@@ -55,10 +58,17 @@ export const MonthlyFormAdd = () => {
 
     }, []);
 
-    let newUnfilteredLayoutItems = [...monthlyLayouts]
-    //will need to two items for the url of a image and inspired by
-    // newUnfilteredLayoutItems[itemIndex].imageURL = imageURL
+    //this useEffect fills the state to ensure unique monthly data
+    useEffect(() => {
+        getMonthlyByUser(currentUserId)
+            .then(setUniqueMonthCheck)
+            .then(console.log(uniqueMonthCheck))
 
+    }, []);
+
+    let newUnfilteredLayoutItems = [...monthlyLayouts]
+
+    //will need to two items for the url of a image and inspired by
     const inspiredByForLayouts = (layoutId, inspiredBy) => {
 
         let itemToEdit = newUnfilteredLayoutItems.find(o => parseInt(o.layoutId) === (parseInt(layoutId)))
@@ -128,17 +138,20 @@ export const MonthlyFormAdd = () => {
     //handle click save function 
     const handleClickSave = (evt) => {
         evt.preventDefault();
+        if (uniqueMonthCheck.find((m) => (m.month === month && m.year === parseInt(year)))) {
+            window.alert("It looks like you already have your layouts planned for this month.")
+        } else {
+            //add window alerts for must haves/ non nullable items 
+            const monthly = {
+                month,
+                year,
+                style
+            }
 
-        //add window alerts for must haves/ non nullable items 
-        const monthly = {
-            month,
-            year,
-            style
+            addMonthlyAndLayout(monthly, monthlyLayouts)
+                .then(() => history.push(`/monthlyLayout/${currentUserId}`))
+            //I think that I need to push to the next part of the form here
         }
-
-        addMonthlyAndLayout(monthly, monthlyLayouts)
-            .then(() => history.push(`/monthlyLayout/${currentUserId}`))
-        //I think that I need to push to the next part of the form here
     }
 
     //a return statement with the Form 
@@ -157,6 +170,7 @@ export const MonthlyFormAdd = () => {
                         setMonth(e.target.value);
                     }}
                     value={month}
+                    required
                 />
             </FormGroup>
             <FormGroup>
@@ -171,6 +185,7 @@ export const MonthlyFormAdd = () => {
                         setYear(e.target.value);
                     }}
                     value={year}
+                    required
                 />
             </FormGroup>
             <FormGroup>
@@ -185,6 +200,7 @@ export const MonthlyFormAdd = () => {
                         setStyle(e.target.value);
                     }}
                     value={style}
+                    required
                 />
             </FormGroup>
             <Label for="addNewLayouts">Add Layouts</Label>
@@ -196,7 +212,7 @@ export const MonthlyFormAdd = () => {
                     //* mapping over the layouts */}
                     layouts.map((layout) => {
                         const layoutId = parseInt(layout.id)
-                        console.log(layout)
+                        //console.log(layout)
 
                         //once a item is checked the entire item is replaced with the checked item and the optional boxes
                         if (checkedLayouts.includes(layoutId)) {

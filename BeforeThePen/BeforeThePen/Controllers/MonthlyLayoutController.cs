@@ -37,17 +37,27 @@ namespace BeforeThePen.Controllers
             return Ok(monthlyLayouts);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetMonthlyLayoutById(int monthlyId)
+        [HttpGet("{monthlyId}")]
+        public IActionResult GetMonthlyLayoutByMonthlyId(int monthlyId)
         {
-            var monthlyLayout = _monthlyLayoutRepository.GetMonthlyLayoutById(monthlyId);
+            var monthlyLayouts = _monthlyLayoutRepository.GetMonthlyLayoutByMonthlyId(monthlyId);
+            if (monthlyLayouts == null)
+            {
+                return NotFound();
+            }
+            return Ok(monthlyLayouts);
+        }
+
+        [HttpGet("GetByMonthlyLayoutId/{id}")]
+        public IActionResult GetMonthlyLayoutById(int id)
+        {
+            var monthlyLayout = _monthlyLayoutRepository.GetMonthlyLayoutById(id);
             if (monthlyLayout == null)
             {
                 return NotFound();
             }
             return Ok(monthlyLayout);
         }
-
         //what needs to go in this Httppost?
         //firebase is not included here
         [HttpPost]
