@@ -67,18 +67,21 @@ export function MonthlyLayoutProvider(props) {
 
     //***This is the provider function to combine both monthly and monthlyLayout forms **//
     const addMonthlyAndLayout = (monthly, monthlyLayouts) => {
-        return getToken().then((token) =>
-            fetch('/api/monthly/AddMonthlyAndLayouts', {
-                method: 'POST',
-                header: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "multipart/form-data; boundary=something",
-                    //"Content-Type": "application/json; charset=UTF-8"
-                    // "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ monthly, monthlyLayouts }),
-            })
-        );
+        // let newObject = { monthly, monthlyLayouts }
+        return getToken()
+            .then((token) =>
+                fetch('/api/monthly', {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        //"Content-Type": "multipart/form-data; boundary=something",
+                        //"Content-Type": "application/json; charset=UTF-8"
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ monthly, monthlyLayouts }),
+                    // body: JSON.stringify(newObject),
+                })
+            );
     };
 
 

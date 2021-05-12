@@ -32,13 +32,15 @@ const MonthlyLayoutCard = ({ layout }) => {
                         onClick={handleDelete}
                         style={{ cursor: 'pointer' }}
                     ></i>
-                    <i
+                    {/* <i
                         className="fas fa-edit float-right "
                         onClick={handleEdit}
                         style={{ cursor: 'pointer' }}
-                    ></i>
+                    ></i> */}
                 </CardTitle>
                 <CardText>
+                    {/* need to map over this to only create one card instead of multipe */}
+                    {/* also think about how to show the nullable data as well  */}
                     {layout.layout.type}
                 </CardText>
             </CardBody>

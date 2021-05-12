@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace BeforeThePen.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MonthlyController : ControllerBase
@@ -62,10 +62,10 @@ namespace BeforeThePen.Controllers
             return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
         }*/
 
-        //combines both monthly and monthly layouts so they can 
-        //exist on the same form 
-        [HttpPost("AddMonthlyAndLayouts")]
-        public IActionResult AddMonthlyAndLayouts([FromBody]TotalMonthlyAndLayout totalMonthly)
+        //combines both monthly and monthly layouts so they can exist on the same form 
+        //
+        [HttpPost]
+        public IActionResult AddMonthlyAndLayouts([FromBody] TotalMonthlyAndLayout totalMonthly)
         {
             var monthly = totalMonthly.Monthly;
             var layouts = totalMonthly.MonthlyLayouts;
@@ -80,7 +80,7 @@ namespace BeforeThePen.Controllers
                 layoutItem.MonthlyId = monthly.Id;
                 _monthlyLayoutRepository.AddMonthyLayout(layoutItem);
             }
-            return CreatedAtAction(nameof(GetMonthlyById), new { id = monthly.Id }, monthly);
+            return CreatedAtAction(nameof(GetMonthlyById), new { monthlyId = monthly.Id }, monthly);
         }
 
         //combine monthly and monthlyLayout update form??

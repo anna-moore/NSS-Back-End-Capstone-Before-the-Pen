@@ -24,17 +24,24 @@ export const ResourceFormEdit = () => {
 
     //for editing inspo resources
     useEffect(() => {
-        // debugger;
+        //debugger;
         getInspoResourceById(id)
-            .then(getAllTypeOfMedia)
-            .then(() => {
+            .then((currentInspoResource) => {
                 setURL(currentInspoResource.url);
                 setImageURL(currentInspoResource.imageURL);
-                setTypeOfMediaId(currentInspoResource.typeOfMedia);
+                setTypeOfMediaId(currentInspoResource.typeOfMediaId);
                 setDescription(currentInspoResource.description);
             })
-    }, [id])
+            .then(() => getAllTypeOfMedia())
+    }, [])
 
+    //clear the state in the edit form 
+    const clearState = () => {
+        setTypeOfMediaId(0); //this is not stuck in the form like the others
+        setURL('');
+        setImageURL('');
+        setDescription('');
+    }
 
     //handle click save function 
     const handleClickEdit = (evt) => {
@@ -46,6 +53,7 @@ export const ResourceFormEdit = () => {
             description
         }
         updateInspoResource(resource)
+            .then(clearState)
             .then(() => history.push(`/inspirationalResources/${currentUserId}`))
         //push to the list page 
 
@@ -140,6 +148,7 @@ export const ResourceFormEdit = () => {
                 </Button>
             }
             <Button
+                //onClick={clearState}
                 style={{ cursor: 'pointer', marginLeft: '10px' }}
                 onClick={handleCancel}
             >
