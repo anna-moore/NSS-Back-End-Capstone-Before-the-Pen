@@ -17,7 +17,7 @@ const MonthlyLayoutList = () => {
     //add a create button for creating new monthly layout 
     //map over all of the monthly records/ objects in the array
     return (
-        <div className="container mt-5">
+        <div className="container col-md-8">
             <div className="row justify-content-center">
                 <div className="cards-column" >
                     {

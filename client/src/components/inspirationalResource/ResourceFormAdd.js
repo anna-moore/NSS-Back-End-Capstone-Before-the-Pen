@@ -122,6 +122,7 @@ export const ResourceFormAdd = () => {
                 {
                     url.replace(/ /g, '').length === 0 ?
                         <Button disabled
+                            // color="primary" maybe gray before they have typed?
                             className=" ml-4 mt-2 btn-primary"
                             style={{ cursor: 'pointer' }}
                         >
@@ -129,7 +130,8 @@ export const ResourceFormAdd = () => {
                     </Button>
                         :
                         <Button active
-                            className="float-right btn-primary"
+                            color="primary"
+                            className="ml-4 mt-2 btn-primary"
                             style={{ cursor: 'pointer' }}
                             onClick={handleClickSave}>
                             Save
