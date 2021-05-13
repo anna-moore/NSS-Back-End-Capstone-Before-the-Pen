@@ -22,7 +22,7 @@ export const MonthlyLayoutView = ({ monthly }) => {
 
             </div>
             <div>
-                <Table bordered>
+                <Table bordered striped>
                     <thead>
                         <tr>
                             <th>Layout Type</th>

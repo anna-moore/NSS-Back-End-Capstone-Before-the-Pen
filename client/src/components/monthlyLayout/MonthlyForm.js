@@ -153,7 +153,7 @@ export const MonthlyFormAdd = () => {
                     <FormGroup>
                         <Label for="month"><strong>Month</strong></Label>
                         <Input
-                            style={{ width: '60%' }}
+                            style={{ width: '70%' }}
                             type="text"
                             name="month"
                             id="month"
@@ -169,7 +169,7 @@ export const MonthlyFormAdd = () => {
                     <FormGroup>
                         <Label for="year"><strong>Year</strong></Label>
                         <Input
-                            style={{ width: '60%' }}
+                            style={{ width: '70%' }}
                             type="text"
                             name="year"
                             id="year"
@@ -185,7 +185,7 @@ export const MonthlyFormAdd = () => {
                     <FormGroup>
                         <Label for="style"><strong>Style</strong></Label>
                         <Input
-                            style={{ width: '60%' }}
+                            style={{ width: '70%' }}
                             type="text"
                             name="style"
                             id="style"
@@ -225,7 +225,7 @@ export const MonthlyFormAdd = () => {
                                         </FormGroup>
                                         {/* this is what dropdown once checkbox is checked */}
                                         <Row>
-                                            <Col md={4}>
+                                            <Col md={6}>
 
                                                 <FormGroup >
                                                     <Label for="inspiredBy">Inspired by </Label>
@@ -246,7 +246,7 @@ export const MonthlyFormAdd = () => {
                                                     {/* </a> */}
                                                 </FormGroup>
                                             </Col>
-                                            <Col md={4}>
+                                            <Col md={6}>
 
                                                 <FormGroup>
                                                     <Label for="imageURL">Image URL</Label>
@@ -255,7 +255,7 @@ export const MonthlyFormAdd = () => {
                                                         type="text"
                                                         name="imageURL"
                                                         id="imageURL"
-                                                        placeholder="add a picture url here"
+                                                        placeholder="add a picture url"
                                                         autoComplete="off"
                                                         onChange={(e) => {
                                                             imageURLForLayouts(layout.id, e.target.value);
@@ -294,6 +294,7 @@ export const MonthlyFormAdd = () => {
                 <Button disabled
                     color="primary"
                     style={{ cursor: 'pointer' }}
+                    className="float-right mr-4"
                 >
                     Save
                     </Button>
@@ -301,6 +302,7 @@ export const MonthlyFormAdd = () => {
                 <Button active
                     color="primary"
                     style={{ cursor: 'pointer' }}
+                    className="float-right mr-4"
                     onClick={handleClickSave}>
                     Save
                 </Button>
