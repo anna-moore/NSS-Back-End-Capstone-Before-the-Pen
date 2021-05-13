@@ -63,25 +63,12 @@ export const ResourceFormEdit = () => {
 
     //a return statement with the Form 
     return (
-        <Form className="container">
-            <FormGroup>
-                <Label for="url">Website URL</Label>
-                <Input
-                    type="text"
-                    name="url"
-                    id="url"
-                    placeholder="www... "
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setURL(e.target.value);
-                    }}
-                    value={url}
-                    required
-                />
-            </FormGroup>
+        <Form className="container col-md-8">
+            <Label className="text-center pb-2" tag="h2">Update Your Creative Ideas </Label>
             <FormGroup>
                 <Label htmlFor="typeOfMediaId">Type of Media </Label>
                 <Input
+                    style={{ width: '40%' }}
                     type="select"
                     name="typeOfMediaId"
                     id="typeOfMediaId"
@@ -102,8 +89,26 @@ export const ResourceFormEdit = () => {
                 </Input>
             </FormGroup>
             <FormGroup>
+                <Label for="url">Website URL</Label>
+                <Input
+                    style={{ width: '65%' }}
+                    type="text"
+                    name="url"
+                    id="url"
+                    placeholder="www... "
+                    autoComplete="off"
+                    onChange={(e) => {
+                        setURL(e.target.value);
+                    }}
+                    value={url}
+                    required
+                />
+            </FormGroup>
+
+            <FormGroup>
                 <Label for="imageURL">Image URL</Label>
                 <Input
+                    style={{ width: '65%' }}
                     type="text"
                     name="imageURL"
                     id="imageURL"
@@ -119,8 +124,9 @@ export const ResourceFormEdit = () => {
             <FormGroup>
                 <Label for="description">Description</Label>
                 <Input
+                    style={{ width: '65%' }}
                     type="textarea"
-                    rows="10"
+                    rows="8"
                     wrap="hard"
                     name="description"
                     id="description"
@@ -134,18 +140,21 @@ export const ResourceFormEdit = () => {
             </FormGroup>
             {currentInspoResource.length === 0 ?
                 <Button disabled
+                    className=" ml-4 mt-2 btn-primary"
                     style={{ cursor: 'pointer' }}
                 >
                     Edit
                     </Button>
                 :
                 <Button active
+                    className=" ml-4 mt-2 btn-primary"
                     style={{ cursor: 'pointer' }}
                     onClick={handleClickEdit}>
                     Edit
                 </Button>
             }
             <Button
+                className=" ml-4 mt-2 btn-primary"
                 style={{ cursor: 'pointer', marginLeft: '10px' }}
                 onClick={handleCancel}
             >

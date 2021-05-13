@@ -40,86 +40,103 @@ export const ResourceFormAdd = () => {
 
     //a return statement with the Form 
     return (
-        <Form className="container">
-            <FormGroup>
-                <Label for="url"> <strong></strong>Website URL</Label>
-                <Input
-                    type="text"
-                    name="url"
-                    id="url"
-                    placeholder="www... "
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setURL(e.target.value);
-                    }}
-                    value={url}
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label htmlFor="typeOfMediaId">Type of Media </Label>
-                <Input
-                    type="select"
-                    name="typeOfMediaId"
-                    id="typeOfMediaId"
-                    value={typeOfMediaId}
-                    onChange={(e) => {
-                        setTypeOfMediaId(e.target.value);
-                    }}
-                >
-                    <option value="1">Type of Media</option>
-                    {typeOfMedia.map(t => {
-                        return (
-                            <option key={t.id} value={t.id}>
-                                {t.type}
-                            </option>
-                        );
-                    })}
-                </Input>
-            </FormGroup>
-            <FormGroup>
-                <Label for="imageURL">Image URL</Label>
-                <Input
-                    type="text"
-                    name="imageURL"
-                    id="imageURL"
-                    placeholder='add image url here'
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setImageURL(e.target.value);
-                    }}
-                    value={imageURL}
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="description">Description</Label>
-                <Input
-                    type="textarea"
-                    name="description"
-                    id="description"
-                    rows="10"
-                    wrap="hard"
-                    placeholder="what is the resource all about?"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setDescription(e.target.value);
-                    }}
-                    value={description}
-                />
-            </FormGroup>
-            {url.replace(/ /g, '').length === 0 ?
-                <Button disabled
-                    style={{ cursor: 'pointer' }}
-                >
-                    Save
+        <Form className="container col-md-8"
+        // style={{ display: 'Flex', justifyContent: 'Center', flexDirection: 'column' }}
+        >
+            <Label className="text-center pb-2" tag="h2">Save Creative Ideas from Around the Web</Label>
+            <div >
+
+
+                <FormGroup className="">
+                    <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                    <Input
+                        style={{ width: '40%' }}
+                        type="select"
+                        name="typeOfMediaId"
+                        id="typeOfMediaId"
+                        value={typeOfMediaId}
+                        onChange={(e) => {
+                            setTypeOfMediaId(e.target.value);
+                        }}
+                    >
+                        <option value="1">Type of Media</option>
+                        {typeOfMedia.map(t => {
+                            return (
+                                <option key={t.id} value={t.id}>
+                                    {t.type}
+                                </option>
+                            );
+                        })}
+                    </Input>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="url"> <strong></strong>Website URL</Label>
+                    <Input
+                        style={{ width: '65%' }}
+                        type="text"
+                        name="url"
+                        id="url"
+                        placeholder=" "
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setURL(e.target.value);
+                        }}
+                        value={url}
+                        className="small-input"
+                    />
+                </FormGroup>
+
+                <FormGroup>
+                    <Label for="imageURL">Image URL</Label>
+                    <Input
+                        style={{ width: '65%' }}
+                        // className="smaller-input"
+                        type="text"
+                        name="imageURL"
+                        id="imageURL"
+                        placeholder='add image url here'
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setImageURL(e.target.value);
+                        }}
+                        value={imageURL}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label for="description">Description</Label>
+                    <Input
+                        style={{ width: '65%' }}
+                        type="textarea"
+                        name="description"
+                        id="description"
+                        rows="8"
+                        wrap="hard"
+                        placeholder="what is the resource all about?"
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setDescription(e.target.value);
+                        }}
+                        value={description}
+                    />
+                </FormGroup>
+                {
+                    url.replace(/ /g, '').length === 0 ?
+                        <Button disabled
+                            className=" ml-4 mt-2 btn-primary"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            Save
                     </Button>
-                :
-                <Button active
-                    style={{ cursor: 'pointer' }}
-                    onClick={handleClickSave}>
-                    Save
+                        :
+                        <Button active
+                            className="float-right btn-primary"
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleClickSave}>
+                            Save
                 </Button>
-            }
-        </Form>
+                }
+            </div>
+        </Form >
     )
 }
 export default ResourceFormAdd;

@@ -27,10 +27,12 @@ export const ResourceCard = ({ resource }) => {
 
     return (
         <Card className="m-4">
-            <CardBody style={{ width: "35em" }}>
-                <CardTitle tag="h5"><strong>{resource.url}</strong>
+            <CardBody style={{ width: "40em" }}>
+                {/* //this is where the name of the resource will be added 
+                //make this name a link */}
+                <CardTitle className="ml-3" tag="h4"><strong>{resource.url}</strong>
                     <i
-                        className="fas fa-trash-alt float-right"
+                        className="fas fa-trash-alt float-right pl-2"
                         onClick={handleDelete}
                         style={{ cursor: 'pointer' }}
                     ></i>
@@ -40,21 +42,20 @@ export const ResourceCard = ({ resource }) => {
                         style={{ cursor: 'pointer' }}
                     ></i>
                 </CardTitle>
-                {/* {resource.imgageURL !== "" ?
-                    (<img scr={resource.imageURL} alt="info about the pictures" />)
+                {resource.imageURL !== undefined ?
+                    <div className="text-center mb-3">
+                        <img
+                            src={resource.imageURL}
+                            style={{ maxWidth: '800px', maxHeight: '350px' }}
+                            className="rounded mx-auto d-block img-fluid"
+                        // alt=""
+                        />
+                    </div>
                     :
                     ("no image to provided.")
-                } */}
+                }
 
-                <div className="text-center">
-                    <img
-                        src={resource.imageURL}
-                        style={{ maxWidth: '800px', maxHeight: '350px' }}
-                        className="rounded mx-auto d-block img-fluid"
-                    // alt="random picture probably not relating to the post"
-                    />
-                </div>
-                {/* this needs to be updated for exact the embed code from the URL */}
+                {/* typeOfMediaId on the backend is Youtube */}
                 {resource.typeOfMediaId === 1 ?
                     (<div className="App">
                         <YoutubeEmbed embedId={resource.url} />
@@ -62,10 +63,15 @@ export const ResourceCard = ({ resource }) => {
                     :
                     ("")
                 }
-                <CardText>
-                    {resource.description}
-                </CardText>
-                <CardText>
+
+                {resource.description !== undefined ?
+                    (<CardText style={{ whiteSpace: 'pre-line' }} className="ml-5 mr-5">   {resource.description}  </CardText>)
+                    :
+                    ("")
+                }
+
+
+                <CardText className="mr-4 float-right">
                     {resource.typeOfMedia.type}
                 </CardText>
             </CardBody>

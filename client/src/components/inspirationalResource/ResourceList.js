@@ -30,6 +30,7 @@ const ResourceList = ({ }) => {
                 style={{ cursor: 'pointer' }}
                 className="mr-3 btn-primary"
                 onClick={handleClickNewResource}
+                className="float-right"
             >
                 Create New
             </Button>
