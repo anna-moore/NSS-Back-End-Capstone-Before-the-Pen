@@ -51,22 +51,6 @@ export function MonthlyProvider(props) {
             );
     };
 
-    //add a monthly 
-    // const addMonthly = (monthly) => {
-    //     debugger;
-    //     return getToken().then((token) =>
-    //         fetch(apiURL, {
-    //             method: 'POST',
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(monthly),
-    //         })
-    //     );
-    // };
-
-    //how do I make sure that security on editing the post works??
     //edit the monthly 
     const updateMonthly = (monthly) => {
         return getToken().then((token) =>
@@ -109,3 +93,18 @@ export function MonthlyProvider(props) {
         </MonthlyContext.Provider>
     );
 };
+
+  //add a monthly 
+    // const addMonthly = (monthly) => {
+    //     debugger;
+    //     return getToken().then((token) =>
+    //         fetch(apiURL, {
+    //             method: 'POST',
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`,
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify(monthly),
+    //         })
+    //     );
+    // };

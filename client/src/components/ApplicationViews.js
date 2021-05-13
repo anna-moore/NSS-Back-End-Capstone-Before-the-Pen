@@ -11,8 +11,6 @@ import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd
 import ResourceFormEdit from '../components/inspirationalResource/ResourceFormEdit'
 import ResourceList from './inspirationalResource/ResourceList';
 
-
-
 export default function ApplicationViews() {
     const { isLoggedIn } = useContext(UserProfileContext);
 

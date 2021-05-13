@@ -18,7 +18,6 @@ const MonthlyLayoutCard = ({ layout }) => {
     };
 
     //handle edit function
-    //update the push URL
     const handleEdit = () => {
         history.push(`monthlyLayout/${id}`)
     }

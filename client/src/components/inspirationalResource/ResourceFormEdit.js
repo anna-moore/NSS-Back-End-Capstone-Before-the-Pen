@@ -5,7 +5,7 @@ import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-//how to make the require fields required? 
+
 export const ResourceFormEdit = () => {
     const { currentInspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
     const { currentUserId } = useContext(UserProfileContext);
@@ -76,6 +76,7 @@ export const ResourceFormEdit = () => {
                         setURL(e.target.value);
                     }}
                     value={url}
+                    required
                 />
             </FormGroup>
             <FormGroup>
@@ -88,6 +89,7 @@ export const ResourceFormEdit = () => {
                     onChange={(e) => {
                         setTypeOfMediaId(e.target.value);
                     }}
+                    required
                 >
                     <option value={typeOfMediaId}>Type of Media</option>
                     {typeOfMedia.map(t => {
@@ -111,6 +113,7 @@ export const ResourceFormEdit = () => {
                         setImageURL(e.target.value);
                     }}
                     value={imageURL}
+
                 />
             </FormGroup>
             <FormGroup>

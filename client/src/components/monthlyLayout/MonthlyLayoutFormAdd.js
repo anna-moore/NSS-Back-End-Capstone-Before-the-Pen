@@ -2,10 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-//import the layouts and the resource context
-//select the functions
-//how is this working with use state??
-//drop downs for both resource and layouts
+
+// this is not being used because the monthly and monthly layout forms are being combined
 export const MonthlyLayoutFormAdd = () => {
     const { monthlyLayout, getMonthlyLayoutsByUser, addMonthlyLayout } = useContext(MonthlyLayoutContext);
 
@@ -18,9 +16,6 @@ export const MonthlyLayoutFormAdd = () => {
     const [inspiredBy, setInspiredBy] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [resourceId, setResourceId] = useState(0);
-
-    // how to i set the monthly layout and connect both of the pages??
-    //an use Effect 
 
     //handle click save function 
     const handleClickSave = (evt) => {
@@ -37,8 +32,7 @@ export const MonthlyLayoutFormAdd = () => {
 
     //a return statement with the Form 
     //need a drop down for the layouts 
-    //and the resource
-
+    //and the resource stretch goal
     return (
         <Form className="container">
             <FormGroup>

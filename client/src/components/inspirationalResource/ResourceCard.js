@@ -11,10 +11,8 @@ export const ResourceCard = ({ resource }) => {
     const { currentUserId } = useContext(UserProfileContext);
     const history = useHistory();
     const { id } = useParams();
-    // console.log(resource);
 
     //handle delete of resource
-    //update the push statement
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this layout?')) {
             deleteInspoResource(resource.id).then(() => getInspoResourceByUser(id));

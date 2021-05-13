@@ -5,18 +5,15 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 
-//how to make the require fields required? 
 export const ResourceFormAdd = () => {
     const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
     const { currentUserId } = useContext(UserProfileContext);
 
-    //const [resource, setResource] = useState({});
     const history = useHistory();
     const { id } = useParams();
 
     //states for all of the properties of a resource
-    // set userProfileId in the Controller
     const [typeOfMediaId, setTypeOfMediaId] = useState(1);
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
@@ -38,7 +35,6 @@ export const ResourceFormAdd = () => {
         addInspoResource(resource).then(() => {
             history.push(`/inspirationalResources/${currentUserId}`);
         })
-        //push to the list page 
     }
 
 

@@ -12,7 +12,6 @@ const MonthlyLayoutList = () => {
 
     useEffect(() => {
         getMonthlyByUser(currentUserId)
-        // .then(() => console.log(monthly, "this are the monthlys in the list"))
     }, [])
 
     //add a create button for creating new monthly layout 

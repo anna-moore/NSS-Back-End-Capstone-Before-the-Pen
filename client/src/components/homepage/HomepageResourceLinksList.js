@@ -21,7 +21,7 @@ const HelpfulResourceList = () => {
                     <div className="row justify-content-center">
                         <div className="cards-column">
 
-                            <h1 >Helpful Links/ Getting Started</h1>
+                            <h1 >Helpful Links</h1>
 
                             {homepageResourceLinks.map((link) => {
                                 return <HomepageResourceLinksCard key={link.id} link={link} />
