@@ -45,8 +45,6 @@ export const ResourceFormAdd = () => {
         >
             <Label className="text-center pb-2" tag="h2">Save Creative Ideas from Around the Web</Label>
             <div >
-
-
                 <FormGroup className="">
                     <Label htmlFor="typeOfMediaId">Type of Media </Label>
                     <Input

@@ -5,7 +5,7 @@ import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { LayoutContext } from '../../providers/LayoutProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider'
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 export const MonthlyFormAdd = () => {
     const { monthly, getMonthlyById, addMonthly, getMonthlyByUser } = useContext(MonthlyContext);
@@ -146,147 +146,163 @@ export const MonthlyFormAdd = () => {
 
     //a return statement with the Form 
     return (
-        <Form className="container .col-6">
-            <Label for="MonthlyAndLayoutForm"> <h1><strong>Create Monthly Layout</strong></h1></Label>
-            <FormGroup>
-                <Label for="month"><strong>Month</strong></Label>
-                <Input
-                    style={{ width: '300px' }}
-                    type="text"
-                    name="month"
-                    id="month"
-                    placeholder="January "
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setMonth(e.target.value);
-                    }}
-                    value={month}
-                    required
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="year"><strong>Year</strong></Label>
-                <Input
-                    style={{ width: '300px' }}
-                    type="text"
-                    name="year"
-                    id="year"
-                    placeholder={parseInt('2021')}
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setYear(e.target.value);
-                    }}
-                    value={year}
-                    required
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="style"><strong>Style</strong></Label>
-                <Input
-                    style={{ width: '300px' }}
-                    type="text"
-                    name="style"
-                    id="style"
-                    placeholder="i.e. mininalist, scrapbook, maximalist"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setStyle(e.target.value);
-                    }}
-                    value={style}
-                    required
-                />
-            </FormGroup>
-            <Label for="addNewLayouts"> <strong>Add Layouts</strong> (and optional info)</Label>
-            <FormGroup>
-                {
-                    //* mapping over the layouts */}
-                    layouts.map((layout) => {
-                        const layoutId = parseInt(layout.id)
+        <Form className="container col-md-10">
+            <Label className="text-center pb-2" for="MonthlyAndLayoutForm" tag="h2"> <strong>Create Monthly Layout</strong></Label>
+            <Row>
+                <Col>
+                    <FormGroup>
+                        <Label for="month"><strong>Month</strong></Label>
+                        <Input
+                            style={{ width: '60%' }}
+                            type="text"
+                            name="month"
+                            id="month"
+                            placeholder="January "
+                            autoComplete="off"
+                            onChange={(e) => {
+                                setMonth(e.target.value);
+                            }}
+                            value={month}
+                            required
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="year"><strong>Year</strong></Label>
+                        <Input
+                            style={{ width: '60%' }}
+                            type="text"
+                            name="year"
+                            id="year"
+                            placeholder={parseInt('2021')}
+                            autoComplete="off"
+                            onChange={(e) => {
+                                setYear(e.target.value);
+                            }}
+                            value={year}
+                            required
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="style"><strong>Style</strong></Label>
+                        <Input
+                            style={{ width: '60%' }}
+                            type="text"
+                            name="style"
+                            id="style"
+                            placeholder="i.e. mininalist, scrapbook, maximalist"
+                            autoComplete="off"
+                            onChange={(e) => {
+                                setStyle(e.target.value);
+                            }}
+                            value={style}
+                            required
+                        />
+                    </FormGroup>
+                </Col>
 
-                        //once a item is checked the entire item is replaced with the checked item and the optional boxes
-                        if (checkedLayouts.includes(layoutId)) {
-                            return (<>
-                                {/* this returns the label and the checkbox */}
-                                <FormGroup>
-                                    <input
-                                        key={layout.id}
-                                        type="checkbox"
-                                        checked={checkedLayouts.includes(layoutId)}
-                                        id="checkbox"
-                                        onChange={(e) => handleCheckboxChange(e)}
-                                        value={layout.id}
-                                    />
-                                    <label htmlFor="">{layout.type}</label>
-                                </FormGroup>
-                                {/* this is what dropdown once checkbox is checked */}
-                                {/* <Label for="thisCheckBoxItemSelected"><strong>Optional Info</strong></Label> */}
-                                <FormGroup >
-                                    <Label for="inspiredBy">Inspired by </Label>
-                                    {/* <a href="#imageURL" class=""> */}
-                                    <Input
-                                        style={{ width: '300px' }}
-                                        type="text"
-                                        name="inspiredBy"
-                                        id={layout.id}
-                                        placeholder="name of artist"
-                                        autoComplete="off"
-                                        onChange={(e) => {
-                                            inspiredByForLayouts(layout.id, e.target.value);
-                                        }}
-                                        value={layout.inspiredBy}
-                                    />
-                                    {/* </a> */}
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="imageURL">Image URL</Label>
-                                    <Input
-                                        style={{ width: '300px' }}
-                                        type="text"
-                                        name="imageURL"
-                                        id="imageURL"
-                                        placeholder="add a picture url here"
-                                        autoComplete="off"
-                                        onChange={(e) => {
-                                            imageURLForLayouts(layout.id, e.target.value);
-                                        }}
-                                        value={layout.imageURL}
-                                    />
-                                </FormGroup>
-                            </>)
-                        }
-                        // another return statement that displays the check box that aren't in the checkedlayout list
-                        return (
-                            <FormGroup key={layout.id} check>
-                                <Label check >
-                                    <Input
-                                        type="checkbox"
-                                        key={layout.id}
-                                        checked={checkedLayouts.includes(layoutId)}
-                                        id="checkbox"
-                                        onChange={(e) => handleCheckboxChange(e)}
-                                        value={layout.id}
-                                        defaultChecked
-                                    /> {layout.type}
+                <Label for="addNewLayouts"> <strong>Add Layouts</strong> (and optional info)</Label>
+                <FormGroup>
+                    {
+                        //* mapping over the layouts */}
+                        layouts.map((layout) => {
+                            const layoutId = parseInt(layout.id)
 
-                                </Label>
-                            </FormGroup>
-                        )
-                    })
-                }
-            </FormGroup>
-            {month.replace(/ /g, '').length === 0 ?
-                <Button disabled
-                    style={{ cursor: 'pointer' }}
-                >
-                    Save
+                            //once a item is checked the entire item is replaced with the checked item and the optional boxes
+                            if (checkedLayouts.includes(layoutId)) {
+                                return (<>
+                                    {/* this returns the label and the checkbox */}
+                                    <FormGroup>
+                                        <input
+                                            key={layout.id}
+                                            type="checkbox"
+                                            checked={checkedLayouts.includes(layoutId)}
+                                            id="checkbox"
+                                            onChange={(e) => handleCheckboxChange(e)}
+                                            value={layout.id}
+                                        />
+                                        <label htmlFor="">{layout.type}</label>
+                                    </FormGroup>
+                                    {/* this is what dropdown once checkbox is checked */}
+                                    <Row>
+                                        <Col md={4}>
+
+                                            <FormGroup >
+                                                <Label for="inspiredBy">Inspired by </Label>
+                                                {/* <a href="#imageURL" class=""> */}
+                                                <Input
+                                                    style={{ width: '80%' }}
+                                                    type="text"
+                                                    name="inspiredBy"
+                                                    id={layout.id}
+                                                    placeholder="name of artist"
+                                                    autoComplete="off"
+                                                    onChange={(e) => {
+                                                        inspiredByForLayouts(layout.id, e.target.value);
+                                                    }}
+                                                    value={layout.inspiredBy}
+                                                    className=""
+                                                />
+                                                {/* </a> */}
+                                            </FormGroup>
+                                        </Col>
+                                        <Col md={4}>
+
+                                            <FormGroup>
+                                                <Label for="imageURL">Image URL</Label>
+                                                <Input
+                                                    style={{ width: '80%' }}
+                                                    type="text"
+                                                    name="imageURL"
+                                                    id="imageURL"
+                                                    placeholder="add a picture url here"
+                                                    autoComplete="off"
+                                                    onChange={(e) => {
+                                                        imageURLForLayouts(layout.id, e.target.value);
+                                                    }}
+                                                    value={layout.imageURL}
+                                                />
+                                            </FormGroup>
+                                        </Col>
+                                    </Row>
+
+                                </>)
+                            }
+                            // another return statement that displays the check box that aren't in the checkedlayout list
+                            return (
+                                <FormGroup key={layout.id} check>
+                                    <Label check >
+                                        <Input
+                                            type="checkbox"
+                                            key={layout.id}
+                                            checked={checkedLayouts.includes(layoutId)}
+                                            id="checkbox"
+                                            onChange={(e) => handleCheckboxChange(e)}
+                                            value={layout.id}
+                                            defaultChecked
+                                        /> {layout.type}
+
+                                    </Label>
+                                </FormGroup>
+                            )
+                        })
+                    }
+                </FormGroup>
+                {month.replace(/ /g, '').length === 0 ?
+                    <Button disabled
+                        color="primary"
+                        style={{ cursor: 'pointer' }}
+                    >
+                        Save
                     </Button>
-                :
-                <Button active
-                    style={{ cursor: 'pointer' }}
-                    onClick={handleClickSave}>
-                    Save
+                    :
+                    <Button active
+                        color="primary"
+                        style={{ cursor: 'pointer' }}
+                        onClick={handleClickSave}>
+                        Save
                 </Button>
-            }
+                }
+            </Row>
         </Form>
     )
 }
