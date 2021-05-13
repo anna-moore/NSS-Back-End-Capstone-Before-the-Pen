@@ -4,13 +4,9 @@ import { MonthlyContext } from '../../providers/MonthlyProvider';
 import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { LayoutContext } from '../../providers/LayoutProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider'
-//import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-//import Checkbox from './Checkbox';
 
-
-//how to make the require fields required? 
 export const MonthlyFormAdd = () => {
     const { monthly, getMonthlyById, addMonthly, getMonthlyByUser } = useContext(MonthlyContext);
     const { addMonthlyAndLayout } = useContext(MonthlyLayoutContext);
@@ -18,23 +14,13 @@ export const MonthlyFormAdd = () => {
     const { inspoResource, getInspoResourceByUser } = useContext(InspoResourceContext)
     const { currentUserId } = useContext(UserProfileContext);
 
-    // const [CurentMonthly, setCurrentMonthly] = useState({});
     const history = useHistory();
     const { id } = useParams();
 
-    //states for all of the properties of a monthly layout
-    // const [UserProfile] = useState(''); this is done in the controller??
     //this is the properties on the monthly
     const [month, setMonth] = useState('');
     const [year, setYear] = useState(2021);
     const [style, setStyle] = useState('');
-
-    //this is the properties on the monthlyLayout 
-    //const [monthlyId, setMonthlyId] = useState(0); this is done in the controller yes??
-    // const [layoutId, setLayoutId] = useState(0);
-    // const [inspiredBy, setInspiredBy] = useState('');
-    // const [imageURL, setImageURL] = useState('');
-    // const [resourceId, setResourceId] = useState(0);
 
 
     //this is for the items that are checked
@@ -43,7 +29,7 @@ export const MonthlyFormAdd = () => {
     //holds the object that I can making copies of
     const [monthlyLayout] = useState();
 
-    //this one is a list see the s
+    //this one is a list see the "s"
     const [monthlyLayouts, setMonthlyLayouts] = useState([]);
 
     //this is for unique month and year in the database
@@ -55,7 +41,6 @@ export const MonthlyFormAdd = () => {
             .then(() => {
                 getInspoResourceByUser(currentUserId)
             })
-
     }, []);
 
     //this useEffect fills the state to ensure unique monthly data
@@ -89,9 +74,7 @@ export const MonthlyFormAdd = () => {
             newUnfilteredLayoutItems.push(newMonthlyLayout);
 
             setMonthlyLayouts(newUnfilteredLayoutItems);
-
         }
-        console.log(newUnfilteredLayoutItems)
     }
 
     //this is the filter and add to state for the image URL property of monthly layout/form
@@ -115,9 +98,7 @@ export const MonthlyFormAdd = () => {
             newUnfilteredLayoutItems.push(newMonthlyLayout);
 
             setMonthlyLayouts(newUnfilteredLayoutItems);
-
         }
-        console.log(newUnfilteredLayoutItems)
     }
 
     //handle checkbox change
@@ -147,10 +128,19 @@ export const MonthlyFormAdd = () => {
                 year,
                 style
             }
+            //loop through checkedlayouts array
+            //determine if matches in monthlylayouts exist
+            //if not add the missing if
+            for (let layoutId of checkedLayouts) {
+                let layoutToAdd = monthlyLayouts.find((layout) => layoutId === layout.id)
+                if (!layoutToAdd) {
+                    let toAdd = { layoutId }
+                    monthlyLayouts.push(toAdd)
+                }
 
+            }
             addMonthlyAndLayout(monthly, monthlyLayouts)
                 .then(() => history.push(`/monthlyLayout/${currentUserId}`))
-            //I think that I need to push to the next part of the form here
         }
     }
 
@@ -207,12 +197,10 @@ export const MonthlyFormAdd = () => {
 
 
             <FormGroup>
-                {/* <Label for="checkboxLayout">Check box Layouts</Label> */}
                 {
                     //* mapping over the layouts */}
                     layouts.map((layout) => {
                         const layoutId = parseInt(layout.id)
-                        //console.log(layout)
 
                         //once a item is checked the entire item is replaced with the checked item and the optional boxes
                         if (checkedLayouts.includes(layoutId)) {

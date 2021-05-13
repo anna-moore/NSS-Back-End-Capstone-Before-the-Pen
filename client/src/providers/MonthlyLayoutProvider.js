@@ -6,19 +6,8 @@ export const MonthlyLayoutContext = createContext();
 export function MonthlyLayoutProvider(props) {
     const apiURL = '/api/monthlyLayout';
 
-    const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext);
-    const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
-    const [currentUserId, setCurrentUserId] = useState(0);
     const [monthlyLayout, setMonthlyLayout] = useState([]);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            setCurrentUserId(JSON.parse(userProfile).id);
-        }
-    }, [userProfile]);
-
-
 
     //gathers the monthly layouts
     const getMonthlyLayoutsByUser = (id) => {
@@ -36,9 +25,7 @@ export function MonthlyLayoutProvider(props) {
     };
 
     //get monthly layout by monthly id  
-    //sets a state variable to be an array
     const getMonthlyLayoutsById = (monthlyId) => {
-
         return getToken()
             .then((token) =>
                 fetch(`${apiURL}/${monthlyId}`, {
@@ -48,41 +35,27 @@ export function MonthlyLayoutProvider(props) {
                     },
                 })
                     .then((res) => res.json())
-
-                // .then((monthlyLayout) => {
-                //     if (!monthlyLayout.status) {
-                //         setMonthlyLayout((monthlyLayoutArray) => [...monthlyLayoutArray, monthlyLayout])
-
-                //     }
-                // })
             );
-
     };
 
 
 
     //***This is the provider function to combine both monthly and monthlyLayout forms **//
     const addMonthlyAndLayout = (monthly, monthlyLayouts) => {
-        // let newObject = { monthly, monthlyLayouts }
         return getToken()
             .then((token) =>
                 fetch('/api/monthly', {
                     method: 'POST',
                     headers: {
                         Authorization: `Bearer ${token}`,
-                        //"Content-Type": "multipart/form-data; boundary=something",
-                        //"Content-Type": "application/json; charset=UTF-8"
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({ monthly, monthlyLayouts }),
-                    // body: JSON.stringify(newObject),
                 })
             );
     };
 
 
-
-    //how do I make sure that security on editing the post works??
     //edit the monthly layout
     const updateMonthlyLayout = (monthlyLayout) => {
         return getToken().then((token) =>

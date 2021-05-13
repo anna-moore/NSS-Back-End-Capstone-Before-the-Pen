@@ -6,20 +6,9 @@ export const InspoResourceContext = createContext();
 export function InspoResourceProvider(props) {
     const apiURL = '/api/inspirationalResource';
 
-
-    const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext);
-    const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
-    const [currentUserId, setCurrentUserId] = useState(0);
     const [inspoResource, setInspoResource] = useState([]);
     const [currentInspoResource, setCurrentInspoResource] = useState({});
-
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            setCurrentUserId(JSON.parse(userProfile).id);
-        }
-    }, [userProfile]);
 
     //get the resources by user 
     const getInspoResourceByUser = (id) => {

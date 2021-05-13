@@ -7,15 +7,10 @@ export function MonthlyProvider(props) {
 
     const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext);
-    const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
-    const [currentUserId, setCurrentUserId] = useState(0);
+
     const [monthly, setMonthly] = useState([]);
 
-    useEffect(() => {
-        if (isLoggedIn) {
-            setCurrentUserId(JSON.parse(userProfile).id);
-        }
-    }, [userProfile]);
+
 
 
     //gathers the monthly by user this is a list

@@ -10,13 +10,12 @@ export const ResourceFormEdit = () => {
     const { currentInspoResource, getInspoResourceById, updateInspoResource } = useContext(InspoResourceContext);
     const { currentUserId } = useContext(UserProfileContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
-    //const [resource, setResource] = useState({});
 
     const history = useHistory();
     const { id } = useParams();
 
     //states for all of the properties of a resource
-    // set userProfileId in the Controller
+    const [idResource, setIdResource] = useState(0);
     const [typeOfMediaId, setTypeOfMediaId] = useState(0);
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
@@ -24,9 +23,9 @@ export const ResourceFormEdit = () => {
 
     //for editing inspo resources
     useEffect(() => {
-        //debugger;
         getInspoResourceById(id)
             .then((currentInspoResource) => {
+                setIdResource(currentInspoResource.id)
                 setURL(currentInspoResource.url);
                 setImageURL(currentInspoResource.imageURL);
                 setTypeOfMediaId(currentInspoResource.typeOfMediaId);
@@ -46,7 +45,7 @@ export const ResourceFormEdit = () => {
     //handle click save function 
     const handleClickEdit = (evt) => {
         const resource = {
-            id: currentInspoResource.id,
+            id: idResource,
             typeOfMediaId,
             url,
             imageURL,
@@ -55,13 +54,9 @@ export const ResourceFormEdit = () => {
         updateInspoResource(resource)
             .then(clearState)
             .then(() => history.push(`/inspirationalResources/${currentUserId}`))
-        //push to the list page 
-
-
     }
 
     //exit the edit form without making changes
-    //update to the correct push page
     const handleCancel = () => {
         history.push(`/inspirationalResources/${currentUserId}`)
     };
@@ -148,7 +143,6 @@ export const ResourceFormEdit = () => {
                 </Button>
             }
             <Button
-                //onClick={clearState}
                 style={{ cursor: 'pointer', marginLeft: '10px' }}
                 onClick={handleCancel}
             >

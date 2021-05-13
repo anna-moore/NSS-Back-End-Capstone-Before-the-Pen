@@ -1,19 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
-
-import { MonthlyContext } from '../../providers/MonthlyProvider';
 import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { Table } from 'reactstrap';
 
 // this function has the monthly data passed in through props 
 //and from here grabs the monthlyLayout with the use of the getMonthlyLayoutsById
 export const MonthlyLayoutView = ({ monthly }) => {
-
-    //const { getMonthlyById } = useContext(MonthlyContext);
-    const { getMonthlyLayoutsById, monthlyLayout } = useContext(MonthlyLayoutContext);
+    const { getMonthlyLayoutsById } = useContext(MonthlyLayoutContext);
     const [currentMonthlyLayoutArray, setCurrentMonthlyLayoutArray] = useState([])
-
-    // const [monthlyLayouts, setMonthlyLayouts] = useState([]);
-    // const [monthly, setMonthly] = useState();
 
     // this grabs the id off of the monthly object so that the provider method can be called for the monthlyLayouts
     let monthlyId = parseInt(monthly.id)
@@ -21,7 +14,6 @@ export const MonthlyLayoutView = ({ monthly }) => {
     useEffect(() => {
         getMonthlyLayoutsById(monthlyId).then((monthlyLayoutArray) => setCurrentMonthlyLayoutArray(monthlyLayoutArray))
     }, []);
-
 
     return (
         <>
@@ -42,8 +34,6 @@ export const MonthlyLayoutView = ({ monthly }) => {
                     <tbody>
                         {
                             currentMonthlyLayoutArray.map((ml) => {
-
-
                                 return <tr key={ml.id}>
                                     <td>{ml.layout.type}</td>
                                     <td>{ml.inspiredBy}</td>
