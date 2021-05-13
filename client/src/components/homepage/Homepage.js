@@ -4,6 +4,7 @@
 
 import React, { useEffect, useContext } from "react";
 import SpotLightListCard from "./Spotlight";
+import { Row, Col, Container, Card, CardBody } from "reactstrap"
 import HomepageResourceLinksList from "./HomepageResourceLinksList";
 import { HomepageContext } from "../../providers/HomepageProvider";
 
@@ -18,10 +19,19 @@ export const Homepage = () => {
 
     //displays both components of the home page
     return (
-        <div className="container">
-            <SpotLightListCard />
-            <HomepageResourceLinksList />
-        </div>
+        <Container className="m-3">
+            <Row>
+                <Col lg="9">
+                    <SpotLightListCard />
+                </Col>
+
+                <Col lg="3" c>
+                    {/* <CardBody> */}
+                    <HomepageResourceLinksList />
+                    {/* </CardBody> */}
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

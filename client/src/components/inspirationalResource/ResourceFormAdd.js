@@ -42,7 +42,7 @@ export const ResourceFormAdd = () => {
     return (
         <Form className="container">
             <FormGroup>
-                <Label for="url">Website URL</Label>
+                <Label for="url"> <strong></strong>Website URL</Label>
                 <Input
                     type="text"
                     name="url"

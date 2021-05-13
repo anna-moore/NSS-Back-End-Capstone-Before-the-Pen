@@ -146,11 +146,12 @@ export const MonthlyFormAdd = () => {
 
     //a return statement with the Form 
     return (
-        <Form className="container">
-            <Label for="MonthlyAndLayoutForm"><strong>Add a new Monthly Layout</strong></Label>
+        <Form className="container .col-6">
+            <Label for="MonthlyAndLayoutForm"> <h1><strong>Create Monthly Layout</strong></h1></Label>
             <FormGroup>
-                <Label for="month">Month</Label>
+                <Label for="month"><strong>Month</strong></Label>
                 <Input
+                    style={{ width: '300px' }}
                     type="text"
                     name="month"
                     id="month"
@@ -164,8 +165,9 @@ export const MonthlyFormAdd = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="year">Year</Label>
+                <Label for="year"><strong>Year</strong></Label>
                 <Input
+                    style={{ width: '300px' }}
                     type="text"
                     name="year"
                     id="year"
@@ -179,8 +181,9 @@ export const MonthlyFormAdd = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="style">Style</Label>
+                <Label for="style"><strong>Style</strong></Label>
                 <Input
+                    style={{ width: '300px' }}
                     type="text"
                     name="style"
                     id="style"
@@ -193,9 +196,7 @@ export const MonthlyFormAdd = () => {
                     required
                 />
             </FormGroup>
-            <Label for="addNewLayouts">Add Layouts</Label>
-
-
+            <Label for="addNewLayouts"> <strong>Add Layouts</strong> (and optional info)</Label>
             <FormGroup>
                 {
                     //* mapping over the layouts */}
@@ -207,7 +208,6 @@ export const MonthlyFormAdd = () => {
                             return (<>
                                 {/* this returns the label and the checkbox */}
                                 <FormGroup>
-                                    <label htmlFor="">{layout.type}</label>
                                     <input
                                         key={layout.id}
                                         type="checkbox"
@@ -216,12 +216,15 @@ export const MonthlyFormAdd = () => {
                                         onChange={(e) => handleCheckboxChange(e)}
                                         value={layout.id}
                                     />
+                                    <label htmlFor="">{layout.type}</label>
                                 </FormGroup>
                                 {/* this is what dropdown once checkbox is checked */}
-                                <Label for="thisCheckBoxItemSelected"><strong>Optional Info</strong></Label>
-                                <FormGroup>
+                                {/* <Label for="thisCheckBoxItemSelected"><strong>Optional Info</strong></Label> */}
+                                <FormGroup >
                                     <Label for="inspiredBy">Inspired by </Label>
+                                    {/* <a href="#imageURL" class=""> */}
                                     <Input
+                                        style={{ width: '300px' }}
                                         type="text"
                                         name="inspiredBy"
                                         id={layout.id}
@@ -232,10 +235,12 @@ export const MonthlyFormAdd = () => {
                                         }}
                                         value={layout.inspiredBy}
                                     />
+                                    {/* </a> */}
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="imageURL">Image URL</Label>
                                     <Input
+                                        style={{ width: '300px' }}
                                         type="text"
                                         name="imageURL"
                                         id="imageURL"
