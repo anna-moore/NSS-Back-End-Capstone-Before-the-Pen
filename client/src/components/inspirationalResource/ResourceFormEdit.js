@@ -70,7 +70,7 @@ export const ResourceFormEdit = () => {
         <Form className="container col-md-8">
             <Label className="text-center pb-2" tag="h2">Update Your Creative Ideas </Label>
             <FormGroup>
-                <Label for="name">Name</Label>
+                <Label className="font-weight-bold" for="name">Name</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="text"
@@ -86,7 +86,7 @@ export const ResourceFormEdit = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <Label className="font-weight-bold" htmlFor="typeOfMediaId">Type of Media </Label>
                 <Input
                     style={{ width: '65%' }}
                     type="select"
@@ -109,7 +109,7 @@ export const ResourceFormEdit = () => {
                 </Input>
             </FormGroup>
             <FormGroup>
-                <Label for="url">Website URL</Label>
+                <Label className="font-weight-bold" for="url">Website URL</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="text"
@@ -125,7 +125,7 @@ export const ResourceFormEdit = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="imageURL">Image URL</Label>
+                <Label className="font-weight-bold" for="imageURL">Image URL</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="text"
@@ -141,7 +141,7 @@ export const ResourceFormEdit = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="description">Description</Label>
+                <Label className="font-weight-bold" for="description">Description</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="textarea"
@@ -168,7 +168,10 @@ export const ResourceFormEdit = () => {
                 <Button active
                     className=" ml-4 mt-2 btn-primary"
                     style={{ cursor: 'pointer' }}
-                    onClick={handleClickEdit}>
+                    onClick={handleClickEdit}
+                //style={{ backgroundColor: "#4CAF50" }}
+                // color="info"
+                >
                     Edit
                 </Button>
             }
@@ -179,7 +182,7 @@ export const ResourceFormEdit = () => {
             >
                 Cancel
             </Button>
-        </Form>
+        </Form >
     )
 }
 export default ResourceFormEdit;

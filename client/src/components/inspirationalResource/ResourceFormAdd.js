@@ -48,7 +48,7 @@ export const ResourceFormAdd = () => {
             <Label className="text-center pb-2" tag="h2">Save Creative Ideas from Around the Web</Label>
             <div >
                 <FormGroup>
-                    <Label for="name">Name</Label>
+                    <Label className="font-weight-bold" for="name">Name</Label>
                     <Input
                         style={{ width: '65%' }}
                         type="text"
@@ -64,7 +64,7 @@ export const ResourceFormAdd = () => {
                     />
                 </FormGroup>
                 <FormGroup className="">
-                    <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                    <Label className="font-weight-bold" htmlFor="typeOfMediaId">Type of Media </Label>
                     <Input
                         style={{ width: '65%' }}
                         type="select"
@@ -86,7 +86,7 @@ export const ResourceFormAdd = () => {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="url"> <strong></strong>Website URL</Label>
+                    <Label className="font-weight-bold" for="url"> <strong></strong>Website URL</Label>
                     <Input
                         style={{ width: '65%' }}
                         type="text"
@@ -103,7 +103,7 @@ export const ResourceFormAdd = () => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="imageURL">Image URL</Label>
+                    <Label className="font-weight-bold" for="imageURL">Image URL</Label>
                     <Input
                         style={{ width: '65%' }}
                         // className="smaller-input"
@@ -119,7 +119,7 @@ export const ResourceFormAdd = () => {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="description">Description</Label>
+                    <Label className="font-weight-bold" for="description">Description</Label>
                     <Input
                         style={{ width: '65%' }}
                         type="textarea"
@@ -149,7 +149,9 @@ export const ResourceFormAdd = () => {
                             color="primary"
                             className="ml-4 mt-2 btn-primary"
                             style={{ cursor: 'pointer' }}
-                            onClick={handleClickSave}>
+                            onClick={handleClickSave}
+                        //style={{ backgroundColor: "#4CAF50" }}
+                        >
                             Save
                 </Button>
                 }

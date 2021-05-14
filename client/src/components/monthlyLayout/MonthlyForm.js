@@ -292,7 +292,6 @@ export const MonthlyFormAdd = () => {
             </Row>
             {month.replace(/ /g, '').length === 0 ?
                 <Button disabled
-                    color="primary"
                     style={{ cursor: 'pointer' }}
                     className="float-right mr-4"
                 >
@@ -300,7 +299,7 @@ export const MonthlyFormAdd = () => {
                     </Button>
                 :
                 <Button active
-                    color="primary"
+                    //color="primary"
                     style={{ cursor: 'pointer' }}
                     className="float-right mr-4"
                     onClick={handleClickSave}>

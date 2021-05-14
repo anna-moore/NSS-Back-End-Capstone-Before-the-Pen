@@ -7,7 +7,7 @@ const Category = ({ link }) => {
     return (
         // <Card className="m-2 ">
         <CardBody>
-            <a href={link.url}>{link.topic}</a>
+            <a href={link.url} className="font-weight-bold">{link.topic}</a>
             {/* {' '} */}
         </CardBody>
         // {/* </Card> */ }
