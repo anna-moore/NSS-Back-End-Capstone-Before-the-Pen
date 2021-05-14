@@ -26,11 +26,11 @@ export const ResourceCard = ({ resource }) => {
     }
 
     return (
-        <Card className="m-4">
+        <Card className="m-3">
             <CardBody style={{ width: "40em" }}>
                 {/* //this is where the name of the resource will be added 
                 //make this name a link */}
-                <CardTitle className="ml-3" tag="h4"><strong>{resource.url}</strong>
+                <CardTitle className="ml-3" tag="h4"><strong><a href={resource.url}>{resource.name}</a></strong>
                     <i
                         className="fas fa-trash-alt float-right pl-2"
                         onClick={handleDelete}
@@ -65,7 +65,7 @@ export const ResourceCard = ({ resource }) => {
                 }
 
                 {resource.description !== undefined ?
-                    (<CardText style={{ whiteSpace: 'pre-line' }} className="ml-5 mr-5">   {resource.description}  </CardText>)
+                    (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {resource.description}  </CardText>)
                     :
                     ("")
                 }

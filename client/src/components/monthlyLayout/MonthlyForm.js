@@ -147,7 +147,7 @@ export const MonthlyFormAdd = () => {
     //a return statement with the Form 
     return (
         <Form className="container col-md-10">
-            <Label className="text-center pb-2" for="MonthlyAndLayoutForm" tag="h2"> <strong>Create Monthly Layout</strong></Label>
+            <Label className="text-center pb-4" for="MonthlyAndLayoutForm" tag="h2"> <strong>Create Monthly Layout</strong></Label>
             <Row>
                 <Col>
                     <FormGroup>
