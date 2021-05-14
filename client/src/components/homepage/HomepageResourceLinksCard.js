@@ -5,12 +5,12 @@ const Category = ({ link }) => {
 
     //this sections need the text to be the topic and the topic is set to the be a link 
     return (
-        <Card className="m-2 ">
-            <CardBody>
-                <a href={link.url}>{link.topic}</a>
-                {' '}
-            </CardBody>
-        </Card>
+        // <Card className="m-2 ">
+        <CardBody>
+            <a href={link.url}>{link.topic}</a>
+            {/* {' '} */}
+        </CardBody>
+        // {/* </Card> */ }
     );
 };
 

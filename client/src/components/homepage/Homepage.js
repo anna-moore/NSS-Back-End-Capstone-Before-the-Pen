@@ -26,9 +26,7 @@ export const Homepage = () => {
                 </Col>
 
                 <Col lg="3" c>
-                    {/* <CardBody> */}
                     <HomepageResourceLinksList />
-                    {/* </CardBody> */}
                 </Col>
             </Row>
         </Container>

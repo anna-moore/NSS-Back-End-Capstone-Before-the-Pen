@@ -25,9 +25,9 @@ export default function ApplicationViews() {
                     <Login />
                 </Route>
 
-                <Route path="/homepage" exact>
+                {/* <Route path="/homepage" exact>
                     {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
-                </Route>
+                </Route> */}
 
                 <Route path="/monthlyLayoutCreate" exact>
                     {isLoggedIn ? <MonthlyForm /> : <Redirect to="/login" />}

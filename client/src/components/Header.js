@@ -23,10 +23,17 @@ export default function Header() {
     const history = useHistory();
 
     return (
-        <div>
-            <Navbar color="light" light expand="md">
+        <header class="header">
+            <Navbar color="#CAB9C3" light expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">
-                    Before The Pen
+                    <img
+                        alt=""
+                        src="FlowerFavicon.png"
+                        // C:\Users\Anna\workspace\BackEndCapstone-BeforeThePen\client\public\BeforeThePenLogo.png
+                        width="140"
+                        height="75"
+                    // className="sunnie-logo d-inline-block align-top"
+                    /> Before The Pen{' '}
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
@@ -35,11 +42,11 @@ export default function Header() {
                         {/* Update the links for all navbar items  */}
                         {isLoggedIn && (
                             <>
-                                <NavItem style={{ margin: '0 2em' }}>
+                                {/* <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to="/homepage">
                                         Home
                                     </NavLink>
-                                </NavItem>
+                                </NavItem> */}
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to="/monthlyLayoutCreate">
                                         New Monthly Layout
@@ -90,6 +97,6 @@ export default function Header() {
                     </Nav>
                 </Collapse>
             </Navbar>
-        </div >
+        </header >
     );
 }
