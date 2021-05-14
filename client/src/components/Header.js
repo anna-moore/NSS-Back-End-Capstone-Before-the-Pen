@@ -28,12 +28,12 @@ export default function Header() {
                 <NavbarBrand tag={RRNavLink} to="/">
                     <img
                         alt=""
-                        src="FlowerFavicon.png"
-                        // C:\Users\Anna\workspace\BackEndCapstone-BeforeThePen\client\public\BeforeThePenLogo.png
-                        width="140"
-                        height="75"
-                    // className="sunnie-logo d-inline-block align-top"
-                    /> Before The Pen{' '}
+                        src="/LogoTake6.png"
+                        width="100%"
+                        height="25%"
+                        className="d-inline-block  mt-2 "
+                    />
+                    {/* Before The Pen{' '} */}
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
