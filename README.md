@@ -14,12 +14,14 @@
 
 ## Project Requirements and Features List
 ### Get Started
-When a user first registers/ logs into an account with Tender Tofu they will be presented with a form to select their friend from a drop down and a date for an eatery outign. By selecting the date and friend, the user is then presented with local vegetarian restuarant theat they can accept or pass on. The user contining to select until they have reached the end of the list.
+
 ![Get Started GIF](src/images/gif/TenderTofuGIF-downsized.gif)
 
-### Friend's Turn
-The friend that the user above has selected nnow opens the app and navigates to the Friend's Turn to Swipe page and selects the outing with the first user and the agreed upon date. Then the seconnd user is prompted with the same list as list user one. They also select Yummy or Pass as before. Through the use of short polling, once the friend/ second user has selected a restaurant in common a window alert with restaurant that both user like with appear in both user bowsers.  
+### Adding a New Monthly Layout
+
 ![Restaurant Gif](src/images/gif/TenderTofuRestaurantPics.gif)
+
+### Adding a New Resource 
 
 ## Technologies Used
   ### Development Languages and Libraries
@@ -78,7 +80,6 @@ You will need to create a Firebase project to have working authentication and au
   <img src=".\client\public\Wireframe\NewInspoResourceForm.png" width="60%"></img> 
   <img src=".\client\public\Wireframe\InspoResources.png" width="60%"></img> 
   
-
 
   ## Appendix 2: Set Up Instructions
  
