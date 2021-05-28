@@ -30,6 +30,9 @@ The friend that the user above has selected nnow opens the app and navigates to 
 
 ## Instructions for Installing Before the Pen
   To launch the Before the Pen app, you will need to have access to command line tools, node package manager, JSON Server. If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
+  info about downloading visual code
+  info about how to run the SQL scripts
+  info about running the back end server
 
   Clone this repo on you personal machine using the following command
   ```sh
