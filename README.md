@@ -30,36 +30,41 @@ The friend that the user above has selected nnow opens the app and navigates to 
 
 ## Instructions for Installing Before the Pen
   To launch the Before the Pen app, you will need to have access to command line tools, node package manager, JSON Server. If you do not have access to any of these tools, you can find instructions for installing them in the [Appendix.](#appendix-2-set-up-instructions)
-  info about downloading visual code
-  info about how to run the SQL scripts
-  info about running the back end server
 
-  Clone this repo on you personal machine using the following command
+### Requirements
+* Git
+* Visual Studio (configured to run server-side ASP.NET Web API C# code)
+* MS SQL Server (Express or higher)
+* NodeJS
+
+### Firebase
+
+You will need to create a Firebase project to have working authentication and authorization.
+
+* Go to Firebase and create a project (can be named anything). Add authentication in the form of email/password to the project.
+* In the project settings, you will need your `Project Id` and `Web API Key`
+
+### Clone the project
+ Clone this repo on you personal machine using the following terminal command
   ```sh
-    git clone git@github.com:anna-moore/NSS-Front-End-Capstone-Tender-Tofu.git
+    git clone git@github.com:anna-moore/NSS-Back-EndCapstone-Before-the-Pen.git
   ```
 
-  Install the NPM dependencies for this project using the following commands
-  ```sh
-    cd front-end-capstone
-    npm install
-  ```
+### Back-end setup
+* In `BeforeThePen/appsettings.json` change the `FirebaseProjectId` value to your Firebase `Project Id`
+* From `BeforeThePen/SQL`, run the scripts `01_Db_Create.sql` and then `02_Seed_Data.sql` to generate the database
+* To use the default test account `test@example.com`, create a user account in your Firebase project's auth section with that email address (and any password) and replace the data in that user's `FirebaseUserId` column in the database with the id generated in your Firebase project
+* Load `BeforeThePen.sln` in Visual Studio and hit F5 to run the server (after ensuring that FlashcardFight is selected instead of the default IIS Express server)
 
-  From your terminal window, type
-  ```sh
-    npm start
-  ```
-  Open another tab in your terminal window and cd into the API directiory, type
-  ```sh
-  json-server -p 8088 -w database.json
-  ```
+### Front-end Setup
+* Create a file in `BeforeThePen/client/` called `.env.local`
+* In this file, paste `REACT_APP_API_KEY=Web API Key`, replacing "Web API Key" with your unique key from your Firebase project's project settings
+* Run `npm install` in `BeforeThePen/client` to install all dependencies
+* To start the development server on `localhost:3000`, run `npm start`
+* A browser window should open with the authentication page and you can enter `test@example.com` as your email address with the password you added in Firebase
 
-  Now that the server is up and running, you can open an internet browser and access API of the application
-  ```sh
-    http://localhost:8080/
-  ```
 
- ### Congratulations you are now experiencing Tender Tofu!
+ ### Congratulations you are now experiencing Before the Pen!
 
   ## Appendix 1: Planning Documentation
 
@@ -74,7 +79,7 @@ The friend that the user above has selected nnow opens the app and navigates to 
 
 
   ## Appendix 2: Set Up Instructions
-
+ 
   You will need to have command line tools installed for your computer to use terminal commands.
 
   Linux/ Windows users, please visit the [Git page](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and follow the instructions for set up
@@ -102,6 +107,9 @@ The friend that the user above has selected nnow opens the app and navigates to 
     or
     /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
   ```
+
+Add instructions for creating a firebase account.
+Add instructions for downloading visual studio.
 
   Now you can follow the [installation instructions](#instructions-for-installing-before-the-Pen) to get Before the Pen up and running on your machine.
 
