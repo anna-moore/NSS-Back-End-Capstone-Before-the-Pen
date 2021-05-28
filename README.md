@@ -72,9 +72,11 @@ You will need to create a Firebase project to have working authentication and au
   ![Before the Pen ERD](/client/public/BeforeThePenERD.PNG)
 
   ### Wireframes
-  <img src="./src/images/Wireframe1.png" width="60%"></img> 
-  <img src="./src/images/WireFrame2.png" width="60%"></img> 
-  <img src="./src/images/WireFrame3.png" width="60%"></img> 
+  <img src=".\client\public\Wireframe\Homepage.png" width="60%"></img> 
+  <img src=".\client\public\Wireframe\CreateNewMonthlyForm.png" width="60%"></img> 
+  <img src=".\client\public\Wireframe\ListPastMonthlyLayouts.png" width="60%"></img> 
+  <img src=".\client\public\Wireframe\NewInspoResourceForm.png" width="60%"></img> 
+  <img src=".\client\public\Wireframe\InspoResources.png" width="60%"></img> 
   
 
 
