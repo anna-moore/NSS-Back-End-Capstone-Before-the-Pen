@@ -16,16 +16,17 @@
 ### Get Started
 When a user first registers an account with Before the Pen they will be directed to a welcome page which displays a featured monthly layout and some helpful links.
 pictures to create the gif. register page or button.  blank register page, home screeb view 
-![Get Started GIF](src/images/gif/TenderTofuGIF-downsized.gif)
+![Get Started GIF](client/public/GIF/GettingStartedGIF.gif)
 
 ### Adding a New Monthly Layout
 User can add a new monthly layout using this dynamic form. 
 three pictures. One form blank. form with info. the list page put into a gif
-![Restaurant Gif](src/images/gif/TenderTofuRestaurantPics.gif)
+![MonthlyLayout GIF](client\public\GIF\MonthlyLayoutGIF.gif)
 
 ### Adding a New Resource 
 User can store bullet journal ideas from across the web. 
 three pictures. One form blank. form with info. the list page
+![Resource GIF](client\public\GIF\GIFResourcesFormList.gif)
 
 ## Technologies Used
   ### Development Languages and Libraries
