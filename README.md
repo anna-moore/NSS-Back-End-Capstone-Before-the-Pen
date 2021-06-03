@@ -14,14 +14,18 @@
 
 ## Project Requirements and Features List
 ### Get Started
-
+When a user first registers an account with Before the Pen they will be directed to a welcome page which displays a featured monthly layout and some helpful links.
+pictures to create the gif. register page or button.  blank register page, home screeb view 
 ![Get Started GIF](src/images/gif/TenderTofuGIF-downsized.gif)
 
 ### Adding a New Monthly Layout
-
+User can add a new monthly layout using this dynamic form. 
+three pictures. One form blank. form with info. the list page put into a gif
 ![Restaurant Gif](src/images/gif/TenderTofuRestaurantPics.gif)
 
 ### Adding a New Resource 
+User can store bullet journal ideas from across the web. 
+three pictures. One form blank. form with info. the list page
 
 ## Technologies Used
   ### Development Languages and Libraries
@@ -83,6 +87,7 @@ You will need to create a Firebase project to have working authentication and au
 
   ## Appendix 2: Set Up Instructions
  
+ ### Instructions for Installing Git
   You will need to have command line tools installed for your computer to use terminal commands.
 
   Linux/ Windows users, please visit the [Git page](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and follow the instructions for set up
@@ -111,8 +116,12 @@ You will need to create a Firebase project to have working authentication and au
     /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
   ```
 
-Add instructions for creating a firebase account.
-Add instructions for downloading visual studio.
+### Instructions for Creating a Firebase account.
+ Create a fireBase account [here](https://firebase.google.com/)
+
+### Instructions for Downloading Visual Studio
+Visual Studio can be downloaded from the following [link](https://visualstudio.microsoft.com/downloads/)
+This instructions for dowloading can be found [here](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2019)
 
   Now you can follow the [installation instructions](#instructions-for-installing-before-the-Pen) to get Before the Pen up and running on your machine.
 
