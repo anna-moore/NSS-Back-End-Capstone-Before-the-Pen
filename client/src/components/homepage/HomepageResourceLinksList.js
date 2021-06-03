@@ -16,21 +16,20 @@ const HelpfulResourceList = () => {
     return (
 
         <Container>
-            {/* <Card> */}
-
-            <Row>
-                <Col s="8" className="container">
+            <Card className="mt-4">
+                {/* <Row> */}
+                <Col s="8" className="container m-2">
                     <div className="row">
-                        <div className="cards-column pt-5">
-                            <CardTitle className="h1">Helpful Links</CardTitle>
+                        <div className="cards-column pt-2">
+                            <CardTitle className="h1 ml-3">Ideas</CardTitle>
                             {homepageResourceLinks.map((link) => {
                                 return <HomepageResourceLinksCard key={link.id} link={link} />
                             })}
                         </div>
                     </div>
                 </Col>
-            </Row>
-            {/* </Card> */}
+                {/* </Row> */}
+            </Card>
         </Container>
 
     )

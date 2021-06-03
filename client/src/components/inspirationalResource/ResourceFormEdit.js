@@ -20,6 +20,7 @@ export const ResourceFormEdit = () => {
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [description, setDescription] = useState('');
+    const [name, setName] = useState('');
 
     //for editing inspo resources
     useEffect(() => {
@@ -30,6 +31,7 @@ export const ResourceFormEdit = () => {
                 setImageURL(currentInspoResource.imageURL);
                 setTypeOfMediaId(currentInspoResource.typeOfMediaId);
                 setDescription(currentInspoResource.description);
+                setName(currentInspoResource.name);
             })
             .then(() => getAllTypeOfMedia())
     }, [])
@@ -40,6 +42,7 @@ export const ResourceFormEdit = () => {
         setURL('');
         setImageURL('');
         setDescription('');
+        setName('')
     }
 
     //handle click save function 
@@ -49,7 +52,8 @@ export const ResourceFormEdit = () => {
             typeOfMediaId,
             url,
             imageURL,
-            description
+            description,
+            name
         }
         updateInspoResource(resource)
             .then(clearState)
@@ -66,9 +70,25 @@ export const ResourceFormEdit = () => {
         <Form className="container col-md-8">
             <Label className="text-center pb-2" tag="h2">Update Your Creative Ideas </Label>
             <FormGroup>
-                <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <Label className="font-weight-bold" for="name">Name</Label>
                 <Input
-                    style={{ width: '40%' }}
+                    style={{ width: '65%' }}
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="i.e. Bee Themed"
+                    autoComplete="off"
+                    onChange={(e) => {
+                        setName(e.target.value);
+                    }}
+                    value={name}
+                    required
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label className="font-weight-bold" htmlFor="typeOfMediaId">Type of Media </Label>
+                <Input
+                    style={{ width: '65%' }}
                     type="select"
                     name="typeOfMediaId"
                     id="typeOfMediaId"
@@ -89,7 +109,7 @@ export const ResourceFormEdit = () => {
                 </Input>
             </FormGroup>
             <FormGroup>
-                <Label for="url">Website URL</Label>
+                <Label className="font-weight-bold" for="url">Website URL</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="text"
@@ -104,9 +124,8 @@ export const ResourceFormEdit = () => {
                     required
                 />
             </FormGroup>
-
             <FormGroup>
-                <Label for="imageURL">Image URL</Label>
+                <Label className="font-weight-bold" for="imageURL">Image URL</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="text"
@@ -122,7 +141,7 @@ export const ResourceFormEdit = () => {
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="description">Description</Label>
+                <Label className="font-weight-bold" for="description">Description</Label>
                 <Input
                     style={{ width: '65%' }}
                     type="textarea"
@@ -149,7 +168,10 @@ export const ResourceFormEdit = () => {
                 <Button active
                     className=" ml-4 mt-2 btn-primary"
                     style={{ cursor: 'pointer' }}
-                    onClick={handleClickEdit}>
+                    onClick={handleClickEdit}
+                //style={{ backgroundColor: "#4CAF50" }}
+                // color="info"
+                >
                     Edit
                 </Button>
             }
@@ -160,7 +182,7 @@ export const ResourceFormEdit = () => {
             >
                 Cancel
             </Button>
-        </Form>
+        </Form >
     )
 }
 export default ResourceFormEdit;

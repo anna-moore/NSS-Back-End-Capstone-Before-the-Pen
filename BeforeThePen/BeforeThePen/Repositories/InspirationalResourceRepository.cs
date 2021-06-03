@@ -22,7 +22,7 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL,
+                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL, r.Name,
                                                 tm.id, tm.type,
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          FROM Resource r
@@ -56,7 +56,7 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL,
+                    cmd.CommandText = @" SELECT r.id, r.UserProfileId, r.TypeOfMediaId, r.URL, r.Description, r.ImageURL, r.Name,
                                                 tm.id, tm.type,
                                                 up.Id AS UserProfileId, up.DisplayName, up.FirstName, up.LastName, up.Email
                                          FROM Resource r
@@ -89,15 +89,16 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Resource ( TypeOfMediaId, URL, ImageURL, Description, UserProfileId)
+                    cmd.CommandText = @"INSERT INTO Resource ( TypeOfMediaId, URL, ImageURL, Description, UserProfileId, Name)
                                         OUTPUT INSERTED.Id
-                                        VALUES (@typeOfMediaId, @url, @imageURL, @description, @userProfileId)";
+                                        VALUES (@typeOfMediaId, @url, @imageURL, @description, @userProfileId, @name)";
 
                     DbUtils.AddParameter(cmd, "@typeOfMediaId", resource.TypeOfMediaId);
                     DbUtils.AddParameter(cmd, "@url", resource.URL);
                     DbUtils.AddParameter(cmd, "@imageURL", resource.ImageURL);
                     DbUtils.AddParameter(cmd, "@description", resource.Description);
                     DbUtils.AddParameter(cmd, "@userProfileId", resource.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@name", resource.Name);
 
 
 
@@ -118,7 +119,8 @@ namespace BeforeThePen.Repositories
                                         SET TypeOfMediaId = @typeOfMediaId,
                                             URL = @url,
                                             ImageURL = @imageURL, 
-                                            Description = @description
+                                            Description = @description,
+                                            Name = @name
                                         WHERE Id = @id";
 
                     DbUtils.AddParameter(cmd, "@id", resource.Id);
@@ -126,13 +128,15 @@ namespace BeforeThePen.Repositories
                     DbUtils.AddParameter(cmd, "@url", resource.URL);
                     DbUtils.AddParameter(cmd, "@imageURL", resource.ImageURL);
                     DbUtils.AddParameter(cmd, "@description", resource.Description);
+                    DbUtils.AddParameter(cmd, "@name", resource.Name);
+
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
         //delete a resource
-        //soft delete?
+        //stretch goal for this to be archivable
         public void DeleteResource(int id)
         {
             using (var conn = Connection)
@@ -159,6 +163,7 @@ namespace BeforeThePen.Repositories
                 URL = DbUtils.GetString(reader, "URL"),
                 Description = DbUtils.GetNullableString(reader, "Description"),
                 ImageURL = DbUtils.GetNullableString(reader, "ImageURL"),
+                Name = DbUtils.GetString(reader, "Name"),
                 UserProfile = new UserProfile()
                 {
                     DisplayName = DbUtils.GetString(reader, "DisplayName"),

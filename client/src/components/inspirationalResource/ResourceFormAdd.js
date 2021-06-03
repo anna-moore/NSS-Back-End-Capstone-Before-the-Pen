@@ -18,6 +18,7 @@ export const ResourceFormAdd = () => {
     const [url, setURL] = useState('');
     const [imageURL, setImageURL] = useState('');
     const [description, setDescription] = useState('');
+    const [name, setName] = useState('');
 
 
     useEffect(() => {
@@ -30,7 +31,8 @@ export const ResourceFormAdd = () => {
             typeOfMediaId,
             url,
             imageURL,
-            description
+            description,
+            name
         }
         addInspoResource(resource).then(() => {
             history.push(`/inspirationalResources/${currentUserId}`);
@@ -45,12 +47,26 @@ export const ResourceFormAdd = () => {
         >
             <Label className="text-center pb-2" tag="h2">Save Creative Ideas from Around the Web</Label>
             <div >
-
-
-                <FormGroup className="">
-                    <Label htmlFor="typeOfMediaId">Type of Media </Label>
+                <FormGroup>
+                    <Label className="font-weight-bold" for="name">Name</Label>
                     <Input
-                        style={{ width: '40%' }}
+                        style={{ width: '65%' }}
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="i.e. Bee Themed"
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setName(e.target.value);
+                        }}
+                        value={name}
+                        required
+                    />
+                </FormGroup>
+                <FormGroup className="">
+                    <Label className="font-weight-bold" htmlFor="typeOfMediaId">Type of Media </Label>
+                    <Input
+                        style={{ width: '65%' }}
                         type="select"
                         name="typeOfMediaId"
                         id="typeOfMediaId"
@@ -70,7 +86,7 @@ export const ResourceFormAdd = () => {
                     </Input>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="url"> <strong></strong>Website URL</Label>
+                    <Label className="font-weight-bold" for="url"> <strong></strong>Website URL</Label>
                     <Input
                         style={{ width: '65%' }}
                         type="text"
@@ -87,7 +103,7 @@ export const ResourceFormAdd = () => {
                 </FormGroup>
 
                 <FormGroup>
-                    <Label for="imageURL">Image URL</Label>
+                    <Label className="font-weight-bold" for="imageURL">Image URL</Label>
                     <Input
                         style={{ width: '65%' }}
                         // className="smaller-input"
@@ -103,13 +119,13 @@ export const ResourceFormAdd = () => {
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="description">Description</Label>
+                    <Label className="font-weight-bold" for="description">Description</Label>
                     <Input
                         style={{ width: '65%' }}
                         type="textarea"
                         name="description"
                         id="description"
-                        rows="8"
+                        rows="6"
                         wrap="hard"
                         placeholder="what is the resource all about?"
                         autoComplete="off"
@@ -133,7 +149,9 @@ export const ResourceFormAdd = () => {
                             color="primary"
                             className="ml-4 mt-2 btn-primary"
                             style={{ cursor: 'pointer' }}
-                            onClick={handleClickSave}>
+                            onClick={handleClickSave}
+                        //style={{ backgroundColor: "#4CAF50" }}
+                        >
                             Save
                 </Button>
                 }

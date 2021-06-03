@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Button, Label } from 'reactstrap';
 import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import ResourceCard from './ResourceCard';
 
@@ -25,14 +25,20 @@ const ResourceList = ({ }) => {
     //add a create new resource button at the top
     return (
         <div className="container mt-5">
-            <Button
+            <Label className="text-center  " tag="h2" ><strong>List of Your Creative Ideas</strong>
+                <i className="fas fa-plus-circle ml-4 2x"
+                    style={{ cursor: 'pointer' }}
+                    onClick={handleClickNewResource}
+                ></i>
+            </Label>
+            {/* <Button
                 style={{ cursor: 'pointer' }}
                 className="mr-3 btn-primary"
                 onClick={handleClickNewResource}
-                className="float-right"
+                className="float-right mt-4 mr-3"
             >
                 Create New
-            </Button>
+            </Button> */}
             <div className="row justify-content-center">
                 <div className="cards-column" >
                     {
@@ -47,7 +53,6 @@ const ResourceList = ({ }) => {
                 </div>
             </div>
         </div>
-
     );
 };
 export default ResourceList;

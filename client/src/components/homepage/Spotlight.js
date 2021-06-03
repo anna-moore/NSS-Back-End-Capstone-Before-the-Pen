@@ -33,9 +33,9 @@ export const SpotLightListCard = () => {
                 <CardBody>
                     <CardTitle> <h1>May's Spotlight</h1></CardTitle>
 
-                    <CardSubtitle><a href={spotlight.artistPortfolioURL}>{spotlight.artist}</a></CardSubtitle>
+                    <CardSubtitle className="font-weight-bold"><a href={spotlight.artistPortfolioURL}>{spotlight.artist}</a></CardSubtitle>
                     {/* <a href={spotlight.artistPortfolioURL}>LinkedIn handle</a> */}
-                    <CardText>{spotlight.about}</CardText>
+                    <CardText >{spotlight.about}</CardText>
                     {/* this is where I have a ternary with the image or the video 
                         if spotlight.youtubeEmbedId does not equal null then display the video
                         if {above} does equal null than display spotlight.imageURL*/}
