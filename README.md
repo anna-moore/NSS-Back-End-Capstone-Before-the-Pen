@@ -15,19 +15,19 @@
 ## Project Requirements and Features List
 ### Get Started
 When a user first registers an account with Before the Pen they will be directed to a welcome page which displays a featured monthly layout and some helpful links.
-![Get Started GIF](client/public/GIF/GettingStartedGIF.gif)
+
 ![Get Started GIF](https://media.giphy.com/media/9HoFGPk3EFIUnBpqxu/giphy.gif)
 
 
 ### Adding a New Monthly Layout
 User can add a new monthly layout using this dynamic form. 
-![Monthly Layout GIF](client\public\GIF\MonthlyLayoutGIF.gif)
+![Monthly Layout GIF](client\public\GIF\MonthlyLayoutGIF.gif).
 ![Monthly Layout GIF](https://media.giphy.com/media/DP4oq2UeaRifyPC7A7/giphy.gif)
 
 
 ### Adding a New Resource 
 User can store bullet journal ideas from across the web. 
-![Resource GIF](client\public\GIF\GIFResourcesFormList.gif)
+![Resource GIF](client\public\GIF\GIFResourcesFormList.gif).
 ![Resource GIF](https://media.giphy.com/media/O7CYRwmm3MmQi6VAUG/giphy.gif)
 
 ## Technologies Used
