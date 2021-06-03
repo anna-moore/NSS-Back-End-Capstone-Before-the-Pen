@@ -12,7 +12,6 @@ const ResourceList = ({ }) => {
     const history = useHistory();
 
     useEffect(() => {
-
         if (id) {
             getInspoResourceByUser(id);
         }

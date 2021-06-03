@@ -8,18 +8,10 @@ export const HomepageContext = createContext();
 export function HomepageProvider(props) {
     const apiURL = '/api/homepage';
 
-    // const userProfile = sessionStorage.getItem('userProfile');
     const { getToken } = useContext(UserProfileContext)
-    // const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [currentUserId, setCurrentUserId] = useState(0);
     const [homepageResourceLinks, setHomepageResourceLinks] = useState([]);
     const [spotlight, setSpotlight] = useState("");
-
-    // useEffect(() => {
-    //     if (isLoggedIn) {
-    //         setCurrentUserId(JSON.parse(userProfile).id);
-    //     }
-    // }, [userProfile]);
 
     //gathers the single spotlight object 
     const getSpotlight = () => {
