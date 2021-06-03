@@ -222,7 +222,6 @@ export const MonthlyFormAdd = () => {
                                 {/* <Label for="thisCheckBoxItemSelected"><strong>Optional Info</strong></Label> */}
                                 <FormGroup >
                                     <Label for="inspiredBy">Inspired by </Label>
-                                    {/* <a href="#imageURL" class=""> */}
                                     <Input
                                         style={{ width: '300px' }}
                                         type="text"
@@ -235,7 +234,6 @@ export const MonthlyFormAdd = () => {
                                         }}
                                         value={layout.inspiredBy}
                                     />
-                                    {/* </a> */}
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="imageURL">Image URL</Label>
@@ -292,53 +290,3 @@ export const MonthlyFormAdd = () => {
 }
 export default MonthlyFormAdd;
 
-
-// this is for the resource which is a stretch goal 
-
-// <FormGroup>
-// <Label htmlFor="resourceId">Resource </Label>
-// <Input
-//     type="select"
-//     name="resourceId"
-//     id="resourceId"
-//     value="1"
-//     onChange={(e) => {
-//         setResourceId(e.target.value);
-//     }}
-// >
-//     <option value="1">Resource</option>
-//     {inspoResource.map(r => {
-//         return (
-//             <option key={r.id} value={r.id}>
-//                 {r.url}
-//             </option>
-//         );
-//     })}
-// </Input>
-// </FormGroup>
-
-
-
-
-//this is when the layout was a drop down feature
-{/* <FormGroup>
-                <Label htmlFor="layoutId">Layout </Label>
-                <Input
-                    type="select"
-                    name="layoutId"
-                    id="layoutId"
-                    value={layoutId}
-                    onChange={(e) => {
-                        setLayoutId(e.target.value);
-                    }}
-                >
-                    <option value="1">Layouts</option>
-                    {layouts.map(l => {
-                        return (
-                            <option key={l.id} value={l.id}>
-                                {l.type}
-                            </option>
-                        );
-                    })}
-                </Input>
-            </FormGroup> */}

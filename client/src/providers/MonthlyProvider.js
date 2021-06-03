@@ -10,9 +10,6 @@ export function MonthlyProvider(props) {
 
     const [monthly, setMonthly] = useState([]);
 
-
-
-
     //gathers the monthly by user this is a list
     const getMonthlyByUser = (id) => {
         //debugger;

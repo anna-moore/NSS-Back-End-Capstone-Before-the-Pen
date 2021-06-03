@@ -39,11 +39,6 @@ export function InspoResourceProvider(props) {
                         console.log(res)
                         return res.json()
                     })
-                // .then((resource) => {
-                //     console.log(resource)
-                //     setCurrentInspoResource(resource)
-                // })
-
             );
     };
 
