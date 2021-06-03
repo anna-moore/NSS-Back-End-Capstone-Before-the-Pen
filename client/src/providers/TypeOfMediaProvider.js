@@ -6,17 +6,8 @@ export const TypeOfMediaContext = createContext();
 export function TypeOfMediaProvider(props) {
     const apiURL = '/api/typeOfMedia';
 
-    const userProfile = sessionStorage.getItem('userProfile');
-    const [currentUserId, setCurrentUserId] = useState(0);
     const { getToken } = useContext(UserProfileContext);
-    const [isLoggedIn, setIsLoggedIn] = useState(userProfile != null);
     const [typeOfMedia, setTypeOfMedia] = useState([]);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            setCurrentUserId(JSON.parse(userProfile).id);
-        }
-    }, [userProfile]);
 
     //gather all of the types of media 
     const getAllTypeOfMedia = () => {
