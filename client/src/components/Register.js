@@ -27,35 +27,35 @@ export default function Register() {
     };
 
     return (
-        <Form onSubmit={registerClick}>
+        <Form onSubmit={registerClick} className="container col-md-10">
             <fieldset>
                 <FormGroup>
                     <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" type="text" onChange={e => setFirstName(e.target.value)} />
+                    <Input id="firstName" type="text" style={{ width: '50%' }} onChange={e => setFirstName(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" type="text" onChange={e => setLastName(e.target.value)} />
+                    <Input id="lastName" type="text" style={{ width: '50%' }} onChange={e => setLastName(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="displayName">Display Name</Label>
-                    <Input id="displayName" type="text" onChange={e => setDisplayName(e.target.value)} />
+                    <Input id="displayName" type="text" style={{ width: '50%' }} onChange={e => setDisplayName(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label for="email">Email</Label>
-                    <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+                    <Input id="email" type="text" style={{ width: '50%' }} onChange={e => setEmail(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="imageLocation">Profile Image URL</Label>
-                    <Input id="imageLocation" type="text" onChange={e => setImageLocation(e.target.value)} />
+                    <Input id="imageLocation" type="text" style={{ width: '50%' }} onChange={e => setImageLocation(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label for="password">Password</Label>
-                    <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+                    <Input id="password" type="password" style={{ width: '50%' }} onChange={e => setPassword(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Label for="confirmPassword">Confirm Password</Label>
-                    <Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+                    <Input id="confirmPassword" type="password" style={{ width: '50%' }} onChange={e => setConfirmPassword(e.target.value)} />
                 </FormGroup>
                 <FormGroup>
                     <Button>Register</Button>
