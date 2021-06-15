@@ -66,6 +66,14 @@ SET IDENTITY_INSERT [HomepageResources] ON
 SET IDENTITY_INSERT [HomepageResources] OFF
 
 
+SET IDENTITY_INSERT [SpotlightLayout] ON
+    INSERT INTO [SpotlightLayout]
+        ([Id], [Artist], [YoutubeEmbedId],  [artistPortfolioURL], [imageURL], [About], [CurrentMonth] )
+    VALUES
+        (1,	'Amanda Rach Lee',	'kzcttNNn50g'	,'https://www.amandarachlee.com/' ,	'image URL' ,	'This month’s spotlight features an enchanted garden theme, based on The Fairies of Merlin’s Craig.',   1 )
+
+SET IDENTITY_INSERT [SpotlightLayoput] OFF
+
 
 
 
