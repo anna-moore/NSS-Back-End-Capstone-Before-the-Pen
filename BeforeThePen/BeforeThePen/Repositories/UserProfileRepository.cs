@@ -122,6 +122,17 @@ namespace BeforeThePen.Repositories
                     DbUtils.AddParameter(cmd, "@DateCreated", userProfile.DateCreated);
 
                     userProfile.Id = (int)cmd.ExecuteScalar();
+
+                    //need to add the userprofile ID
+                    cmd.CommandText = @"  INSERT INTO Layout ([UserProfileId], [Type], [TimeEstimate], [description])
+                                          VALUES
+                                            (1,  'Cover Page', 60, 'this is a desc'),
+                                            (1,  'Calender', 30, 'this is a desc'),
+                                            (1,  'Quote Page', 60, 'this is a desc'),
+                                            (1,  'Habit Tracker', 40, 'this is a desc'),
+                                            (1,  'Mood Tracker', 40, 'this is a desc'),
+                                            (1,  'Vertical Weekly', 30, 'this is a desc'),
+                                            (1,  'Horizontal Weekly', 30, 'this is a desc');";
                 }
             }
         }
