@@ -11,7 +11,7 @@ SET IDENTITY_INSERT [Monthly] ON
   INSERT INTO [Monthly]
     ([Id], [UserProfileId], [Month], [Year])
   VALUES
-    (1, 1, 'May', 2021);
+    (1, 1, 'May', 2021);  
 SET IDENTITY_INSERT [Monthly] OFF
 
 SET IDENTITY_INSERT [Layout] ON
@@ -50,6 +50,20 @@ SET IDENTITY_INSERT [MonthlyLayout] ON
   VALUES
     (1, 1, 1, 'blah', null, 1, 'style');
 SET IDENTITY_INSERT [MonthlyLayout] OFF
+
+SET IDENTITY_INSERT [HomepageResources] ON
+    INSERT INTO [HomepageResources]
+        ([Id] , [Topic], [URL])
+    VALUES
+       ( 1,	'Getting Started' ,	'https://sublimereflection.com/bullet-journal-101/'),
+       (2,	'How to Bullet Journal' ,	'https://www.tinyrayofsunshine.com/blog/bullet-journal-guide'),
+       (4,	'Printables for May',	'https://www.sheenaofthejournal.com/product/may-21-bullet-journal-printables/'),
+       (5,	'Hand Lettering' ,	'https://www.pinterest.es/anna_orchid/bullet-journal/hand-lettering/'),
+       (6,	'Habit Tracking', 'https://bulletjournal.com/blogs/bulletjournalist/intentional-habit-tracking'),
+       (7,	'Stationary Ideas' ,	'https://littlecoffeefox.com/my-supplies/'),
+       (8,	'Plinthced on IG' ,	'https://www.instagram.com/plinthced/'),
+       (9,	'Bujo For Stars on  IG' ,	'https://www.instagram.com/bujoforstars/');
+SET IDENTITY_INSERT [HomepageResources] OFF
 
 
 
