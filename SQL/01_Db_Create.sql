@@ -31,7 +31,8 @@ CREATE TABLE [Monthly] (
   [id] integer IDENTITY PRIMARY KEY NOT NULL,
   [userProfileId] integer NOT NULL,
   [month] nvarchar(255) NOT NULL,
-  [year] integer NOT NULL
+  [year] integer NOT NULL,
+  [Style]         NVARCHAR (255) NULL
 )
 GO
 
@@ -41,8 +42,7 @@ CREATE TABLE [MonthlyLayout] (
   [layoutId] integer NOT NULL,
   [inspiredBy] nvarchar(255),
   [imageURL] nvarchar(255),
-  [resourceId] integer,
-  [style] nvarchar(255) NOT NULL
+  [resourceId] integer
 )
 GO
 
@@ -60,7 +60,9 @@ CREATE TABLE [Resource] (
   [UserProfileId] integer NOT NULL,
   [typeOfMediaId] integer NOT NULL,
   [URL] nvarchar(255) NOT NULL,
-  [imageURL] nvarchar(255)
+  [ImageURL] nvarchar(255),
+  [Description]   NVARCHAR (MAX) NULL,
+  [Name]          NVARCHAR (255) NOT NULL
 )
 GO
 
@@ -77,6 +79,7 @@ CREATE TABLE [SpotlightLayout](
   [artistProfolioURL] nvarchar (255),
   [imageURL] nvarchar (255),
   [About]   NVARCHAR (MAX) NULL,
+  [CurrentMonth]       BIT            NULL,
 )
 GO
 
