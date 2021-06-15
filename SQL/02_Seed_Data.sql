@@ -7,12 +7,6 @@ SET IDENTITY_INSERT [UserProfile] ON
       (1, 'aitl29384', 'AnnaOcean', 'Anna', 'Ocean', 'ao@email.com', null,  '06-21-2020');
 SET IDENTITY_INSERT [UserProfile] OFF
 
-SET IDENTITY_INSERT [Monthly] ON
-  INSERT INTO [Monthly]
-    ([Id], [UserProfileId], [Month], [Year])
-  VALUES
-    (1, 1, 'May', 2021);  
-SET IDENTITY_INSERT [Monthly] OFF
 
 SET IDENTITY_INSERT [Layout] ON
   INSERT INTO [Layout]
@@ -39,17 +33,11 @@ SET IDENTITY_INSERT [TypeOfMedia] Off
 
 SET IDENTITY_INSERT [Resource] ON
   INSERT INTO [Resource] 
-    ([Id], [UserProfileId], [TypeOfMediaId], [URL], [imageURL])
+      ([Id], [UserProfileId], [typeOfMediaId], [URL],  [Description], [Name])
   VALUES
-    (1, 1, 1,'thisIsAURL', 'thisIsAImageURL')
+     (1,	1,	1,	'https://www.crazylaura.com/best-crystal-bullet-journal-spreads/', 'This is a good theme for May.',	'Gem Theme');
 SET IDENTITY_INSERT [Resources] OFF
 
-SET IDENTITY_INSERT [MonthlyLayout] ON
-  INSERT INTO [MonthlyLayout]
-    ([Id], [MonthlyId], [LayoutId], [InspiredBy], [ImageURL], [ResourceId], [Style])
-  VALUES
-    (1, 1, 1, 'blah', null, 1, 'style');
-SET IDENTITY_INSERT [MonthlyLayout] OFF
 
 SET IDENTITY_INSERT [HomepageResources] ON
     INSERT INTO [HomepageResources]
