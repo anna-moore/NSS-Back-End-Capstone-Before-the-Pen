@@ -1,30 +1,19 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { MonthlyContext } from '../../providers/MonthlyProvider';
-import { MonthlyLayoutContext } from '../../providers/MonthlyLayoutProvider';
 import { LayoutContext } from '../../providers/LayoutProvider';
-import { UserProfileContext } from '../../providers/UserProfileProvider'
-import { InspoResourceContext } from '../../providers/InspirationalResourceProvider';
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 export const LayoutFormAdd = () => {
 
     //import the needed this form    
     const { layouts, addLayout, getLayoutsByUser, getLayoutsById } = useContext(LayoutContext);
-    const { currentUserId } = useContext(UserProfileContext);
 
     const history = useHistory();
-    const { id } = useParams();
 
     //the properties on the layout
     const [type, setType] = useState('');
     const [timeEstimate, setTimeEstimate] = useState(0);
     const [description, setDescription] = useState('');
-    //also needs user id
-
-    useEffect(() => {
-
-    }, []);
 
 
     const handleClickSave = (evt) => {
@@ -39,12 +28,12 @@ export const LayoutFormAdd = () => {
     }
 
     return (
-        <Form className="container col-md-10">
+        <Form className="container col-md-4">
             <Label className="text-center pb-4" for="LayoutForm" tag="h2"> <strong>Add New Layout Type</strong></Label>
             <FormGroup>
                 <Label className="font-weight-bold" for="type">Name of Layout</Label>
                 <Input
-                    style={{ width: '65%' }}
+                    style={{ width: '85%' }}
                     type="text"
                     name="type"
                     id="type"
@@ -60,7 +49,7 @@ export const LayoutFormAdd = () => {
             <FormGroup>
                 <Label className="font-weight-bold" for="timeEstimate">Time Estimate in Minutes</Label>
                 <Input
-                    style={{ width: '65%' }}
+                    style={{ width: '85%' }}
                     type="text"
                     name="timeEstimate"
                     id="timeEstimate"
@@ -76,7 +65,7 @@ export const LayoutFormAdd = () => {
             <FormGroup>
                 <Label className="font-weight-bold" for='description'>Description</Label>
                 <Input
-                    style={{ width: '65%' }}
+                    style={{ width: '85%' }}
                     type="textarea"
                     name="description"
                     id="description"
