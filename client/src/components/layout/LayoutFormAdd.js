@@ -10,7 +10,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 export const LayoutFormAdd = () => {
 
     //import the needed this form    
-    const { layouts, addLayouts, getLayoutsByUser, getLayoutsById } = useContext(LayoutContext);
+    const { layouts, addLayout, getLayoutsByUser, getLayoutsById } = useContext(LayoutContext);
     const { currentUserId } = useContext(UserProfileContext);
 
     const history = useHistory();
@@ -33,7 +33,7 @@ export const LayoutFormAdd = () => {
             timeEstimate,
             description
         }
-        addLayouts(layout).then(() => {
+        addLayout(layout).then(() => {
             history.push(`/monthlyLayoutCreate`)
         })
     }
@@ -94,7 +94,6 @@ export const LayoutFormAdd = () => {
             {
                 type.replace(/ /g, '').length === 0 ?
                     <Button disabled
-                        // color="primary" maybe gray before they have typed?
                         className=" ml-4 mt-2 btn-primary"
                         style={{ cursor: 'pointer' }}
                     >
@@ -106,7 +105,6 @@ export const LayoutFormAdd = () => {
                         className="ml-4 mt-2 btn-primary"
                         style={{ cursor: 'pointer' }}
                         onClick={handleClickSave}
-                    //style={{ backgroundColor: "#4CAF50" }}
                     >
                         Save
                     </Button>

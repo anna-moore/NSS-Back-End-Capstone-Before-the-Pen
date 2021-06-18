@@ -82,7 +82,7 @@ namespace BeforeThePen.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO Layout ( UserProfileId, Type, TimeEstimate, Decription)
+                    cmd.CommandText = @"INSERT INTO Layout ( UserProfileId, Type, TimeEstimate, Description)
                                         OUTPUT INSERTED.Id
                                         VALUES (@userProfileId, @type, @timeEstimate, @description)";
 
