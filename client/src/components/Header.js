@@ -28,7 +28,7 @@ export default function Header() {
                 <NavbarBrand tag={RRNavLink} to="/">
                     <img
                         alt=""
-                        src="/LogoTake6.png"
+                        src="/LogoTake7.png"
                         width="100%"
                         height="25%"
                         className="d-inline-block  mt-2 "
