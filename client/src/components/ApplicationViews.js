@@ -5,6 +5,7 @@ import Login from './Login';
 import Register from './Register';
 import Hello from './Hello';
 import Homepage from '../components/homepage/Homepage';
+import LayoutFormAdd from '../components/layout/LayoutFormAdd';
 import MonthlyForm from '../components/monthlyLayout/MonthlyForm';
 import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
 import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
@@ -25,9 +26,9 @@ export default function ApplicationViews() {
                     <Login />
                 </Route>
 
-                {/* <Route path="/homepage" exact>
-                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
-                </Route> */}
+                <Route path="/layoutCreate" exact>
+                    {isLoggedIn ? <LayoutFormAdd /> : <Redirect to="/login" />}
+                </Route>
 
                 <Route path="/monthlyLayoutCreate" exact>
                     {isLoggedIn ? <MonthlyForm /> : <Redirect to="/login" />}
