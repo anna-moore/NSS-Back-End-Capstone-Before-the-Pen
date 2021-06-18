@@ -42,11 +42,11 @@ export default function Header() {
                         {/* Update the links for all navbar items  */}
                         {isLoggedIn && (
                             <>
-                                {/* <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/homepage">
-                                        Home
+                                <NavItem style={{ margin: '0 2em' }}>
+                                    <NavLink tag={RRNavLink} to="/layoutCreate">
+                                        New Layout
                                     </NavLink>
-                                </NavItem> */}
+                                </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to="/monthlyLayoutCreate">
                                         New Monthly Layout
