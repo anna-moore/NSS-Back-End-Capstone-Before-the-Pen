@@ -109,7 +109,7 @@ namespace BeforeThePen.Repositories
                                         SET UserProfileId = @userProfileId,                                         
                                             Type = @type,
                                             TimeEstimate = @timeEstimate,
-                                            Description = @description,                                            
+                                            Description = @description                                            
                                         WHERE Id = @id";
 
                     DbUtils.AddParameter(cmd, "@id", layout.Id);

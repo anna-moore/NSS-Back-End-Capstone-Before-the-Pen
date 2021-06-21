@@ -38,7 +38,6 @@ export const LayoutCard = ({ layout }) => {
                     style={{ cursor: 'pointer' }}
                 ></i>
             </CardTitle>
-            {/* what other information should be added here? */}
 
             {layout.description !== undefined ?
                 (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {layout.description}  </CardText>)

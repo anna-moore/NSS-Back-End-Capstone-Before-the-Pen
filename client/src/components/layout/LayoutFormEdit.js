@@ -7,7 +7,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 export const LayoutFormEdit = () => {
 
     //import the needed for this form    
-    const { updateLayout, getLayoutsByUser, getLayoutsById } = useContext(LayoutContext);
+    const { updateLayout, getLayoutsById } = useContext(LayoutContext);
     const { currentUserId } = useContext(UserProfileContext);
     const history = useHistory();
     const { id } = useParams();
@@ -48,13 +48,13 @@ export const LayoutFormEdit = () => {
         updateLayout(layout)
             .then(clearState)
             .then(() => {
-                history.push(`/monthlyLayoutCreate`)
+                history.push(`/layout/${currentUserId}`)
             })
     }
 
     //exit the edit form without making changes
     const handleCancel = () => {
-        history.push(`/monthlyLayout/${currentUserId}`)
+        history.push(`/layout/${currentUserId}`)
     };
 
     //this form differs from the add form by the edit and cancel buttons

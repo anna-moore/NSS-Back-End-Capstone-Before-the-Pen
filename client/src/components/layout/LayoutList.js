@@ -21,7 +21,7 @@ const LayoutList = ({ }) => {
         history.push(`/layoutCreate`)
     }
 
-
+    //needs styling and alignment
     return (
         <div className="container mt-5">
             <Label className="text-center  " tag="h2" ><strong>List of Your Layouts</strong>

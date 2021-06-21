@@ -39,9 +39,9 @@ namespace BeforeThePen.Controllers
 
         //get layout by id
         [HttpGet("{id}")]
-        public IActionResult GetLayoutById(int layoutId)
+        public IActionResult GetLayoutById(int id)
         {
-            var layout = _layoutRepository.GetLayoutById(layoutId);
+            var layout = _layoutRepository.GetLayoutById(id);
             if (layout == null)
             {
                 return NotFound();
@@ -65,7 +65,8 @@ namespace BeforeThePen.Controllers
             {
                 return BadRequest();
             }
-
+            var User = GetCurrentUserProfile();
+            layout.UserProfileId = User.Id;
             _layoutRepository.UpdateLayout(layout);
             return NoContent();
         }
