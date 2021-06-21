@@ -6,25 +6,27 @@ import { LayoutContext } from '../../providers/LayoutProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 
 export const LayoutCard = ({ layout }) => {
-    const { getLayoutByUser } = useContext(LayoutContext);
+    const { getLayoutsByUser, deleteLayout } = useContext(LayoutContext);
     const { currentUserId } = useContext(UserProfileContext);
+    const history = useHistory();
+    const { id } = useParams();
 
     //handle delete of layout
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this layout?')) {
-            deleteLayout(layout.id).then(() => getLayoutByUser(id));
-            history.push(`/inspirationalResources/${currentUserId}`);
+            deleteLayout(layout.id).then(() => getLayoutsByUser(id));
+            history.push(`/layout/${currentUserId}`);
         }
     };
 
     //brings up the edit form 
     const handleEdit = () => {
-        history.push(`/`)
+        history.push(`/layout/edit/${layout.id}`)
     }
 
     return (
         <Card className="">
-            <CardTitle className="ml-3" tag="h4"><strong>{layout.name}</strong>
+            <CardTitle className="ml-3" tag="h4"><strong>{layout.type}</strong>
                 <i
                     className="fas fa-trash-alt float-right pl-2"
                     onClick={handleDelete}
@@ -37,6 +39,17 @@ export const LayoutCard = ({ layout }) => {
                 ></i>
             </CardTitle>
             {/* what other information should be added here? */}
+
+            {layout.description !== undefined ?
+                (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {layout.description}  </CardText>)
+                :
+                ("")
+            }
+            {layout.timeEstimate !== undefined ?
+                (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {layout.timeEstimate} minutes </CardText>)
+                :
+                ("")
+            }
         </Card>
     )
 }

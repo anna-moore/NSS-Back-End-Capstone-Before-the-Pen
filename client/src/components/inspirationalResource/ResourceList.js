@@ -21,8 +21,6 @@ const ResourceList = ({ }) => {
         history.push(`/inspirationalResources/create`)
     }
 
-
-    //add a create new resource button at the top
     return (
         <div className="container mt-5">
             <Label className="text-center  " tag="h2" ><strong>List of Your Creative Ideas</strong>
@@ -31,14 +29,7 @@ const ResourceList = ({ }) => {
                     onClick={handleClickNewResource}
                 ></i>
             </Label>
-            {/* <Button
-                style={{ cursor: 'pointer' }}
-                className="mr-3 btn-primary"
-                onClick={handleClickNewResource}
-                className="float-right mt-4 mr-3"
-            >
-                Create New
-            </Button> */}
+
             <div className="row justify-content-center">
                 <div className="cards-column" >
                     {

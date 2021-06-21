@@ -19,6 +19,7 @@ export const LayoutFormEdit = () => {
     const [description, setDescription] = useState('');
 
     //for editing the layout 
+    //check for the correct id 
     useEffect(() => {
         getLayoutsById(id)
             .then((currentLayout) => {

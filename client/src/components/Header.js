@@ -39,12 +39,12 @@ export default function Header() {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {/* When isLoggedIn === true, we will render the Home link */}
-                        {/* Update the links for all navbar items  */}
+
                         {isLoggedIn && (
                             <>
                                 <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/layoutCreate">
-                                        New Layout
+                                    <NavLink tag={RRNavLink} to={`/layout/${currentUserId}`}>
+                                        Layouts
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
@@ -54,7 +54,7 @@ export default function Header() {
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to={`/monthlyLayout/${currentUserId}`}>
-                                        My Monthlys
+                                        My Monthly Plans
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>

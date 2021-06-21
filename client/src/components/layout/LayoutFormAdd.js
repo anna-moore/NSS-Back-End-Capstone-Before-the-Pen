@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { LayoutContext } from '../../providers/LayoutProvider';
+import { UserProfileContext } from '../../providers/UserProfileProvider';
 import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 export const LayoutFormAdd = () => {
 
     //import the needed this form    
     const { addLayout } = useContext(LayoutContext);
+    const { currentUserId } = useContext(UserProfileContext);
 
     const history = useHistory();
 
@@ -23,7 +25,7 @@ export const LayoutFormAdd = () => {
             description
         }
         addLayout(layout).then(() => {
-            history.push(`/monthlyLayoutCreate`)
+            history.push(`/layout/${currentUserId}`)
         })
     }
 
