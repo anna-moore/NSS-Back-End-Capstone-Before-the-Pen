@@ -6,7 +6,7 @@ import { Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 export const LayoutFormAdd = () => {
 
     //import the needed this form    
-    const { layouts, addLayout, getLayoutsByUser, getLayoutsById } = useContext(LayoutContext);
+    const { addLayout } = useContext(LayoutContext);
 
     const history = useHistory();
 

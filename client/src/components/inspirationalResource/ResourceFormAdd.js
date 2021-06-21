@@ -6,7 +6,7 @@ import { TypeOfMediaContext } from '../../providers/TypeOfMediaProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 
 export const ResourceFormAdd = () => {
-    const { inspoResource, addInspoResource } = useContext(InspoResourceContext);
+    const { addInspoResource } = useContext(InspoResourceContext);
     const { typeOfMedia, getAllTypeOfMedia } = useContext(TypeOfMediaContext)
     const { currentUserId } = useContext(UserProfileContext);
 
@@ -143,7 +143,7 @@ export const ResourceFormAdd = () => {
                             style={{ cursor: 'pointer' }}
                         >
                             Save
-                    </Button>
+                        </Button>
                         :
                         <Button active
                             color="primary"
@@ -153,7 +153,7 @@ export const ResourceFormAdd = () => {
                         //style={{ backgroundColor: "#4CAF50" }}
                         >
                             Save
-                </Button>
+                        </Button>
                 }
             </div>
         </Form >

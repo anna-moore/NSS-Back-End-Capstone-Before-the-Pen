@@ -26,7 +26,7 @@ export const ResourceFormEdit = () => {
     useEffect(() => {
         getInspoResourceById(id)
             .then((currentInspoResource) => {
-                setIdResource(currentInspoResource.id)
+                setIdResource(currentInspoResource.id);
                 setURL(currentInspoResource.url);
                 setImageURL(currentInspoResource.imageURL);
                 setTypeOfMediaId(currentInspoResource.typeOfMediaId);
@@ -42,10 +42,10 @@ export const ResourceFormEdit = () => {
         setURL('');
         setImageURL('');
         setDescription('');
-        setName('')
+        setName('');
     }
 
-    //handle click save function 
+    //handle click edit function 
     const handleClickEdit = (evt) => {
         const resource = {
             id: idResource,
@@ -163,7 +163,7 @@ export const ResourceFormEdit = () => {
                     style={{ cursor: 'pointer' }}
                 >
                     Edit
-                    </Button>
+                </Button>
                 :
                 <Button active
                     className=" ml-4 mt-2 btn-primary"

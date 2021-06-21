@@ -29,6 +29,9 @@ export default function ApplicationViews() {
                 <Route path="/layoutCreate" exact>
                     {isLoggedIn ? <LayoutFormAdd /> : <Redirect to="/login" />}
                 </Route>
+                <Route path="/layout/edit/:id(\d+)" exact>
+                    {isLoggedIn ? <LayoutFormEdit /> : <Redirect to="/login" />}
+                </Route>
 
                 <Route path="/monthlyLayoutCreate" exact>
                     {isLoggedIn ? <MonthlyForm /> : <Redirect to="/login" />}
