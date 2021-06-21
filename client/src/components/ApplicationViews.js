@@ -6,6 +6,7 @@ import Register from './Register';
 import Hello from './Hello';
 import Homepage from '../components/homepage/Homepage';
 import LayoutFormAdd from '../components/layout/LayoutFormAdd';
+import LayoutFormEdit from './layout/LayoutFormEdit';
 import MonthlyForm from '../components/monthlyLayout/MonthlyForm';
 import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
 import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
