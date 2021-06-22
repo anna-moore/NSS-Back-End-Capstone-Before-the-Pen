@@ -25,10 +25,10 @@ export const LayoutCard = ({ layout }) => {
     }
 
     return (
-        <Card className="">
-            <CardTitle className="ml-3" tag="h4"><strong>{layout.type}</strong>
+        <Card className="mb-3 p-2 ">
+            <CardTitle className="ml-3" tag="h4" ><strong>{layout.type}</strong>
                 <i
-                    className="fas fa-trash-alt float-right pl-2"
+                    className="fas fa-trash-alt float-right px-2"
                     onClick={handleDelete}
                     style={{ cursor: 'pointer' }}
                 ></i>
