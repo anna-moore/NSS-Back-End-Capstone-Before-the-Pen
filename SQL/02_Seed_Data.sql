@@ -12,13 +12,13 @@ SET IDENTITY_INSERT [Layout] ON
   INSERT INTO [Layout]
     ([Id], [UserProfileId], [Type], [TimeEstimate], [description])
   VALUES
-    (1, 1,  'Cover Page', 1, 'this is a desc'),
-    (2, 1,  'Calender', 1, 'this is a desc'),
-    (3, 1,  'Quote Page', 1, 'this is a desc'),
-    (4, 1,  'Habit Tracker', 1, 'this is a desc'),
-    (5, 1,  'Mood Tracker', 1, 'this is a desc'),
-    (6, 1,  'Vertical Weekly', 1, 'this is a desc'),
-    (7, 1,  'Horizontal Weekly', 1, 'this is a desc');
+    (1, 1,  'Cover Page', 1, 'The Cover Page contains art of this months theme and a title of the month.'),
+    (2, 1,  'Calendar', 1, 'The Calendar page contains a grid or a list of dates. This layout may also have a quote or note section.'),
+    (3, 1,  'Quote Page', 1, 'This spread contains typography and is often located along side the cover page.'),
+    (4, 1,  'Habit Tracker', 1, 'Habit Tracker are often mini calendar grids so determine how often a habit is being done.'),
+    (5, 1,  'Mood Tracker', 1, 'Mood Trackers can be a drawing that match the theme of the month and record the highs and lows with uses of different color.'),
+    (6, 1,  'Vertical Weekly', 1, 'Weekly spreads in a vertical format are great for writing out events and task.'),
+    (7, 1,  'Horizontal Weekly', 1, 'Weekly spreads in a horizontal format are great for jotting down thoughts about the day.');
 SET IDENTITY_INSERT [Layout] OFF
 
 SET IDENTITY_INSERT [TypeOfMedia] ON
