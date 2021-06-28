@@ -24,7 +24,6 @@ export function HomepageProvider(props) {
             })
                 .then((resp) => resp.json())
                 .then(setSpotlight)
-
         );
     };
 
@@ -43,7 +42,6 @@ export function HomepageProvider(props) {
         });
     };
 
-    // const getToken = () => firebase.auth().currentUserId.getIdToken();
 
     return (
         <HomepageContext.Provider
@@ -53,8 +51,7 @@ export function HomepageProvider(props) {
                 setSpotlight,
                 setHomepageResourceLinks,
                 spotlight,
-                homepageResourceLinks,
-                // currentUserId
+                homepageResourceLinks
             }}
         >
             {props.children}

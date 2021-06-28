@@ -87,7 +87,6 @@ export function MonthlyLayoutProvider(props) {
             value={{
                 getMonthlyLayoutsByUser,
                 getMonthlyLayoutsById,
-                // addMonthlyLayout,
                 addMonthlyAndLayout,
                 updateMonthlyLayout,
                 deleteMonthlyLayout,
@@ -100,20 +99,3 @@ export function MonthlyLayoutProvider(props) {
         </MonthlyLayoutContext.Provider>
     );
 };
-
-
-
-
-    //add a monthly layout
-    // const addMonthlyLayout = (monthlyLayout) => {
-    //     return getToken().then((token) =>
-    //         fetch(`${apiURL}`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(monthlyLayout),
-    //         })
-    //     );
-    // };

@@ -5,6 +5,7 @@ import CardText from 'reactstrap/lib/CardText';
 import { LayoutContext } from '../../providers/LayoutProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 
+//this function displays the individual data on the card
 export const LayoutCard = ({ layout }) => {
     const { getLayoutsByUser, deleteLayout } = useContext(LayoutContext);
     const { currentUserId } = useContext(UserProfileContext);

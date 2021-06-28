@@ -33,7 +33,6 @@ export default function Header() {
                         height="25%"
                         className="d-inline-block  mt-2 "
                     />
-                    {/* Before The Pen{' '} */}
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>

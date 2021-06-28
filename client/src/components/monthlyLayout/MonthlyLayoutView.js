@@ -34,6 +34,11 @@ export const MonthlyLayoutView = ({ monthly }) => {
                         onClick={handleDelete}
                         style={{ cursor: 'pointer' }}
                     ></i>
+                    {/* <i
+                        className="fas fa-edit float-right "
+                        onClick={handleEdit}
+                        style={{ cursor: 'pointer' }}
+                    ></i> */}
                 </CardTitle>
                 <div  >
                     <Table bordered hover>

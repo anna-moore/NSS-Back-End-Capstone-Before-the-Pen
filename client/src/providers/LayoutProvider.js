@@ -41,7 +41,6 @@ export const LayoutProvider = (props) => {
                         // console.log(res)
                         return res.json()
                     })
-
             );
     };
 
