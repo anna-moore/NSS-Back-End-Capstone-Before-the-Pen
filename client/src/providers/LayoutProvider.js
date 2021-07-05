@@ -38,9 +38,9 @@ export const LayoutProvider = (props) => {
                     },
                 })
                     .then((res) => {
+                        // console.log(res)
                         return res.json()
                     })
-                    .then(setLayout)
             );
     };
 

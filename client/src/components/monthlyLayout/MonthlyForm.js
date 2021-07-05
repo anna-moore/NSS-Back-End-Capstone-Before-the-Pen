@@ -144,6 +144,11 @@ export const MonthlyFormAdd = () => {
         }
     }
 
+    //function for adding a new layout
+    const handleClickNewLayout = () => {
+        history.push(`/layoutCreate`)
+    }
+
     //a return statement with the Form 
     return (
         <Form className="container col-md-10">
@@ -201,7 +206,12 @@ export const MonthlyFormAdd = () => {
                 </Col>
                 <Col>
 
-                    <Label for="addNewLayouts"> <strong>Add Layouts</strong> (and optional info)</Label>
+                    <Label for="addNewLayouts"> <strong>Add Layouts</strong> (and optional info)
+                        <i className="fas fa-plus-circle ml-4 2x"
+                            style={{ cursor: 'pointer' }}
+                            onClick={handleClickNewLayout}
+                        ></i>
+                    </Label>
                     <FormGroup>
                         {
                             //* mapping over the layouts */}
@@ -296,7 +306,7 @@ export const MonthlyFormAdd = () => {
                     className="float-right mr-4"
                 >
                     Save
-                    </Button>
+                </Button>
                 :
                 <Button active
                     //color="primary"

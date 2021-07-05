@@ -28,25 +28,24 @@ export default function Header() {
                 <NavbarBrand tag={RRNavLink} to="/">
                     <img
                         alt=""
-                        src="/LogoTake6.png"
+                        src="/LogoTake7.png"
                         width="100%"
                         height="25%"
                         className="d-inline-block  mt-2 "
                     />
-                    {/* Before The Pen{' '} */}
                 </NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         {/* When isLoggedIn === true, we will render the Home link */}
-                        {/* Update the links for all navbar items  */}
+
                         {isLoggedIn && (
                             <>
-                                {/* <NavItem style={{ margin: '0 2em' }}>
-                                    <NavLink tag={RRNavLink} to="/homepage">
-                                        Home
+                                <NavItem style={{ margin: '0 2em' }}>
+                                    <NavLink tag={RRNavLink} to={`/layout/${currentUserId}`}>
+                                        Layouts
                                     </NavLink>
-                                </NavItem> */}
+                                </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to="/monthlyLayoutCreate">
                                         New Monthly Layout
@@ -54,7 +53,7 @@ export default function Header() {
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>
                                     <NavLink tag={RRNavLink} to={`/monthlyLayout/${currentUserId}`}>
-                                        My Monthlys
+                                        My Monthly Plans
                                     </NavLink>
                                 </NavItem>
                                 <NavItem style={{ margin: '0 2em' }}>

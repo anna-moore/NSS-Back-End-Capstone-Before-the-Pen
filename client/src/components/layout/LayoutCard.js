@@ -5,28 +5,31 @@ import CardText from 'reactstrap/lib/CardText';
 import { LayoutContext } from '../../providers/LayoutProvider';
 import { UserProfileContext } from '../../providers/UserProfileProvider';
 
+//this function displays the individual data on the card
 export const LayoutCard = ({ layout }) => {
-    const { getLayoutByUser } = useContext(LayoutContext);
+    const { getLayoutsByUser, deleteLayout } = useContext(LayoutContext);
     const { currentUserId } = useContext(UserProfileContext);
+    const history = useHistory();
+    const { id } = useParams();
 
     //handle delete of layout
     const handleDelete = () => {
         if (window.confirm('Are you sure you want to delete this layout?')) {
-            deleteLayout(layout.id).then(() => getLayoutByUser(id));
-            history.push(`/inspirationalResources/${currentUserId}`);
+            deleteLayout(layout.id).then(() => getLayoutsByUser(id));
+            history.push(`/layout/${currentUserId}`);
         }
     };
 
     //brings up the edit form 
     const handleEdit = () => {
-        history.push(`/`)
+        history.push(`/layout/edit/${layout.id}`)
     }
 
     return (
-        <Card className="">
-            <CardTitle className="ml-3" tag="h4"><strong>{layout.name}</strong>
+        <Card className="mb-3 p-2 ">
+            <CardTitle className="ml-3" tag="h4" ><strong>{layout.type}</strong>
                 <i
-                    className="fas fa-trash-alt float-right pl-2"
+                    className="fas fa-trash-alt float-right px-2"
                     onClick={handleDelete}
                     style={{ cursor: 'pointer' }}
                 ></i>
@@ -36,7 +39,17 @@ export const LayoutCard = ({ layout }) => {
                     style={{ cursor: 'pointer' }}
                 ></i>
             </CardTitle>
-            {/* what other information should be added here? */}
+
+            {layout.description !== undefined ?
+                (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {layout.description}  </CardText>)
+                :
+                ("")
+            }
+            {layout.timeEstimate !== undefined ?
+                (<CardText style={{ whiteSpace: 'pre-line' }} className="mx-4 pt-2">   {layout.timeEstimate} minutes </CardText>)
+                :
+                ("")
+            }
         </Card>
     )
 }

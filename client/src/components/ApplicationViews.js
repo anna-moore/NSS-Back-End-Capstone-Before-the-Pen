@@ -3,8 +3,10 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { UserProfileContext } from '../providers/UserProfileProvider';
 import Login from './Login';
 import Register from './Register';
-import Hello from './Hello';
 import Homepage from '../components/homepage/Homepage';
+import LayoutFormAdd from '../components/layout/LayoutFormAdd';
+import LayoutFormEdit from './layout/LayoutFormEdit';
+import LayoutList from './layout/LayoutList';
 import MonthlyForm from '../components/monthlyLayout/MonthlyForm';
 import MonthlyLayoutList from '../components/monthlyLayout/MonthlyLayoutList';
 import ResourceFormAdd from '../components/inspirationalResource/ResourceFormAdd';
@@ -25,14 +27,19 @@ export default function ApplicationViews() {
                     <Login />
                 </Route>
 
-                {/* <Route path="/homepage" exact>
-                    {isLoggedIn ? <Homepage /> : <Redirect to="/login" />}
-                </Route> */}
+                <Route path="/layoutCreate" exact>
+                    {isLoggedIn ? <LayoutFormAdd /> : <Redirect to="/login" />}
+                </Route>
+                <Route path="/layout/edit/:id(\d+)" exact>
+                    {isLoggedIn ? <LayoutFormEdit /> : <Redirect to="/login" />}
+                </Route>
+                <Route path="/layout/:id(\d+)" exact>
+                    {isLoggedIn ? <LayoutList /> : <Redirect to="/login" />}
+                </Route>
 
                 <Route path="/monthlyLayoutCreate" exact>
                     {isLoggedIn ? <MonthlyForm /> : <Redirect to="/login" />}
                 </Route>
-
                 <Route path="/monthlyLayout/:id(\d+)" exact>
                     {isLoggedIn ? <MonthlyLayoutList /> : <Redirect to="/login" />}
                 </Route>
@@ -40,11 +47,9 @@ export default function ApplicationViews() {
                 <Route path="/inspirationalResources/:id(\d+)" exact>
                     {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
                 </Route>
-
                 <Route path="/inspirationalResources/create" exact>
                     {isLoggedIn ? <ResourceFormAdd /> : <Redirect to="/login" />}
                 </Route>
-
                 <Route path="/inspirationalResources/edit/:id(\d+)" exact>
                     {isLoggedIn ? <ResourceFormEdit /> : <Redirect to="/login" />}
                 </Route>
