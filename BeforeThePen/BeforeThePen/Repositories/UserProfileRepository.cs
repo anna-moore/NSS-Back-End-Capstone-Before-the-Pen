@@ -124,15 +124,15 @@ namespace BeforeThePen.Repositories
                     userProfile.Id = (int)cmd.ExecuteScalar();
 
                     //need to add the userprofile ID
-                    cmd.CommandText = @"  INSERT INTO Layout ([UserProfileId], [Type], [TimeEstimate], [description])
-                                          VALUES
-                                            (1,  'Cover Page', 60, 'this is a desc'),
-                                            (1,  'Calender', 30, 'this is a desc'),
-                                            (1,  'Quote Page', 60, 'this is a desc'),
-                                            (1,  'Habit Tracker', 40, 'this is a desc'),
-                                            (1,  'Mood Tracker', 40, 'this is a desc'),
-                                            (1,  'Vertical Weekly', 30, 'this is a desc'),
-                                            (1,  'Horizontal Weekly', 30, 'this is a desc');";
+                    /*  cmd.CommandText = @"  INSERT INTO Layout ([UserProfileId], [Type], [TimeEstimate], [description])
+                                            VALUES
+                                              (userProfile.Id,  'Cover Page', 60, 'The Cover Page contains art of this months theme and a title of the month.'),
+                                              (userProfile.Id,  'Calender', 30, 'The Calendar page contains a grid or a list of dates. This layout may also have a quote or note section.'),
+                                              (userProfile.Id,  'Quote Page', 60, 'This spread contains typography and is often located along side the cover page.'),
+                                              (userProfile.Id,  'Habit Tracker', 40, 'Habit Tracker are often mini calendar grids so determine how often a habit is being done.'),
+                                              (userProfile.Id,  'Mood Tracker', 40, 'Mood Trackers can be a drawing that match the theme of the month and record the highs and lows with uses of different color.'),
+                                              (userProfile.Id,  'Vertical Weekly', 30, 'Weekly spreads in a vertical format are great for writing out events and task.'),
+                                              (userProfile.Id,  'Horizontal Weekly', 30, 'Weekly spreads in a horizontal format are great for jotting down thoughts about the day.');";*/
                 }
             }
         }
